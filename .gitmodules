@@ -1,0 +1,15 @@
+[submodule "nyan-mode"]
+	path = nyan-mode
+	url = git://github.com/TeMPOraL/nyan-mode.git
+[submodule "helm"]
+	path = helm
+	url = git://github.com/emacs-helm/helm.git
+[submodule "emacs-async"]
+	path = emacs-async
+	url = git://github.com/jwiegley/emacs-async.git
+[submodule "gobgen"]
+	path = gobgen
+	url = git://github.com/gergelypolonkai/gobgen.el.git
+[submodule "emacs-helm-gtags"]
+	path = emacs-helm-gtags
+	url = git://github.com/syohex/emacs-helm-gtags.git
