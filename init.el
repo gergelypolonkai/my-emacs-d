@@ -20,14 +20,34 @@
  '(nxml-attribute-indent 4)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 4)
+ '(cursor-type 'bar)
+ '(tab-width 4)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("marmalade" . "http://marmalade-repo.org/packages/") ("e6h" . "http://www.e6h.org/packages/"))))
  '(safe-local-variable-values (quote ((company-clang-arguments "-I.." "-I/home/polesz/jhbuild/install/include" "-I/home/polesz/jhbuild/install/include/atk-1.0" "-I/home/polesz/jhbuild/install/include/at-spi-2.0" "-I/home/polesz/jhbuild/install/include/at-spi2-atk/2.0" "-I/home/polesz/jhbuild/install/include/cairo" "-I/home/polesz/jhbuild/install/include/gdk-pixbuf-2.0" "-I/home/polesz/jhbuild/install/include/gio-unix-2.0/" "-I/home/polesz/jhbuild/install/include/glib-2.0" "-I/home/polesz/jhbuild/install/include/gtk-3.0" "-I/home/polesz/jhbuild/install/include/harfbuzz" "-I/home/polesz/jhbuild/install/include/libgda-5.0" "-I/home/polesz/jhbuild/install/include/libgda-5.0/libgda" "-I/home/polesz/jhbuild/install/include/librsvg-2.0" "-I/home/polesz/jhbuild/install/include/libsoup-2.4" "-I/home/polesz/jhbuild/install/include/pango-1.0" "-I/home/polesz/jhbuild/install/include/swe-glib" "-I/home/polesz/jhbuild/install/include/webkitgtk-4.0" "-I/home/polesz/jhbuild/install/lib/glib-2.0/include" "-I/usr/include/dbus-1.0" "-I/usr/include/freetype2" "-I/usr/include/libdrm" "-I/usr/include/libpng16" "-I/usr/include/libxml2" "-I/usr/include/pixman-1" "-I/usr/lib64/dbus-1.0/include") (company-clang-arguments "-I/home/polesz/jhbuild/install/include" "-I/home/polesz/jhbuild/install/include/atk-1.0" "-I/home/polesz/jhbuild/install/include/at-spi-2.0" "-I/home/polesz/jhbuild/install/include/at-spi2-atk/2.0" "-I/home/polesz/jhbuild/install/include/cairo" "-I/home/polesz/jhbuild/install/include/gdk-pixbuf-2.0" "-I/home/polesz/jhbuild/install/include/gio-unix-2.0/" "-I/home/polesz/jhbuild/install/include/glib-2.0" "-I/home/polesz/jhbuild/install/include/gtk-3.0" "-I/home/polesz/jhbuild/install/include/harfbuzz" "-I/home/polesz/jhbuild/install/include/libgda-5.0" "-I/home/polesz/jhbuild/install/include/libgda-5.0/libgda" "-I/home/polesz/jhbuild/install/include/librsvg-2.0" "-I/home/polesz/jhbuild/install/include/libsoup-2.4" "-I/home/polesz/jhbuild/install/include/pango-1.0" "-I/home/polesz/jhbuild/install/include/swe-glib" "-I/home/polesz/jhbuild/install/include/webkitgtk-4.0" "-I/home/polesz/jhbuild/install/lib/glib-2.0/include" "-I/usr/include/dbus-1.0" "-I/usr/include/freetype2" "-I/usr/include/libdrm" "-I/usr/include/libpng16" "-I/usr/include/libxml2" "-I/usr/include/pixman-1" "-I/usr/lib64/dbus-1.0/include") (company-clang-arguments "-I/usr/include/glib-2.0")))))
 
-(set-default 'cursor-type 'bar)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(my-long-line-face ((((class color)) (:background "gray10"))) t)
+ '(my-tab-face ((((class color)) (:background "grey10"))) t)
+ '(my-trailing-space-face ((((class color)) (:background "gray10"))) t))
+
+(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/nyan-mode")
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/helm")
+(add-to-list 'load-path "~/.emacs.d/emacs-helm-gtags")
+(add-to-list 'load-path "~/.emacs.d/move-line-0.0.1")
 
 ; Nyanyanyanyanya
-(add-to-list 'load-path "~/.emacs.d/nyan-mode")
 (require 'nyan-mode)
+(require 'helm-config)
+(require 'helm-gtags)
+(require 'whitespace)
+(require 'rcirc)
+
 (nyan-mode t)
 
 ; OrgMode mobileness
@@ -35,23 +55,17 @@
 (setq org-mobile-directory "~/Dokumentumok/org")
 (setq org-mobile-inbox-for-pull "~/Dokumentumok/org/inbox.org")
 
-(load "~/.emacs.d/gnu-c-header.el")
-(load "~/.emacs.d/gobgen/gobgen.el")
-(load "~/.emacs.d/toggle-window-split.el")
+(load "gnu-c-header.el")
+(load "gobgen/gobgen.el")
+(load "toggle-window-split.el")
+(load "elpa/move-line-0.0.1/move-line.el")
 
-(add-to-list 'load-path "~/.emacs.d/emacs-async")
-
-(add-to-list 'load-path "~/.emacs.d/helm")
-(require 'helm-config)
-
-(add-to-list 'load-path "~/.emacs.d/emacs-helm-gtags")
-(require 'helm-gtags)
 (add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c-mode-hook 'which-func-mode)
+(add-hook 'c-mode-common-hook
+          (lambda()
+            (local-set-key (kbd "C-c o") 'ff-find-other-file)))
 
-;; customize helm-gtags
-
-
-;; key bindings for helm-gtags
 (eval-after-load "helm-gtags"
   '(progn
      (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
@@ -62,20 +76,27 @@
      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
 
-(which-func-mode)
-
-(add-hook 'c-mode-common-hook
-          (lambda()
-            (local-set-key (kbd "C-c o") 'ff-find-other-file)))
-
-(require 'whitespace)
 (setq whitespace-style '(tabs trailing lines tab-mark))
 (setq whitespace-line-column 78)
 (global-whitespace-mode 1)
-(setq tab-width 4)
 (setq-default indent-tabs-mode nil)
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'cperl-indent-level 'tab-width)
+(add-hook 'font-lock-mode-hook
+    (function
+        (lambda ()
+            (setq font-lock-keywords
+                (append font-lock-keywords
+                    '(
+                        ("\t+" (0 'my-tab-face t))
+                        ("^.\\{81,\\}$" (0 'my-long-line-face t))
+                        ("[ \t]+$"      (0 'my-trailing-space-face t))
+                    )
+                )
+            )
+        )
+    )
+)
 (global-set-key (kbd "C-x _") 'maximize-window)
 (c-add-style "my"
              '(
@@ -155,7 +176,6 @@
                 (substatement-label . 2)
                 (template-args-cont c-lineup-template-args +))))
 (add-hook 'after-init-hook 'global-company-mode)
-(require 'rcirc)
 (setq rcirc-default-nick "GergelyPolonkai")
 (setq rcirc-default-user-name "polesz")
 (setq rcirc-default-full-name "Gergely Polonkai")
