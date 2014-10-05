@@ -13,3 +13,6 @@
 [submodule "emacs-helm-gtags"]
 	path = emacs-helm-gtags
 	url = git://github.com/syohex/emacs-helm-gtags.git
+[submodule "move-line"]
+	path = move-line
+	url = git://github.com/nflath/move-line.git
