@@ -39,12 +39,13 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/helm")
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-gtags")
-(add-to-list 'load-path "~/.emacs.d/move-line-0.0.1")
+(add-to-list 'load-path "~/.emacs.d/move-line")
 
 ; Nyanyanyanyanya
 (require 'nyan-mode)
 (require 'helm-config)
 (require 'helm-gtags)
+(require 'move-line)
 (require 'whitespace)
 (require 'rcirc)
 
@@ -58,7 +59,7 @@
 (load "gnu-c-header.el")
 (load "gobgen/gobgen.el")
 (load "toggle-window-split.el")
-(load "elpa/move-line-0.0.1/move-line.el")
+;;(load "elpa/move-line-0.0.1/move-line.el")
 
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c-mode-hook 'which-func-mode)
