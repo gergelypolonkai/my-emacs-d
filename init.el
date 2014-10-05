@@ -63,10 +63,10 @@
 
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c-mode-hook 'which-func-mode)
+
 (add-hook 'c-mode-common-hook
           (lambda()
             (local-set-key (kbd "C-c o") 'ff-find-other-file)))
-
 (eval-after-load "helm-gtags"
   '(progn
      (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
@@ -76,6 +76,13 @@
      (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
+(global-set-key (kbd "C-x f") 'fiplr-find-file)
+(global-set-key (kbd "C-x _") 'maximize-window)
+(add-hook 'c-mode-common-hook
+          (lambda()
+            (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
+(global-set-key (kbd "M-up") 'move-line-up)
+(global-set-key (kbd "M-down") 'move-line-down)
 
 (setq whitespace-style '(tabs trailing lines tab-mark))
 (setq whitespace-line-column 78)
@@ -98,7 +105,6 @@
         )
     )
 )
-(global-set-key (kbd "C-x _") 'maximize-window)
 (c-add-style "my"
              '(
                (c-basic-offset . 4)
@@ -181,13 +187,9 @@
 (setq rcirc-default-user-name "polesz")
 (setq rcirc-default-full-name "Gergely Polonkai")
 (add-hook 'after-init-hook 'fiplr-clear-cache)
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(add-hook 'c-mode-common-hook
-          (lambda()
-            (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
