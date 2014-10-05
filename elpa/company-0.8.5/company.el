@@ -5,7 +5,7 @@
 ;; Author: Nikolaj Schumacher
 ;; Maintainer: Dmitry Gutov <dgutov@yandex.ru>
 ;; URL: http://company-mode.github.io/
-;; Version: 0.8.2
+;; Version: 0.8.5
 ;; Keywords: abbrev, convenience, matching
 ;; Package-Requires: ((emacs "24.1") (cl-lib "0.5"))
 
@@ -57,11 +57,6 @@
 ;; Sometimes it is a good idea to mix several back-ends together, for example to
 ;; enrich gtags with dabbrev-code results (to emulate local variables).
 ;; To do this, add a list with both back-ends as an element in company-backends.
-;;
-;; Known Issues:
-;; When point is at the very end of the buffer, the pseudo-tooltip appears very
-;; wrong, unless company is allowed to temporarily insert a fake newline.
-;; This behavior is enabled by `company-end-of-buffer-workaround'.
 ;;
 ;;; Change Log:
 ;;
@@ -116,6 +111,10 @@ buffer-local wherever it is set."
      (:background "orange1"))
     (t (:background "green")))
   "Face used for the selection in the tooltip.")
+
+(defface company-tooltip-search
+  '((default :inherit company-tooltip-selection))
+  "Face used for the search string in the tooltip.")
 
 (defface company-tooltip-mouse
   '((default :inherit highlight))
@@ -550,7 +549,12 @@ happens.  The value of nil means no idle completion."
                  (const :tag "immediate (0)" 0)
                  (number :tag "seconds")))
 
-(defcustom company-begin-commands '(self-insert-command org-self-insert-command)
+(defcustom company-begin-commands '(self-insert-command
+                                    org-self-insert-command
+                                    c-scope-operator
+                                    c-electric-colon
+                                    c-electric-lt-gt
+                                    c-electric-slash)
   "A list of commands after which idle completion is allowed.
 If this is t, it can show completions after any command except a few from a
 pre-defined list.  See `company-idle-delay'.
@@ -559,7 +563,8 @@ Alternatively, any command with a non-nil `company-begin' property is
 treated as if it was on this list."
   :type '(choice (const :tag "Any command" t)
                  (const :tag "Self insert command" '(self-insert-command))
-                 (repeat :tag "Commands" function)))
+                 (repeat :tag "Commands" function))
+  :package-version '(company . "0.8.4"))
 
 (defcustom company-continue-commands '(not save-buffer save-some-buffers
                                            save-buffers-kill-terminal
@@ -585,10 +590,6 @@ commands in the `company-' namespace, abort completion."
   "If enabled, selecting item before first or after last wraps around."
   :type '(choice (const :tag "off" nil)
                  (const :tag "on" t)))
-
-(defvar company-end-of-buffer-workaround t
-  "Work around a visualization bug when completing at the end of the buffer.
-The work-around consists of adding a newline.")
 
 (defvar company-async-wait 0.03
   "Pause between checks to see if the value's been set when turning an
@@ -626,12 +627,8 @@ asynchronous call into synchronous.")
     (define-key keymap "\C-s" 'company-search-candidates)
     (define-key keymap "\C-\M-s" 'company-filter-candidates)
     (dotimes (i 10)
-      (define-key keymap (vector (+ (aref (kbd "M-0") 0) i))
-        `(lambda ()
-           (interactive)
-           (company-complete-number ,(if (zerop i) 10 i)))))
-
-    keymap)
+      (define-key keymap (kbd (format "M-%d" i)) 'company-complete-number))
+     keymap)
   "Keymap that is enabled during an active completion.")
 
 (defvar company--disabled-backends nil)
@@ -764,7 +761,7 @@ means that `company-mode' is always turned on except in `message-mode' buffers."
 ;; Hack:
 ;; Emacs calculates the active keymaps before reading the event.  That means we
 ;; cannot change the keymap from a timer.  So we send a bogus command.
-;; XXX: Seems not to be needed anymore in Emacs 24.4
+;; XXX: Even in Emacs 24.4, seems to be needed in the terminal.
 (defun company-ignore ()
   (interactive)
   (setq this-command last-command))
@@ -774,22 +771,21 @@ means that `company-mode' is always turned on except in `message-mode' buffers."
 (defun company-input-noop ()
   (push 31415926 unread-command-events))
 
-(defun company--column (&optional pos)
-  (save-excursion
-    (when pos (goto-char pos))
-    (save-restriction
-      (+ (save-excursion
-           (vertical-motion 0)
-           (narrow-to-region (point) (point-max))
-           (let ((prefix (get-text-property (point) 'line-prefix)))
-             (if prefix (length prefix) 0)))
-         (current-column)))))
+(defun company--posn-col-row (posn)
+  (let ((col (car (posn-col-row posn)))
+        ;; `posn-col-row' doesn't work well with lines of different height.
+        ;; `posn-actual-col-row' doesn't handle multiple-width characters.
+        (row (cdr (posn-actual-col-row posn))))
+    (when (and header-line-format (version< emacs-version "24.3.93.3"))
+      ;; http://debbugs.gnu.org/18384
+      (cl-decf row))
+    (cons (+ col (window-hscroll)) row)))
+
+(defun company--col-row (&optional pos)
+  (company--posn-col-row (posn-at-point pos)))
 
 (defun company--row (&optional pos)
-  (save-excursion
-    (when pos (goto-char pos))
-    (count-screen-lines (window-start)
-                        (progn (vertical-motion 0) (point)))))
+  (cdr (company--col-row pos)))
 
 ;;; backends ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -973,8 +969,6 @@ Controlled by `company-auto-complete'.")
 
 (defvar company-timer nil)
 
-(defvar-local company-added-newline nil)
-
 (defsubst company-strip-prefix (str)
   (substring str (length company-prefix)))
 
@@ -984,7 +978,7 @@ Controlled by `company-auto-complete'.")
   (if (eq (company-call-backend 'ignore-case) 'keep-prefix)
       (insert (company-strip-prefix candidate))
     (delete-region (- (point) (length company-prefix)) (point))
-    (insert candidate)))
+    (insert-before-markers candidate)))
 
 (defmacro company-with-candidate-inserted (candidate &rest body)
   "Evaluate BODY with CANDIDATE temporarily inserted.
@@ -997,7 +991,8 @@ can retrieve meta-data for them."
      (company--insert-candidate ,candidate)
      (unwind-protect
          (progn ,@body)
-       (delete-region company-point (point)))))
+       (delete-region company-point (point))
+       (set-buffer-modified-p modified-p))))
 
 (defun company-explicit-action-p ()
   "Return whether explicit completion action was taken by the user."
@@ -1283,8 +1278,7 @@ from the rest of the back-ends in the group, if any, will be left at the end."
        (eq tick (buffer-chars-modified-tick))
        (eq pos (point))
        (when (company-auto-begin)
-         (when (version< emacs-version "24.3.50")
-           (company-input-noop))
+         (company-input-noop)
          (company-post-command))))
 
 (defun company-auto-begin ()
@@ -1460,11 +1454,6 @@ from the rest of the back-ends in the group, if any, will be left at the end."
   (or (and company-candidates (company--continue))
       (and (company--should-complete) (company--begin-new)))
   (when company-candidates
-    (let ((modified (buffer-modified-p)))
-      (when (and company-end-of-buffer-workaround (eobp))
-        (save-excursion (insert "\n"))
-        (setq company-added-newline
-              (or modified (buffer-chars-modified-tick)))))
     (setq company-point (point)
           company--point-max (point-max))
     (company-ensure-emulation-alist)
@@ -1472,14 +1461,6 @@ from the rest of the back-ends in the group, if any, will be left at the end."
     (company-call-frontends 'update)))
 
 (defun company-cancel (&optional result)
-  (and company-added-newline
-       (> (point-max) (point-min))
-       (let ((tick (buffer-chars-modified-tick)))
-         (delete-region (1- (point-max)) (point-max))
-         (equal tick company-added-newline))
-       ;; Only set unmodified when tick remained the same since insert,
-       ;; and the buffer wasn't modified before.
-       (set-buffer-modified-p nil))
   (unwind-protect
       (when company-prefix
         (if (stringp result)
@@ -1488,8 +1469,7 @@ from the rest of the back-ends in the group, if any, will be left at the end."
               (run-hook-with-args 'company-completion-finished-hook result)
               (company-call-backend 'post-completion result))
           (run-hook-with-args 'company-completion-cancelled-hook result)))
-    (setq company-added-newline nil
-          company-backend nil
+    (setq company-backend nil
           company-prefix nil
           company-candidates nil
           company-candidates-length nil
@@ -1809,14 +1789,7 @@ and invoke the normal binding."
                 (>= evt-row (+ row height)))))))
 
 (defun company--event-col-row (event)
-  (let* ((col-row (posn-actual-col-row (event-start event)))
-         (col (car col-row))
-         (row (cdr col-row)))
-    (cl-incf col (window-hscroll))
-    (and header-line-format
-         (version< "24" emacs-version)
-         (cl-decf row))
-    (cons col row)))
+  (company--posn-col-row (event-start event)))
 
 (defun company-select-mouse (event)
   "Select the candidate picked by the mouse."
@@ -1883,7 +1856,11 @@ inserted."
 (defun company-complete-number (n)
   "Insert the Nth candidate.
 To show the number next to the candidates in some back-ends, enable
-`company-show-numbers'."
+`company-show-numbers'.  When called interactively, uses the last typed
+character, stripping the modifiers.  That character must be a digit."
+  (interactive
+   (list (let ((n (- (event-basic-type last-command-event) ?0)))
+           (if (zerop n) 10 n))))
   (when (company-manual-begin)
     (and (or (< n 1) (> n company-candidates-length))
          (error "No candidate number %d" n))
@@ -2110,8 +2087,8 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
 
 (defun company-fill-propertize (value annotation width selected left right)
   (let* ((margin (length left))
-         (common (+ (or (company-call-backend 'match value)
-                        (length company-common)) margin))
+         (common (or (company-call-backend 'match value)
+                     (length company-common)))
          (ann-ralign company-tooltip-align-annotations)
          (ann-truncate (< width
                           (+ (length value) (length annotation)
@@ -2135,6 +2112,7 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
                                                   (- width (length annotation)))
                           annotation))
                        right)))
+    (setq common (+ (min common width) margin))
     (setq width (+ width margin (length right)))
 
     (add-text-properties 0 width '(face company-tooltip
@@ -2155,7 +2133,7 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
                              (length company-prefix)))
           (let ((beg (+ margin (match-beginning 0)))
                 (end (+ margin (match-end 0))))
-            (add-text-properties beg end '(face company-tooltip-selection)
+            (add-text-properties beg end '(face company-tooltip-search)
                                  line)
             (when (< beg common)
               (add-text-properties beg common
@@ -2174,8 +2152,8 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
 
 (defun company-buffer-lines (beg end)
   (goto-char beg)
-  (let (lines)
-    (while (and (= 1 (vertical-motion 1))
+  (let (lines lines-moved)
+    (while (and (> (setq lines-moved (vertical-motion 1)) 0)
                 (<= (point) end))
       (let ((bound (min end (1- (point)))))
         ;; A visual line can contain several physical lines (e.g. with outline's
@@ -2186,6 +2164,10 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
                                   (re-search-forward "$" bound 'move)
                                   (point)))
               lines))
+      ;; One physical line can be displayed as several visual ones as well:
+      ;; add empty strings to the list, to even the count.
+      (dotimes (_ (1- lines-moved))
+        (push "" lines))
       (setq beg (point)))
     (unless (eq beg end)
       (push (buffer-substring beg end) lines))
@@ -2232,10 +2214,12 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
                     (company--offset-line (pop lines) offset))
             new))
 
-    (let ((str (concat (when nl "\n")
+    (let ((str (concat (when nl " ")
+                       "\n"
                        (mapconcat 'identity (nreverse new) "\n")
                        "\n")))
       (font-lock-append-text-property 0 (length str) 'face 'default str)
+      (when nl (put-text-property 0 1 'cursor t str))
       str)))
 
 (defun company--offset-line (line offset)
@@ -2358,12 +2342,13 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
 
 ;; show
 
-(defsubst company--window-inner-height ()
-  (let ((edges (window-inside-edges)))
-    (- (nth 3 edges) (nth 1 edges))))
+(defsubst company--window-height ()
+  (if (fboundp 'window-screen-lines)
+      (floor (window-screen-lines))
+    (window-body-height)))
 
 (defsubst company--window-width ()
-  (let ((ww (window-width)))
+  (let ((ww (window-body-width)))
     ;; Account for the line continuation column.
     (when (zerop (cadr (window-fringes)))
       (cl-decf ww))
@@ -2381,7 +2366,7 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
   "Calculate the appropriate tooltip height.
 Returns a negative number if the tooltip should be displayed above point."
   (let* ((lines (company--row))
-         (below (- (company--window-inner-height) 1 lines)))
+         (below (- (company--window-height) 1 lines)))
     (if (and (< below (min company-tooltip-minimum company-candidates-length))
              (> lines below))
         (- (max 3 (min company-tooltip-limit lines)))
@@ -2403,7 +2388,7 @@ Returns a negative number if the tooltip should be displayed above point."
              (end (save-excursion
                     (move-to-window-line (+ row (abs height)))
                     (point)))
-             (ov (make-overlay beg end))
+             (ov (make-overlay (if nl beg (1- beg)) end nil t))
              (args (list (mapcar 'company-plainify
                                  (company-buffer-lines beg end))
                          column nl above)))
@@ -2412,7 +2397,7 @@ Returns a negative number if the tooltip should be displayed above point."
         (overlay-put ov 'company-replacement-args args)
 
         (let ((lines (company--create-lines selection (abs height))))
-          (overlay-put ov 'company-after
+          (overlay-put ov 'company-display
                        (apply 'company--replacement-string lines args))
           (overlay-put ov 'company-width (string-width (car lines))))
 
@@ -2420,17 +2405,17 @@ Returns a negative number if the tooltip should be displayed above point."
         (overlay-put ov 'company-height height)))))
 
 (defun company-pseudo-tooltip-show-at-point (pos column-offset)
-  (let ((row (company--row pos))
-        (col (- (company--column pos) column-offset)))
+  (let* ((col-row (company--col-row pos))
+         (col (- (car col-row) column-offset)))
     (when (< col 0) (setq col 0))
-    (company-pseudo-tooltip-show (1+ row) col company-selection)))
+    (company-pseudo-tooltip-show (1+ (cdr col-row)) col company-selection)))
 
 (defun company-pseudo-tooltip-edit (selection)
   (let* ((height (overlay-get company-pseudo-tooltip-overlay 'company-height))
          (lines  (company--create-lines selection (abs height))))
     (overlay-put company-pseudo-tooltip-overlay 'company-width
                  (string-width (car lines)))
-    (overlay-put company-pseudo-tooltip-overlay 'company-after
+    (overlay-put company-pseudo-tooltip-overlay 'company-display
                  (apply 'company--replacement-string
                         lines
                         (overlay-get company-pseudo-tooltip-overlay
@@ -2444,26 +2429,32 @@ Returns a negative number if the tooltip should be displayed above point."
 (defun company-pseudo-tooltip-hide-temporarily ()
   (when (overlayp company-pseudo-tooltip-overlay)
     (overlay-put company-pseudo-tooltip-overlay 'invisible nil)
-    (overlay-put company-pseudo-tooltip-overlay 'line-prefix nil)
     (overlay-put company-pseudo-tooltip-overlay 'after-string nil)))
 
 (defun company-pseudo-tooltip-unhide ()
   (when company-pseudo-tooltip-overlay
-    (overlay-put company-pseudo-tooltip-overlay 'invisible t)
-    ;; Beat outline's folding overlays, at least.
-    (overlay-put company-pseudo-tooltip-overlay 'priority 1)
-    ;; No (extra) prefix for the first line.
-    (overlay-put company-pseudo-tooltip-overlay 'line-prefix "")
-    (overlay-put company-pseudo-tooltip-overlay 'after-string
-                 (overlay-get company-pseudo-tooltip-overlay 'company-after))
-    (overlay-put company-pseudo-tooltip-overlay 'window (selected-window))))
+    (let* ((ov company-pseudo-tooltip-overlay)
+           (disp (overlay-get ov 'company-display)))
+      ;; Beat outline's folding overlays, at least.
+      (overlay-put ov 'priority 1)
+      ;; `display' could be better (http://debbugs.gnu.org/18285), but it
+      ;; doesn't work when the overlay is empty, which is what happens at eob.
+      ;; It also seems to interact badly with `cursor'.
+      ;; We deal with priorities by having the overlay start before the newline.
+      (overlay-put ov 'after-string disp)
+      (overlay-put ov 'invisible t)
+      (overlay-put ov 'window (selected-window)))))
 
 (defun company-pseudo-tooltip-guard ()
-  (list
+  (cons
    (save-excursion (beginning-of-visual-line))
-   (let ((ov company-pseudo-tooltip-overlay))
+   (let ((ov company-pseudo-tooltip-overlay)
+         (overhang (save-excursion (end-of-visual-line)
+                                   (- (line-end-position) (point)))))
      (when (>= (overlay-get ov 'company-height) 0)
-       (buffer-substring-no-properties (point) (overlay-start ov))))))
+       (cons
+        (buffer-substring-no-properties (point) (overlay-start ov))
+        (when (>= overhang 0) overhang))))))
 
 (defun company-pseudo-tooltip-frontend (command)
   "`company-mode' front-end similar to a tooltip but based on overlays."
@@ -2502,7 +2493,7 @@ Returns a negative number if the tooltip should be displayed above point."
 (defun company-preview-show-at-point (pos)
   (company-preview-hide)
 
-  (setq company-preview-overlay (make-overlay pos (1+ pos)))
+  (setq company-preview-overlay (make-overlay pos pos))
 
   (let ((completion (nth company-selection company-candidates)))
     (setq completion (propertize completion 'face 'company-preview))
@@ -2523,10 +2514,9 @@ Returns a negative number if the tooltip should be displayed above point."
          (not (equal completion ""))
          (add-text-properties 0 1 '(cursor t) completion))
 
-    (overlay-put company-preview-overlay 'display
-                 (concat completion (unless (eq pos (point-max))
-                                      (buffer-substring pos (1+ pos)))))
-    (overlay-put company-preview-overlay 'window (selected-window))))
+    (let ((ov company-preview-overlay))
+      (overlay-put ov 'after-string completion)
+      (overlay-put ov 'window (selected-window)))))
 
 (defun company-preview-hide ()
   (when company-preview-overlay
@@ -2549,8 +2539,8 @@ Returns a negative number if the tooltip should be displayed above point."
 (defun company--show-inline-p ()
   (and (not (cdr company-candidates))
        company-common
-       (string-prefix-p company-prefix company-common
-                        (company-call-backend 'ignore-case))))
+       (or (eq (company-call-backend 'ignore-case) 'keep-prefix)
+           (string-prefix-p company-prefix company-common))))
 
 ;;; echo ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -2579,7 +2569,7 @@ Returns a negative number if the tooltip should be displayed above point."
 
 (defun company-echo-format ()
 
-  (let ((limit (window-width (minibuffer-window)))
+  (let ((limit (window-body-width (minibuffer-window)))
         (len -1)
         ;; Roll to selection.
         (candidates (nthcdr company-selection company-candidates))
@@ -2609,7 +2599,7 @@ Returns a negative number if the tooltip should be displayed above point."
 
 (defun company-echo-strip-common-format ()
 
-  (let ((limit (window-width (minibuffer-window)))
+  (let ((limit (window-body-width (minibuffer-window)))
         (len (+ (length company-prefix) 2))
         ;; Roll to selection.
         (candidates (nthcdr company-selection company-candidates))

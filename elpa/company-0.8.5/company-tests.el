@@ -30,6 +30,9 @@
 (require 'company-keywords)
 (require 'company-clang)
 
+(defun company--column (&optional pos)
+  (car (company--col-row pos)))
+
 ;;; Core
 
 (ert-deftest company-sorted-keywords ()
@@ -395,7 +398,7 @@
         (let (this-command)
           (company-call 'complete))
         (company-call 'open-line 1)
-        (should (eq 2 (overlay-start company-pseudo-tooltip-overlay)))))))
+        (should (eq 1 (overlay-start company-pseudo-tooltip-overlay)))))))
 
 (ert-deftest company-pseudo-tooltip-show ()
   :tags '(interactive)
@@ -415,8 +418,8 @@
         ;; FIXME: Make it 2?
         (should (eq (overlay-get ov 'company-height) company-tooltip-limit))
         (should (eq (overlay-get ov 'company-column) col))
-        (should (string= (overlay-get ov 'company-after)
-                         "  123 \nc 45  c\nddd\n")))))))
+        (should (string= (overlay-get ov 'company-display)
+                         "\n  123 \nc 45  c\nddd\n")))))))
 
 (ert-deftest company-pseudo-tooltip-edit-updates-width ()
   :tags '(interactive)
@@ -445,8 +448,10 @@
       (let ((company-candidates-length 1)
             (company-candidates '("123")))
         (company-preview-show-at-point (point))
-        (let ((ov company-preview-overlay))
-          (should (string= (overlay-get ov 'display) "123\n")))))))
+        (let* ((ov company-preview-overlay)
+               (str (overlay-get ov 'after-string)))
+          (should (string= str "123"))
+          (should (eq (get-text-property 0 'cursor str) t)))))))
 
 (ert-deftest company-pseudo-tooltip-show-with-annotations ()
   :tags '(interactive)
@@ -465,8 +470,8 @@
         (let ((ov company-pseudo-tooltip-overlay))
           ;; With margins.
           (should (eq (overlay-get ov 'company-width) 8))
-          (should (string= (overlay-get ov 'company-after)
-                           " 123(4) \n 45     \n")))))))
+          (should (string= (overlay-get ov 'company-display)
+                           "\n 123(4) \n 45     \n")))))))
 
 (ert-deftest company-pseudo-tooltip-show-with-annotations-right-aligned ()
   :tags '(interactive)
@@ -486,8 +491,8 @@
         (let ((ov company-pseudo-tooltip-overlay))
           ;; With margins.
           (should (eq (overlay-get ov 'company-width) 13))
-          (should (string= (overlay-get ov 'company-after)
-                           " 123     (4) \n 45          \n 67 (891011) \n")))))))
+          (should (string= (overlay-get ov 'company-display)
+                           "\n 123     (4) \n 45          \n 67 (891011) \n")))))))
 
 (ert-deftest company-create-lines-shows-numbers ()
   (let ((company-show-numbers t)
@@ -522,24 +527,84 @@
                            (format " %s " (make-string (- ww 2) ?4)))
                      (company--create-lines 0 999))))))
 
+(ert-deftest company-create-lines-truncates-common-part ()
+  (let* ((ww (company--window-width))
+         (company-candidates-length 2)
+         (company-tooltip-margin 1)
+         (company-backend #'ignore))
+    (let* ((company-common (make-string (- ww 3) ?1))
+           (company-candidates `(,(concat company-common "2")
+                                 ,(concat company-common "3"))))
+      (should (equal (list (format " %s2 " (make-string (- ww 3) ?1))
+                           (format " %s3 " (make-string (- ww 3) ?1)))
+                     (company--create-lines 0 999))))
+    (let* ((company-common (make-string (- ww 2) ?1))
+           (company-candidates `(,(concat company-common "2")
+                                 ,(concat company-common "3"))))
+      (should (equal (list (format " %s " company-common)
+                           (format " %s " company-common))
+                     (company--create-lines 0 999))))
+    (let* ((company-common (make-string ww ?1))
+           (company-candidates `(,(concat company-common "2")
+                                 ,(concat company-common "3")))
+           (res (company--create-lines 0 999)))
+      (should (equal (list (format " %s " (make-string (- ww 2) ?1))
+                           (format " %s " (make-string (- ww 2) ?1)))
+                     res))
+      (should (eq 'company-tooltip-common-selection
+                    (get-text-property (- ww 2) 'face
+                                       (car res))))
+      (should (eq 'company-tooltip-selection
+                  (get-text-property (1- ww) 'face
+                                     (car res))))
+
+)))
+
 (ert-deftest company-column-with-composition ()
+  :tags '(interactive)
   (with-temp-buffer
-    (insert "lambda ()")
-    (compose-region 1 (1+ (length "lambda")) "\\")
-    (should (= (company--column) 4))))
+    (save-window-excursion
+      (set-window-buffer nil (current-buffer))
+      (insert "lambda ()")
+      (compose-region 1 (1+ (length "lambda")) "\\")
+      (should (= (company--column) 4)))))
 
 (ert-deftest company-column-with-line-prefix ()
+  :tags '(interactive)
   (with-temp-buffer
-    (insert "foo")
-    (put-text-property (point-min) (point) 'line-prefix "  ")
-    (should (= (company--column) 5))))
+    (save-window-excursion
+      (set-window-buffer nil (current-buffer))
+      (insert "foo")
+      (put-text-property (point-min) (point) 'line-prefix "  ")
+      (should (= (company--column) 5)))))
 
-(ert-deftest company-column-wth-line-prefix-on-empty-line ()
+(ert-deftest company-column-with-line-prefix-on-empty-line ()
+  :tags '(interactive)
   (with-temp-buffer
-    (insert "\n")
-    (forward-char -1)
-    (put-text-property (point-min) (point-max) 'line-prefix "  ")
-    (should (= (company--column) 2))))
+    (save-window-excursion
+      (set-window-buffer nil (current-buffer))
+      (insert "\n")
+      (forward-char -1)
+      (put-text-property (point-min) (point-max) 'line-prefix "  ")
+      (should (= (company--column) 2)))))
+
+(ert-deftest company-column-with-tabs ()
+  :tags '(interactive)
+  (with-temp-buffer
+    (save-window-excursion
+      (set-window-buffer nil (current-buffer))
+      (insert "|\t|\t|\t(")
+      (let ((tab-width 8))
+        (should (= (company--column) 25))))))
+
+(ert-deftest company-row-with-header-line-format ()
+  :tags '(interactive)
+  (with-temp-buffer
+    (save-window-excursion
+      (set-window-buffer nil (current-buffer))
+      (should (= (company--row) 0))
+      (setq header-line-format "aaaaaaa")
+      (should (= (company--row) 0)))))
 
 (ert-deftest company-plainify ()
   (let ((tab-width 8))
@@ -551,6 +616,22 @@
   (should (equal-including-properties
            (company-plainify (propertize "foobar" 'line-prefix "-*-"))
            "-*-foobar")))
+
+(ert-deftest company-buffer-lines-with-lines-folded ()
+  :tags '(interactive)
+  (with-temp-buffer
+    (insert (propertize "aaa\nbbb\nccc\nddd\n" 'display "aaa+\n"))
+    (insert "eee\nfff\nggg")
+    (should (equal (company-buffer-lines (point-min) (point-max))
+                   '("aaa" "eee" "fff" "ggg")))))
+
+(ert-deftest company-buffer-lines-with-multiline-display ()
+  :tags '(interactive)
+  (with-temp-buffer
+    (insert (propertize "a" 'display "bbb\nccc\ndddd\n"))
+    (insert "eee\nfff\nggg")
+    (should (equal (company-buffer-lines (point-min) (point-max))
+                   '("" "" "" "eee" "fff" "ggg")))))
 
 (ert-deftest company-modify-line ()
   (let ((str "-*-foobar"))

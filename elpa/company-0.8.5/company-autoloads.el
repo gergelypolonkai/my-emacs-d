@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (global-company-mode company-mode) "company" "company.el"
-;;;;;;  (21475 23817 56009 901000))
+;;;;;;  (21553 22041 719690 945000))
 ;;; Generated autoloads from company.el
 
 (autoload 'company-mode "company" "\
@@ -58,7 +58,7 @@ See `company-mode' for more information on Company mode.
 ;;;***
 
 ;;;### (autoloads (company-abbrev) "company-abbrev" "company-abbrev.el"
-;;;;;;  (21475 23816 615018 715000))
+;;;;;;  (21553 22041 262700 327000))
 ;;; Generated autoloads from company-abbrev.el
 
 (autoload 'company-abbrev "company-abbrev" "\
@@ -69,7 +69,7 @@ See `company-mode' for more information on Company mode.
 ;;;***
 
 ;;;### (autoloads (company-bbdb) "company-bbdb" "company-bbdb.el"
-;;;;;;  (21475 23817 97009 82000))
+;;;;;;  (21553 22041 760690 102000))
 ;;; Generated autoloads from company-bbdb.el
 
 (autoload 'company-bbdb "company-bbdb" "\
@@ -79,8 +79,8 @@ See `company-mode' for more information on Company mode.
 
 ;;;***
 
-;;;### (autoloads (company-css) "company-css" "company-css.el" (21475
-;;;;;;  23816 641018 195000))
+;;;### (autoloads (company-css) "company-css" "company-css.el" (21553
+;;;;;;  22041 295699 650000))
 ;;; Generated autoloads from company-css.el
 
 (autoload 'company-css "company-css" "\
@@ -91,7 +91,7 @@ See `company-mode' for more information on Company mode.
 ;;;***
 
 ;;;### (autoloads (company-dabbrev) "company-dabbrev" "company-dabbrev.el"
-;;;;;;  (21475 23816 683017 356000))
+;;;;;;  (21553 22041 336698 811000))
 ;;; Generated autoloads from company-dabbrev.el
 
 (autoload 'company-dabbrev "company-dabbrev" "\
@@ -102,7 +102,7 @@ dabbrev-like `company-mode' completion back-end.
 ;;;***
 
 ;;;### (autoloads (company-dabbrev-code) "company-dabbrev-code" "company-dabbrev-code.el"
-;;;;;;  (21475 23817 330004 425000))
+;;;;;;  (21553 22041 992685 338000))
 ;;; Generated autoloads from company-dabbrev-code.el
 
 (autoload 'company-dabbrev-code "company-dabbrev-code" "\
@@ -115,7 +115,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-elisp) "company-elisp" "company-elisp.el"
-;;;;;;  (21475 23816 807014 878000))
+;;;;;;  (21553 22041 461696 242000))
 ;;; Generated autoloads from company-elisp.el
 
 (autoload 'company-elisp "company-elisp" "\
@@ -126,7 +126,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-etags) "company-etags" "company-etags.el"
-;;;;;;  (21475 23816 392023 172000))
+;;;;;;  (21553 22041 55704 578000))
 ;;; Generated autoloads from company-etags.el
 
 (autoload 'company-etags "company-etags" "\
@@ -137,7 +137,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-files) "company-files" "company-files.el"
-;;;;;;  (21475 23816 847014 78000))
+;;;;;;  (21553 22041 511695 221000))
 ;;; Generated autoloads from company-files.el
 
 (autoload 'company-files "company-files" "\
@@ -148,7 +148,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-gtags) "company-gtags" "company-gtags.el"
-;;;;;;  (21475 23817 379003 447000))
+;;;;;;  (21553 22042 50684 150000))
 ;;; Generated autoloads from company-gtags.el
 
 (autoload 'company-gtags "company-gtags" "\
@@ -159,7 +159,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-ispell) "company-ispell" "company-ispell.el"
-;;;;;;  (21475 23816 351023 991000))
+;;;;;;  (21553 22041 3705 646000))
 ;;; Generated autoloads from company-ispell.el
 
 (autoload 'company-ispell "company-ispell" "\
@@ -170,7 +170,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-keywords) "company-keywords" "company-keywords.el"
-;;;;;;  (21475 23816 426022 492000))
+;;;;;;  (21553 22041 88703 901000))
 ;;; Generated autoloads from company-keywords.el
 
 (autoload 'company-keywords "company-keywords" "\
@@ -181,7 +181,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-nxml) "company-nxml" "company-nxml.el"
-;;;;;;  (21475 23816 467021 673000))
+;;;;;;  (21553 22041 130703 38000))
 ;;; Generated autoloads from company-nxml.el
 
 (autoload 'company-nxml "company-nxml" "\
@@ -192,7 +192,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-oddmuse) "company-oddmuse" "company-oddmuse.el"
-;;;;;;  (21475 23816 881013 399000))
+;;;;;;  (21553 22041 544694 537000))
 ;;; Generated autoloads from company-oddmuse.el
 
 (autoload 'company-oddmuse "company-oddmuse" "\
@@ -203,7 +203,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads (company-pysmell) "company-pysmell" "company-pysmell.el"
-;;;;;;  (21475 23816 990011 221000))
+;;;;;;  (21553 22041 652692 320000))
 ;;; Generated autoloads from company-pysmell.el
 
 (autoload 'company-pysmell "company-pysmell" "\
@@ -215,7 +215,7 @@ This requires pysmell.el and pymacs.el.
 ;;;***
 
 ;;;### (autoloads (company-semantic) "company-semantic" "company-semantic.el"
-;;;;;;  (21475 23817 594999 129000))
+;;;;;;  (21553 22042 308678 850000))
 ;;; Generated autoloads from company-semantic.el
 
 (autoload 'company-semantic "company-semantic" "\
@@ -226,7 +226,7 @@ This requires pysmell.el and pymacs.el.
 ;;;***
 
 ;;;### (autoloads (company-tempo) "company-tempo" "company-tempo.el"
-;;;;;;  (21475 23817 172007 583000))
+;;;;;;  (21553 22041 835688 555000))
 ;;; Generated autoloads from company-tempo.el
 
 (autoload 'company-tempo "company-tempo" "\
@@ -237,7 +237,7 @@ This requires pysmell.el and pymacs.el.
 ;;;***
 
 ;;;### (autoloads (company-xcode) "company-xcode" "company-xcode.el"
-;;;;;;  (21475 23817 247006 84000))
+;;;;;;  (21553 22041 901687 207000))
 ;;; Generated autoloads from company-xcode.el
 
 (autoload 'company-xcode "company-xcode" "\
@@ -248,7 +248,7 @@ This requires pysmell.el and pymacs.el.
 ;;;***
 
 ;;;### (autoloads (company-yasnippet) "company-yasnippet" "company-yasnippet.el"
-;;;;;;  (21475 23817 487001 288000))
+;;;;;;  (21553 22042 158681 930000))
 ;;; Generated autoloads from company-yasnippet.el
 
 (autoload 'company-yasnippet "company-yasnippet" "\
@@ -281,7 +281,7 @@ shadow back-ends that come after it.  Recommended usages:
 ;;;### (autoloads nil nil ("company-capf.el" "company-clang.el" "company-cmake.el"
 ;;;;;;  "company-eclim.el" "company-elisp-tests.el" "company-pkg.el"
 ;;;;;;  "company-ropemacs.el" "company-template.el" "company-tests.el")
-;;;;;;  (21475 23817 679245 801000))
+;;;;;;  (21553 22042 393632 690000))
 
 ;;;***
 
