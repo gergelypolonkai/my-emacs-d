@@ -209,3 +209,9 @@
 (setq rcirc-default-user-name "polesz")
 (setq rcirc-default-full-name "Gergely Polonkai")
 (add-hook 'after-init-hook 'fiplr-clear-cache)
+
+(defun delete-current-line ()
+  "Kill the whole line on which point is"
+  (interactive)
+  (beginning-of-line)
+  (kill-line 1))
