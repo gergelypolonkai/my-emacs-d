@@ -44,6 +44,7 @@
 (add-to-list 'load-path "~/.emacs.d/helm")
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-gtags")
 (add-to-list 'load-path "~/.emacs.d/move-line")
+(add-to-list 'load-path "~/.emacs.d/ggtags")
 
 ; Nyanyanyanyanya
 (require 'nyan-mode)
@@ -52,6 +53,7 @@
 (require 'move-line)
 (require 'whitespace)
 (require 'rcirc)
+(require 'ggtags)
 
 (nyan-mode t)
 
@@ -205,10 +207,15 @@
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
+(add-hook 'after-init-hook 'fiplr-clear-cache)
+
 (setq rcirc-default-nick "GergelyPolonkai")
 (setq rcirc-default-user-name "polesz")
 (setq rcirc-default-full-name "Gergely Polonkai")
-(add-hook 'after-init-hook 'fiplr-clear-cache)
 
 (defun delete-current-line ()
   "Kill the whole line on which point is"

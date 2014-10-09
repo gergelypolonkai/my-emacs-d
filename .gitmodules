@@ -16,3 +16,6 @@
 [submodule "move-line"]
 	path = move-line
 	url = git://github.com/nflath/move-line.git
+[submodule "ggtags"]
+	path = ggtags
+	url = https://github.com/leoliu/ggtags.git
