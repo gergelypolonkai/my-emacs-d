@@ -215,3 +215,14 @@
   (interactive)
   (beginning-of-line)
   (kill-line 1))
+
+(defun copy-func-prototype ()
+  "Copy the current function's prototype to the kill-ring"
+
+  (interactive)
+
+  (save-excursion (beginning-of-defun)
+                  (setq protocopy-begin (point))
+                  (forward-list)
+                  (setq protocopy-end (point))
+                  (kill-ring-save protocopy-begin protocopy-end)))
