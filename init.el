@@ -237,3 +237,4 @@
 
 (add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode))
 (add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
