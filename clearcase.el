@@ -545,6 +545,9 @@ recommended to produce unified diffs, when your
 
 ;;{{{ Global variables
 
+(if (not (boundp 'directory-sep-char))
+    (setq directory-sep-char ?/))
+
 ;; Initialize clearcase-pname-sep-regexp according to
 ;; directory-sep-char.
 (defvar clearcase-pname-sep-regexp
@@ -7963,8 +7966,3 @@ This is enabled/disabled by clearcase-integrate/clearcase-unintegrate."
 (provide 'clearcase)
 
 ;;; clearcase.el ends here
-
-;; Local variables:
-;; folded-file: t
-;; clearcase-version-stamp-active: t
-;; End:
