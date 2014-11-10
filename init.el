@@ -67,6 +67,7 @@
 (load "toggle-window-split.el")
 (load "round-number-to-decimals.el")
 (load "clearcase.el")
+(load "transpose-windows.el")
 
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c-mode-hook 'which-func-mode)
