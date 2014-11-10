@@ -39,13 +39,12 @@
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
  '(whitespace-line ((t (:inherit nil :background "orange")))))
 
-(add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/nyan-mode")
-(add-to-list 'load-path "~/.emacs.d/emacs-async")
-(add-to-list 'load-path "~/.emacs.d/helm")
-(add-to-list 'load-path "~/.emacs.d/emacs-helm-gtags")
-(add-to-list 'load-path "~/.emacs.d/move-line")
-(add-to-list 'load-path "~/.emacs.d/ggtags")
+(add-to-list 'load-path (concat user-emacs-directory "nyan-mode"))
+(add-to-list 'load-path (concat user-emacs-directory "emacs-async"))
+(add-to-list 'load-path (concat user-emacs-directory "helm"))
+(add-to-list 'load-path (concat user-emacs-directory "emacs-helm-gtags"))
+(add-to-list 'load-path (concat user-emacs-directory "move-line"))
+(add-to-list 'load-path (concat user-emacs-directory "ggtags"))
 
 ; Nyanyanyanyanya
 (require 'nyan-mode)
@@ -63,12 +62,12 @@
 (setq org-mobile-directory "~/Dokumentumok/org")
 (setq org-mobile-inbox-for-pull "~/Dokumentumok/org/inbox.org")
 
-(load "gnu-c-header.el")
-(load "gobgen/gobgen.el")
-(load "toggle-window-split.el")
-(load "round-number-to-decimals.el")
-(load "clearcase.el")
-(load "transpose-windows.el")
+(load (concat user-emacs-directory "gnu-c-header.el"))
+(load (concat user-emacs-directory "gobgen/gobgen.el"))
+(load (concat user-emacs-directory "toggle-window-split.el"))
+(load (concat user-emacs-directory "round-number-to-decimals.el"))
+(load (concat user-emacs-directory "transpose-windows.el"))
+(load (concat user-emacs-directory "clearcase.el"))
 
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c-mode-hook 'which-func-mode)
