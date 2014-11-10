@@ -234,3 +234,5 @@
                   (forward-list)
                   (setq protocopy-end (point))
                   (kill-ring-save protocopy-begin protocopy-end)))
+
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
