@@ -69,11 +69,15 @@
 (load (concat user-emacs-directory "transpose-windows.el"))
 (load (concat user-emacs-directory "clearcase.el"))
 
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c-mode-hook 'which-func-mode)
+(add-hook 'c-mode-hook
+          (lambda ()
+            (helm-gtags-mode)
+            (which-func-mode)
+            (flyspell-prog-mode)))
 (add-hook 'c-mode-common-hook
           (lambda()
             (local-set-key (kbd "C-c o") 'ff-find-other-file)))
+
 (eval-after-load "helm-gtags"
   '(progn
      (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
