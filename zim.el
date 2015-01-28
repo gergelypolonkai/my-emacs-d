@@ -1,0 +1,6 @@
+(defun insert-zim-timestamp ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%M:%S%z"))
+  (forward-char -2)
+  (insert ":")
+  (forward-char 2))

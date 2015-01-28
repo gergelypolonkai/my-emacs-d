@@ -67,6 +67,7 @@
 (load (concat user-emacs-directory "toggle-window-split.el"))
 (load (concat user-emacs-directory "round-number-to-decimals.el"))
 (load (concat user-emacs-directory "transpose-windows.el"))
+(load (concat user-emacs-directory "zim.el"))
 (load (concat user-emacs-directory "clearcase.el"))
 
 (add-hook 'c-mode-hook
