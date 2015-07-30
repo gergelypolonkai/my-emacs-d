@@ -114,6 +114,8 @@
             (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
+(global-set-key (kbd "ESC <up>") 'move-line-up)
+(global-set-key (kbd "ESC <down>") 'move-line-down)
 
 (global-whitespace-mode 1)
 (setq-default indent-tabs-mode nil)
