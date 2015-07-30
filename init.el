@@ -45,7 +45,9 @@
     ((directories
       (".git" ".svn" ".hg" ".bzr"))
      (files
-      (".#*" "*.so" "*~"))))))
+      (".#*" "*.so" "*~")))))
+ '(magit-auto-revert-mode nil)
+ '(magit-last-seen-setup-instructions "1.4.0"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
