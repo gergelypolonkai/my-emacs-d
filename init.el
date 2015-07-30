@@ -47,7 +47,8 @@
      (files
       (".#*" "*.so" "*~")))))
  '(magit-auto-revert-mode nil)
- '(magit-last-seen-setup-instructions "1.4.0"))
+ '(magit-last-seen-setup-instructions "1.4.0")
+ '(jekyll-directory "~/Projektek/jekyll/gergely.polonkai.eu"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -88,6 +89,7 @@
 (load (concat user-emacs-directory "transpose-windows.el"))
 (load (concat user-emacs-directory "zim.el"))
 (load (concat user-emacs-directory "clearcase.el"))
+(load (concat user-emacs-directory "jekyll.el"))
 
 (add-hook 'c-mode-hook
           (lambda ()
