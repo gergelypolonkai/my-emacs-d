@@ -15,6 +15,12 @@
     ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(ediff-merge-split-window-function (quote split-window-horizontally))
  '(ediff-split-window-function (quote split-window-vertically))
+ '(fiplr-ignored-globs
+   (quote
+    ((directories
+      (".git" ".svn" ".hg" ".bzr"))
+     (files
+      (".#*" "*.so" "*~")))))
  '(foreground-color "#5c5cff")
  '(global-hl-line-mode t)
  '(global-whitespace-mode t)
@@ -40,12 +46,6 @@
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
  '(tab-width 4)
- '(fiplr-ignored-globs
-   (quote
-    ((directories
-      (".git" ".svn" ".hg" ".bzr"))
-     (files
-      (".#*" "*.so" "*~")))))
  '(magit-auto-revert-mode nil)
  '(magit-last-seen-setup-instructions "1.4.0")
  '(jekyll-directory "~/Projektek/jekyll/gergely.polonkai.eu"))
@@ -116,6 +116,7 @@
             (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
+;; Some terminals don’t interpret Alt-Up/Down as M-<up/down>.
 (global-set-key (kbd "ESC <up>") 'move-line-up)
 (global-set-key (kbd "ESC <down>") 'move-line-down)
 
