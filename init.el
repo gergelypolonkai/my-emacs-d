@@ -50,6 +50,8 @@
 
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
+(set-face-attribute 'default t :font "Hack-10")
+(set-frame-font "Hack-10" nil t)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
