@@ -75,6 +75,7 @@
 (require 'whitespace)
 (require 'rcirc)
 (require 'ggtags)
+(require 'thingatpt)
 
 (nyan-mode t)
 
