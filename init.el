@@ -46,9 +46,10 @@
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
  '(tab-width 4)
- '(magit-auto-revert-mode nil)
- '(magit-last-seen-setup-instructions "1.4.0")
  '(jekyll-directory "~/Projektek/jekyll/gergely.polonkai.eu"))
+
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
