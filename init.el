@@ -246,7 +246,7 @@
               (ggtags-mode 1))))
 (add-hook 'after-init-hook 'fiplr-clear-cache)
 
-(setq rcirc-default-nick "GergelyPolonkai")
+(setq rcirc-default-nick "GPolonkai")
 (setq rcirc-default-user-name "polesz")
 (setq rcirc-default-full-name "Gergely Polonkai")
 
