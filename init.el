@@ -268,6 +268,18 @@
                   (setq protocopy-end (point))
                   (kill-ring-save protocopy-begin protocopy-end)))
 
+(defun duplicate-line()
+  (interactive)
+  (save-excursion
+    (move-beginning-of-line 1)
+    (kill-line)
+    (yank)
+    (open-line 1)
+    (next-line 1)
+    (yank)))
+
+(global-set-key (kbd "C-c C-y") 'duplicate-line)
+
 (add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode))
 (add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
