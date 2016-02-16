@@ -269,3 +269,17 @@
 (add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode))
 (add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+(defun toggle-char-case (arg-move-point)
+  "Toggle the case of the char after point. Based on Xah's toggle letter
+case defun version 2015-12-22
+
+URL `http://ergoemacs.org/emacs/modernization_upcase-word.html'
+Version 2016-02-16"
+  (interactive "P")
+  (let ((case-fold-search nil))
+    (cond
+     ((looking-at "[[:lower:]]") (upcase-region (point) (1+ (point))))
+     ((looking-at "[[:upper:]]") (downcase-region (point) (1+ (point)))))
+    (cond
+     (arg-move-point (right-char)))))
