@@ -35,7 +35,7 @@
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
-     ("marmalade" . "https://marmalade-repo.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")
      ("e6h" . "http://www.e6h.org/packages/"))))
  '(safe-local-variable-values
    (quote
