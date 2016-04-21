@@ -62,12 +62,7 @@
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
  '(whitespace-line ((t (:inherit nil :background "orange")))))
 
-(add-to-list 'load-path (concat user-emacs-directory "nyan-mode"))
-(add-to-list 'load-path (concat user-emacs-directory "emacs-async"))
-(add-to-list 'load-path (concat user-emacs-directory "helm"))
-(add-to-list 'load-path (concat user-emacs-directory "emacs-helm-gtags"))
 (add-to-list 'load-path (concat user-emacs-directory "move-line"))
-(add-to-list 'load-path (concat user-emacs-directory "ggtags"))
 
 ; Nyanyanyanyanya
 (require 'nyan-mode)
