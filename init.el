@@ -65,16 +65,11 @@
 (add-to-list 'load-path (concat user-emacs-directory "move-line"))
 
 ; Nyanyanyanyanya
-(require 'nyan-mode)
-(require 'helm-config)
-(require 'helm-gtags)
+(add-hook 'after-init-hook 'nyan-mode)
 (require 'move-line)
 (require 'whitespace)
 (require 'rcirc)
-(require 'ggtags)
 (require 'thingatpt)
-
-(nyan-mode t)
 
 ; OrgMode mobileness
 (setq org-directory "~/Dokumentumok/org")
