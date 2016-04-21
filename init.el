@@ -28,6 +28,7 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
  '(inhibit-startup-screen t)
+ '(jekyll-directory "~/Projektek/jekyll/gergely.polonkai.eu")
  '(nxml-attribute-indent 4)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 4)
@@ -46,7 +47,7 @@
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
  '(tab-width 4)
- '(jekyll-directory "~/Projektek/jekyll/gergely.polonkai.eu"))
+ '(wakatime-api-key "3f97611e-c959-4ce3-a526-bf0241307e17"))
 
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -58,6 +59,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Hack" :foundry "simp" :slant normal :weight normal :height 98 :width normal))))
  '(hl-line ((t (:inherit nil :background "gray25"))))
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
  '(whitespace-line ((t (:inherit nil :background "orange")))))
@@ -66,6 +68,7 @@
 
 ; Nyanyanyanyanya
 (add-hook 'after-init-hook 'nyan-mode)
+(add-hook 'after-init-hook 'global-wakatime-mode)
 (require 'move-line)
 (require 'whitespace)
 (require 'rcirc)
