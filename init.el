@@ -51,6 +51,7 @@
 
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
+(setq-default magit-gerrit-remote "gerrit")
 (set-face-attribute 'default t :font "Hack-10")
 (set-frame-font "Hack-10" nil t)
 
@@ -69,6 +70,7 @@
 ; Nyanyanyanyanya
 (add-hook 'after-init-hook 'nyan-mode)
 (add-hook 'after-init-hook 'global-wakatime-mode)
+(add-hook 'after-init-hook (lambda () (require 'magit-gerrit)))
 (require 'move-line)
 (require 'whitespace)
 (require 'rcirc)
