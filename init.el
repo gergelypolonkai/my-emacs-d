@@ -294,3 +294,4 @@ Version 2016-02-16"
      ((looking-at "[[:upper:]]") (downcase-region (point) (1+ (point)))))
     (cond
      (arg-move-point (right-char)))))
+(put 'downcase-region 'disabled nil)
