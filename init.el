@@ -312,10 +312,12 @@ Version 2016-02-16"
      ((looking-at "[[:upper:]]") (downcase-region (point) (1+ (point)))))
     (cond
      (arg-move-point (right-char)))))
-(put 'downcase-region 'disabled nil)
 
 (eval-after-load 'company
   '(progn
      (define-key company-mode-map (kbd "C-:") 'helm-company)
      (define-key company-active-map (kbd "C-:") 'helm-company)))
 (require 'xlicense)
+
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
