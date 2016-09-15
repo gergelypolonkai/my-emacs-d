@@ -1,5 +1,9 @@
 (package-initialize)
 
+(add-to-list 'load-path (concat
+                         user-emacs-directory
+                         (convert-standard-filename "lisp/")))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -85,20 +89,20 @@
 (add-hook 'after-init-hook 'nyan-mode)
 (add-hook 'after-init-hook 'global-wakatime-mode)
 (add-hook 'after-init-hook (lambda () (require 'magit-gerrit)))
-(require 'move-line)
-(require 'whitespace)
-(require 'rcirc)
-(require 'thingatpt)
-(require 'gobgen)
 
+(add-hook 'after-init-hook (lambda () (require 'move-line)))
+(add-hook 'after-init-hook (lambda () (require 'whitespace)))
+(add-hook 'after-init-hook (lambda () (require 'rcirc)))
+(add-hook 'after-init-hook (lambda () (require 'thingatpt)))
+(add-hook 'after-init-hook (lambda () (require 'gobgen)))
 
-(load (concat user-emacs-directory "gnu-c-header.el"))
-(load (concat user-emacs-directory "toggle-window-split.el"))
-(load (concat user-emacs-directory "round-number-to-decimals.el"))
-(load (concat user-emacs-directory "transpose-windows.el"))
-(load (concat user-emacs-directory "zim.el"))
-(load (concat user-emacs-directory "clearcase.el"))
-(load (concat user-emacs-directory "jekyll.el"))
+(load "gnu-c-header.el")
+(load "toggle-window-split.el")
+(load "round-number-to-decimals.el")
+(load "transpose-windows.el")
+(load "zim.el")
+(load "clearcase.el")
+(load "jekyll.el")
 
 (add-hook 'c-mode-hook
           (lambda ()
