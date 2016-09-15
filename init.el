@@ -35,6 +35,13 @@
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 4)
  '(nyan-wavy-trail t)
+ '(org-crypt-key "B0740C4C")
+ '(org-default-notes-file "~/Documents/orgmode/notes.org")
+ '(org-directory "~/Documents/orgmode")
+ '(org-ellipsis "…#")
+ '(org-mobile-directory "~/Documents/orgmode")
+ '(org-mobile-inbox-for-pull "~/Documents/orgmode/from-mobile.org")
+ '(org-startup-folded (quote content))
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
@@ -84,10 +91,6 @@
 (require 'thingatpt)
 (require 'gobgen)
 
-; OrgMode mobileness
-(setq org-directory "~/Dokumentumok/org")
-(setq org-mobile-directory "~/Dokumentumok/org")
-(setq org-mobile-inbox-for-pull "~/Dokumentumok/org/inbox.org")
 
 (load (concat user-emacs-directory "gnu-c-header.el"))
 (load (concat user-emacs-directory "toggle-window-split.el"))
