@@ -59,6 +59,7 @@
 (setq-default magit-gerrit-remote "gerrit")
 (set-face-attribute 'default t :font "Hack-10")
 (set-frame-font "Hack-10" nil t)
+(setq user-mail-address "gergely@polonkai.eu")
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -300,3 +301,9 @@ Version 2016-02-16"
     (cond
      (arg-move-point (right-char)))))
 (put 'downcase-region 'disabled nil)
+
+(eval-after-load 'company
+  '(progn
+     (define-key company-mode-map (kbd "C-:") 'helm-company)
+     (define-key company-active-map (kbd "C-:") 'helm-company)))
+(require 'xlicense)
