@@ -72,6 +72,7 @@
  '(whitespace-line ((t (:inherit nil :background "orange")))))
 
 (add-to-list 'load-path (concat user-emacs-directory "move-line"))
+(add-to-list 'load-path (concat user-emacs-directory "gobgen"))
 
 ; Nyanyanyanyanya
 (add-hook 'after-init-hook 'nyan-mode)
@@ -81,6 +82,7 @@
 (require 'whitespace)
 (require 'rcirc)
 (require 'thingatpt)
+(require 'gobgen)
 
 ; OrgMode mobileness
 (setq org-directory "~/Dokumentumok/org")
@@ -88,7 +90,6 @@
 (setq org-mobile-inbox-for-pull "~/Dokumentumok/org/inbox.org")
 
 (load (concat user-emacs-directory "gnu-c-header.el"))
-(load (concat user-emacs-directory "gobgen/gobgen.el"))
 (load (concat user-emacs-directory "toggle-window-split.el"))
 (load (concat user-emacs-directory "round-number-to-decimals.el"))
 (load (concat user-emacs-directory "transpose-windows.el"))
