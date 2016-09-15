@@ -76,6 +76,9 @@
 (set-face-attribute 'default t :font "Hack-10")
 (set-frame-font "Hack-10" nil t)
 (setq user-mail-address "gergely@polonkai.eu")
+(setq helm-M-x-fuzzy-match t
+      helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match t)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -313,6 +316,12 @@ Version 2016-02-16"
     (cond
      (arg-move-point (right-char)))))
 
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-mini)
+
+(require 'helm-config)
+(helm-mode 1)
 (eval-after-load 'company
   '(progn
      (define-key company-mode-map (kbd "C-:") 'helm-company)
