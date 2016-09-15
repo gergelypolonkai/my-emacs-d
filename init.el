@@ -3,6 +3,7 @@
 (add-to-list 'load-path (concat
                          user-emacs-directory
                          (convert-standard-filename "lisp/")))
+(require 'xdg-paths)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -40,11 +41,15 @@
  '(nxml-outline-child-indent 4)
  '(nyan-wavy-trail t)
  '(org-crypt-key "B0740C4C")
- '(org-default-notes-file "~/Documents/orgmode/notes.org")
- '(org-directory "~/Documents/orgmode")
+ '(org-default-notes-file (concat user-documents-directory
+                                  (convert-standard-filename "/orgmode/notes.org")))
+ '(org-directory (concat user-documents-directory
+                         (convert-standard-filename "/orgmode/")))
  '(org-ellipsis "…#")
- '(org-mobile-directory "~/Documents/orgmode")
- '(org-mobile-inbox-for-pull "~/Documents/orgmode/from-mobile.org")
+ '(org-mobile-directory (concat user-documents-directory
+                                (convert-standard-filename "/orgmode/")))
+ '(org-mobile-inbox-for-pull (concat user-documents-directory
+                                     (convert-standard-filename "/orgmode/from-mobile.org")))
  '(org-startup-folded (quote content))
  '(package-archives
    (quote
