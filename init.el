@@ -337,3 +337,4 @@ Version 2016-02-16"
 (put 'upcase-region 'disabled nil)
 (global-origami-mode t)
 (show-paren-mode t)
+(global-set-key (kbd "M-i") 'helm-swoop)
