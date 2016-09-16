@@ -118,11 +118,12 @@
 
 (add-hook 'c-mode-hook
           (lambda ()
-            (helm-gtags-mode)
+            (helm-gtags-mode t)
+            (ggtags-mode 1)
             (which-func-mode)
             (flyspell-prog-mode)))
 (add-hook 'c-mode-common-hook
-          (lambda()
+          (lambda ()
             (local-set-key (kbd "C-c o") 'ff-find-other-file)))
 
 (eval-after-load "helm-gtags"
@@ -338,3 +339,7 @@ Version 2016-02-16"
 (global-origami-mode t)
 (show-paren-mode t)
 (global-set-key (kbd "M-i") 'helm-swoop)
+
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
