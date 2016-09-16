@@ -36,6 +36,8 @@
  '(helm-gtags-path-style (quote relative))
  '(inhibit-startup-screen t)
  '(jekyll-directory "~/Projektek/jekyll/gergely.polonkai.eu")
+ '(minimap-mode t)
+ '(minimap-window-location (quote right))
  '(nxml-attribute-indent 4)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 4)
