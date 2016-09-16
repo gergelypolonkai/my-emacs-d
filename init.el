@@ -343,3 +343,4 @@ Version 2016-02-16"
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+(global-git-gutter-mode t)
