@@ -41,15 +41,19 @@
  '(nxml-outline-child-indent 4)
  '(nyan-wavy-trail t)
  '(org-crypt-key "B0740C4C")
- '(org-default-notes-file (concat user-documents-directory
-                                  (convert-standard-filename "/orgmode/notes.org")))
- '(org-directory (concat user-documents-directory
-                         (convert-standard-filename "/orgmode/")))
+ '(org-default-notes-file
+   (concat user-documents-directory
+           (convert-standard-filename "/orgmode/notes.org")))
+ '(org-directory
+   (concat user-documents-directory
+           (convert-standard-filename "/orgmode/")))
  '(org-ellipsis "…#")
- '(org-mobile-directory (concat user-documents-directory
-                                (convert-standard-filename "/orgmode/")))
- '(org-mobile-inbox-for-pull (concat user-documents-directory
-                                     (convert-standard-filename "/orgmode/from-mobile.org")))
+ '(org-mobile-directory
+   (concat user-documents-directory
+           (convert-standard-filename "/orgmode/")))
+ '(org-mobile-inbox-for-pull
+   (concat user-documents-directory
+           (convert-standard-filename "/orgmode/from-mobile.org")))
  '(org-startup-folded (quote content))
  '(package-archives
    (quote
@@ -65,6 +69,7 @@
      (company-clang-arguments "-I.." "-I/home/polesz/jhbuild/install/include" "-I/home/polesz/jhbuild/install/include/atk-1.0" "-I/home/polesz/jhbuild/install/include/at-spi-2.0" "-I/home/polesz/jhbuild/install/include/at-spi2-atk/2.0" "-I/home/polesz/jhbuild/install/include/cairo" "-I/home/polesz/jhbuild/install/include/gdk-pixbuf-2.0" "-I/home/polesz/jhbuild/install/include/gio-unix-2.0/" "-I/home/polesz/jhbuild/install/include/glib-2.0" "-I/home/polesz/jhbuild/install/include/gtk-3.0" "-I/home/polesz/jhbuild/install/include/harfbuzz" "-I/home/polesz/jhbuild/install/include/libgda-5.0" "-I/home/polesz/jhbuild/install/include/libgda-5.0/libgda" "-I/home/polesz/jhbuild/install/include/librsvg-2.0" "-I/home/polesz/jhbuild/install/include/libsoup-2.4" "-I/home/polesz/jhbuild/install/include/pango-1.0" "-I/home/polesz/jhbuild/install/include/swe-glib" "-I/home/polesz/jhbuild/install/include/webkitgtk-4.0" "-I/home/polesz/jhbuild/install/lib/glib-2.0/include" "-I/usr/include/dbus-1.0" "-I/usr/include/freetype2" "-I/usr/include/libdrm" "-I/usr/include/libpng16" "-I/usr/include/libxml2" "-I/usr/include/pixman-1" "-I/usr/lib64/dbus-1.0/include")
      (company-clang-arguments "-I/home/polesz/jhbuild/install/include" "-I/home/polesz/jhbuild/install/include/atk-1.0" "-I/home/polesz/jhbuild/install/include/at-spi-2.0" "-I/home/polesz/jhbuild/install/include/at-spi2-atk/2.0" "-I/home/polesz/jhbuild/install/include/cairo" "-I/home/polesz/jhbuild/install/include/gdk-pixbuf-2.0" "-I/home/polesz/jhbuild/install/include/gio-unix-2.0/" "-I/home/polesz/jhbuild/install/include/glib-2.0" "-I/home/polesz/jhbuild/install/include/gtk-3.0" "-I/home/polesz/jhbuild/install/include/harfbuzz" "-I/home/polesz/jhbuild/install/include/libgda-5.0" "-I/home/polesz/jhbuild/install/include/libgda-5.0/libgda" "-I/home/polesz/jhbuild/install/include/librsvg-2.0" "-I/home/polesz/jhbuild/install/include/libsoup-2.4" "-I/home/polesz/jhbuild/install/include/pango-1.0" "-I/home/polesz/jhbuild/install/include/swe-glib" "-I/home/polesz/jhbuild/install/include/webkitgtk-4.0" "-I/home/polesz/jhbuild/install/lib/glib-2.0/include" "-I/usr/include/dbus-1.0" "-I/usr/include/freetype2" "-I/usr/include/libdrm" "-I/usr/include/libpng16" "-I/usr/include/libxml2" "-I/usr/include/pixman-1" "-I/usr/lib64/dbus-1.0/include")
      (company-clang-arguments "-I/usr/include/glib-2.0"))))
+ '(savehist-mode t)
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
  '(tab-width 4)
@@ -330,3 +335,5 @@ Version 2016-02-16"
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(global-origami-mode t)
+(show-paren-mode t)
