@@ -346,6 +346,7 @@ Version 2016-02-16"
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 (global-git-gutter-mode t)
+(git-gutter:linum-setup)
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
