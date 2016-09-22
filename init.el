@@ -19,7 +19,7 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(ediff-merge-split-window-function (quote split-window-horizontally))
  '(ediff-split-window-function (quote split-window-vertically))
  '(fiplr-ignored-globs
@@ -72,6 +72,7 @@
  '(savehist-mode t)
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
+ '(sml/theme (quote respectful))
  '(tab-width 4)
  '(wakatime-api-key "3f97611e-c959-4ce3-a526-bf0241307e17"))
 
