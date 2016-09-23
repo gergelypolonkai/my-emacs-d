@@ -74,7 +74,8 @@
  '(show-trailing-whitespace t)
  '(sml/theme (quote respectful))
  '(tab-width 4)
- '(wakatime-api-key "3f97611e-c959-4ce3-a526-bf0241307e17"))
+ '(wakatime-api-key "3f97611e-c959-4ce3-a526-bf0241307e17")
+ '(wakatime-cli-path "/usr/local/bin/wakatime"))
 
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -354,3 +355,7 @@ Version 2016-02-16"
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (sml/setup)
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (if (display-graphic-p) (org-bullets-mode t))))
