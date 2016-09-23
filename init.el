@@ -117,6 +117,7 @@
 (load "zim.el")
 (load "clearcase.el")
 (load "jekyll.el")
+(load "enclose-string.el")
 
 (add-hook 'c-mode-hook
           (lambda ()
@@ -359,3 +360,5 @@ Version 2016-02-16"
 (add-hook 'org-mode-hook
           (lambda ()
             (if (display-graphic-p) (org-bullets-mode t))))
+
+(global-set-key (kbd "M-(") 'æ-enclose-region)
