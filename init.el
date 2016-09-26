@@ -509,3 +509,5 @@ Version 2016-02-16"
 (global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
 
 (drag-stuff-global-mode t)
+
+(global-set-key (kbd "C-x g") 'magit-status)
