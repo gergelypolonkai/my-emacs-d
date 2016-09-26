@@ -354,6 +354,12 @@ Version 2016-02-16"
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(add-hook 'multiple-cursors-mode-enabled-hook
+          (lambda ()
+            (setq blink-matching-paren nil)))
+(add-hook 'multiple-cursors-mode-disabled-hook
+          (lambda ()
+            (setq blink-matching-paren t)))
 
 (sml/setup)
 
