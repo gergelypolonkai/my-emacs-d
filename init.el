@@ -493,3 +493,21 @@ Version 2016-02-16"
                    name (file-name-nondirectory new-name)))))))
 
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+
+; Copied from http://whattheemacsd.com/file-defuns.el-02.html
+(defun delet-current-buffer-file ()
+  "Removes file connected to current buffer and kills the
+  buffer."
+  (interactive)
+
+  (let ((filename (buffer-file-name))
+        (name (buffer-name))
+        (buffer (current-buffer)))
+    (if (not (and filename (file-exists-p filename)))
+        (kill-buffer buffer)
+      (when (yes-or-no-p "Are you sure you want to remove this file? ")
+        (delete-file filename)
+        (kill-buffer buffer)
+        (message "File '%s' successfully removed" filename)))))
+
+(global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
