@@ -408,3 +408,5 @@ Version 2016-02-16"
 ; ⸢⸣ ⸤⸥
 ; ⟅⟆ ⦓⦔ ⦕⦖ ⸦⸧ ⸨⸩ ⧘⧙ ⧚⧛; ⸜⸝ ⸌⸍ ⸂⸃ ⸄⸅ ⸉⸊
 ; ᚛᚜ ༺༻ ༼༽
+
+(global-prettify-symbols-mode t)
