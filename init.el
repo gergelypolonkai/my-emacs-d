@@ -96,7 +96,6 @@
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
  '(whitespace-line ((t (:inherit nil :background "orange")))))
 
-(add-to-list 'load-path (concat user-emacs-directory "move-line"))
 (add-to-list 'load-path (concat user-emacs-directory "gobgen"))
 
 ; Nyanyanyanyanya
@@ -104,7 +103,6 @@
 (add-hook 'after-init-hook 'global-wakatime-mode)
 (add-hook 'after-init-hook (lambda () (require 'magit-gerrit)))
 
-(add-hook 'after-init-hook (lambda () (require 'move-line)))
 (add-hook 'after-init-hook (lambda () (require 'whitespace)))
 (add-hook 'after-init-hook (lambda () (require 'rcirc)))
 (add-hook 'after-init-hook (lambda () (require 'thingatpt)))
@@ -143,8 +141,6 @@
 (add-hook 'c-mode-common-hook
           (lambda()
             (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
-(global-set-key (kbd "M-<up>") 'move-line-up)
-(global-set-key (kbd "M-<down>") 'move-line-down)
 ;; Some terminals don’t interpret Alt-Up/Down as M-<up/down>.
 (global-set-key (kbd "ESC <up>") 'move-line-up)
 (global-set-key (kbd "ESC <down>") 'move-line-down)
@@ -511,3 +507,5 @@ Version 2016-02-16"
         (message "File '%s' successfully removed" filename)))))
 
 (global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
+
+(drag-stuff-global-mode t)

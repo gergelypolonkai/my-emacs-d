@@ -1,6 +1,3 @@
 [submodule "gobgen"]
 	path = gobgen
 	url = git://github.com/gergelypolonkai/gobgen.el.git
-[submodule "move-line"]
-	path = move-line
-	url = git://github.com/nflath/move-line.git
