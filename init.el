@@ -413,3 +413,8 @@ Version 2016-02-16"
 
 ; Bind webjump to a key. It’s pretty handy
 (global-set-key (kbd "C-x w") 'webjump)
+
+; Turn off scroll bar (that’s why Nyan-cat is here) and the toolbar (I
+; don’t really use it)
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
