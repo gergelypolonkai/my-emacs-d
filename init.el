@@ -452,3 +452,22 @@ Version 2016-02-16"
           (goto-line (read-number "Goto line: "))
           (æ-restore-goto-modes old-linum-mode old-gitgutter-mode))
       (æ-restore-goto-modes old-linum-mode old-gitgutter-mode))))
+
+; Copied from http://whattheemacsd.com/editing-defuns.el-01.html
+(defun open-line-below ()
+  (interactive)
+
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
+
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
+
+(global-set-key (kbd "<C-return>") 'open-line-below)
+(global-set-key (kbd "<C-S-return>") 'open-line-above)
