@@ -410,3 +410,6 @@ Version 2016-02-16"
 ; ᚛᚜ ༺༻ ༼༽
 
 (global-prettify-symbols-mode t)
+
+; Bind webjump to a key. It’s pretty handy
+(global-set-key (kbd "C-x w") 'webjump)
