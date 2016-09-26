@@ -361,6 +361,8 @@ Version 2016-02-16"
           (lambda ()
             (if (display-graphic-p) (org-bullets-mode t))))
 
+(add-hook 'text-mode-hook (lambda () (visual-line-mode t)))
+
 (global-set-key (kbd "M-(") 'æ-enclose-region)
 
 ;; TODO: maybe add-to-list is a better way to do it
