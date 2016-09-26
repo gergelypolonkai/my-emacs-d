@@ -347,7 +347,6 @@ Version 2016-02-16"
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 (global-git-gutter-mode t)
-(git-gutter:linum-setup)
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -422,3 +421,34 @@ Version 2016-02-16"
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
+; Temporary show line numbers while in the goto minibuffer. Copied
+; from http://whattheemacsd.com/key-bindings.el-01.html
+(global-set-key [remap goto-line] 'goto-line-with-feedback)
+
+; TODO git-gutter-mode and linum-mode don’t play together well. This
+; is an attempt to make them nice to each other, but it seems futile.
+(defun æ-restore-goto-modes (linum-state gitgutter-state)
+  (linum-mode -1)
+  (git-gutter-mode -1)
+  (linum-mode linum-state)
+  (git-gutter-mode gitgutter-state))
+
+(require 'linum)
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line
+  number input"
+
+  (interactive)
+
+  (let ((old-linum-mode linum-mode)
+        (old-gitgutter-mode git-gutter-mode))
+    (unwind-protect
+        (progn
+          ; Stay safe with git-gutter turned off
+          (git-gutter-mode -1)
+          ; Turn on linum, before asking for the line number
+          (linum-mode 1)
+          (goto-line (read-number "Goto line: "))
+          (æ-restore-goto-modes old-linum-mode old-gitgutter-mode))
+      (æ-restore-goto-modes old-linum-mode old-gitgutter-mode))))
