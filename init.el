@@ -520,3 +520,19 @@ Version 2016-02-16"
 (setq zone-programs [zone-nyan])
 (require 'zone)
 (zone-when-idle 30)
+
+; delete-char or close eshell
+; Copied from https://ryuslash.org/posts/C-d-to-close-eshell.html
+(defun eshell-C-d ()
+  "Either call `delete-char' interactively or quit."
+  (interactive)
+
+  (condition-case err
+      (call-interactively #'delete-char)
+    (error (if (and (eq (car err) 'end-of-buffer)
+                    (looking-back eshell-prompt-regexp))
+               (kill-buffer)
+             (signal (car err) (cdr err))))))
+
+(add-hook 'eshell-mode-hook
+          (lambda () (local-set-key (kbd "C-d") #'eshell-C-d)))
