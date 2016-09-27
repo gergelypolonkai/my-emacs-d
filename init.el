@@ -405,6 +405,11 @@ Version 2016-02-16"
 ; ⟅⟆ ⦓⦔ ⦕⦖ ⸦⸧ ⸨⸩ ⧘⧙ ⧚⧛; ⸜⸝ ⸌⸍ ⸂⸃ ⸄⸅ ⸉⸊
 ; ᚛᚜ ༺༻ ༼༽
 
+(setq prettify-symbols-alist
+      '(("lambda" . 955)  ; λ
+        ("->" . 8594)     ; →
+        ("=>" . 8658)     ; ⇒
+        ("map" . 8614)))  ; ↦
 (global-prettify-symbols-mode t)
 
 ; Bind webjump to a key. It’s pretty handy
