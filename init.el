@@ -62,7 +62,7 @@
      ("e6h" . "http://www.e6h.org/packages/"))))
  '(package-selected-packages
    (quote
-    (helm-google helm-projectile helm-spotify helm-swoop helm-unicode id-manager identica-mode mc-extras multiple-cursors electric-spacing flycheck-clojure flycheck-pkg-config focus git-messenger gitconfig github-notifier gnome-calendar gnugo google helm-chrome helm-company helm-flycheck clojure-quick-repls electric-case emamux flycheck drag-stuff django-manage clojure-mode hyde org-jekyll smart-mode-line-powerline-theme yaml-mode xlicense wakatime-mode vala-mode sass-mode nyan-mode muse markdown-mode mark magit-gh-pulls magit-gerrit json-mode js2-mode jinja2-mode helm-make helm-gtags helm-flyspell helm-ag go-mode gitignore-mode gitconfig-mode git-gutter ggtags fiplr erlang django-mode company-shell company-quickhelp company-c-headers coffee-mode buffer-move ag)))
+    (magithub nyan-prompt zone-nyan helm-google helm-projectile helm-spotify helm-swoop helm-unicode id-manager identica-mode mc-extras multiple-cursors electric-spacing flycheck-clojure flycheck-pkg-config focus git-messenger gitconfig github-notifier gnome-calendar gnugo google helm-chrome helm-company helm-flycheck clojure-quick-repls electric-case emamux flycheck drag-stuff django-manage clojure-mode hyde org-jekyll smart-mode-line-powerline-theme yaml-mode xlicense wakatime-mode vala-mode sass-mode nyan-mode muse markdown-mode mark magit-gerrit json-mode js2-mode jinja2-mode helm-make helm-gtags helm-flyspell helm-ag go-mode gitignore-mode gitconfig-mode git-gutter ggtags fiplr erlang django-mode company-shell company-quickhelp company-c-headers coffee-mode buffer-move ag)))
  '(safe-local-variable-values
    (quote
     ((company-clang-arguments "-I.." "-I/home/polesz/jhbuild/install/include/atk-1.0" "-I/home/polesz/jhbuild/install/include/at-spi-2.0" "-I/home/polesz/jhbuild/install/include/at-spi2-atk/2.0" "-I/home/polesz/jhbuild/install/include/cairo" "-I/home/polesz/jhbuild/install/include/gdk-pixbuf-2.0" "-I/home/polesz/jhbuild/install/include/gio-unix-2.0/" "-I/home/polesz/jhbuild/install/include/glib-2.0" "-I/home/polesz/jhbuild/install/include/gtk-3.0" "-I/home/polesz/jhbuild/install/include/harfbuzz" "-I/home/polesz/jhbuild/install/include/libgda-5.0" "-I/home/polesz/jhbuild/install/include/libgda-5.0/libgda" "-I/home/polesz/jhbuild/install/include/librsvg-2.0" "-I/home/polesz/jhbuild/install/include/libsoup-2.4" "-I/home/polesz/jhbuild/install/include/pango-1.0" "-I/home/polesz/jhbuild/install/include/swe-glib" "-I/home/polesz/jhbuild/install/include/webkitgtk-4.0" "-I/home/polesz/jhbuild/install/lib/glib-2.0/include" "-I/usr/include/dbus-1.0" "-I/usr/include/freetype2" "-I/usr/include/libdrm" "-I/usr/include/libpng16" "-I/usr/include/libxml2" "-I/usr/include/pixman-1" "-I/usr/lib64/dbus-1.0/include")
@@ -511,3 +511,11 @@ Version 2016-02-16"
 (drag-stuff-global-mode t)
 
 (global-set-key (kbd "C-x g") 'magit-status)
+
+; Nyanify eshell!
+(add-hook 'eshell-load-hook 'nyan-prompt-enable)
+
+; Nyanify zone!
+(setq zone-programs [zone-nyan])
+(require 'zone)
+(zone-when-idle 30)
