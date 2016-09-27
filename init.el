@@ -491,7 +491,7 @@ Version 2016-02-16"
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 
 ; Copied from http://whattheemacsd.com/file-defuns.el-02.html
-(defun delet-current-buffer-file ()
+(defun delete-current-buffer-file ()
   "Removes file connected to current buffer and kills the
   buffer."
   (interactive)
