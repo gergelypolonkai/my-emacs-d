@@ -542,4 +542,6 @@ Version 2016-02-16"
 (add-hook 'eshell-mode-hook
           (lambda () (local-set-key (kbd "C-d") #'eshell-C-d)))
 
+(global-set-key (kbd "C-x ~") 'toggle-char-case)
+
 (require 'magithub)
