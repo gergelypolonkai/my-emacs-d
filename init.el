@@ -1,10 +1,14 @@
+;; Initialize the package system
 (package-initialize)
 
+;; Add path to my custom lisp functions
 (add-to-list 'load-path (concat
                          user-emacs-directory
                          (convert-standard-filename "lisp/")))
+;; Load xdg-paths; it is needed to set `org-directory'
 (require 'xdg-paths)
 
+;; Custom stuff
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -78,16 +82,7 @@
  '(wakatime-api-key "3f97611e-c959-4ce3-a526-bf0241307e17")
  '(wakatime-cli-path "/usr/local/bin/wakatime"))
 
-(setq magit-auto-revert-mode nil)
-(setq magit-last-seen-setup-instructions "1.4.0")
-(setq-default magit-gerrit-remote "gerrit")
-(set-face-attribute 'default t :font "Hack-10")
-(set-frame-font "Hack-10" nil t)
-(setq user-mail-address "gergely@polonkai.eu")
-(setq helm-M-x-fuzzy-match t
-      helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match t)
-
+;; Custom face settings
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -96,19 +91,25 @@
  '(hl-line ((t (:inherit nil :background "gray25"))))
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
  '(whitespace-line ((t (:inherit nil :background "orange")))))
+(set-face-attribute 'default t :font "Hack-10")
+(set-frame-font "Hack-10" nil t)
 
-(add-to-list 'load-path (concat user-emacs-directory "gobgen"))
+;; Some personal stuff
+(setq user-mail-address "gergely@polonkai.eu")
 
-; Nyanyanyanyanya
-(add-hook 'after-init-hook 'nyan-mode)
-(add-hook 'after-init-hook 'global-wakatime-mode)
-(add-hook 'after-init-hook (lambda () (require 'magit-gerrit)))
-
-(add-hook 'after-init-hook (lambda () (require 'whitespace)))
-(add-hook 'after-init-hook (lambda () (require 'rcirc)))
-(add-hook 'after-init-hook (lambda () (require 'thingatpt)))
+;; Load some custom libraries
+(require 'whitespace)
+(require 'thingatpt)
 (add-hook 'after-init-hook (lambda () (require 'gobgen)))
+(require 'helm-config)
+(require 'xlicense)
+(require 'multiple-cursors)
+(require 'saveplace)
+(require 'linum)
+(require 'zone)
+(require 'magithub)
 
+;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
 (load "round-number-to-decimals.el")
@@ -117,17 +118,21 @@
 (load "clearcase.el")
 (load "jekyll.el")
 (load "enclose-string.el")
+(load "buf-manipulation.el")
 
-(add-hook 'c-mode-hook
-          (lambda ()
-            (helm-gtags-mode t)
-            (ggtags-mode 1)
-            (which-func-mode)
-            (flyspell-prog-mode)))
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (local-set-key (kbd "C-c o") 'ff-find-other-file)))
+;; Define aliases
+(defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Magit settings
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
+(setq-default magit-gerrit-remote "gerrit")
+(add-hook 'after-init-hook (lambda () (require 'magit-gerrit)))
+
+;; Helm settings
+(setq helm-M-x-fuzzy-match t
+      helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match t)
 (eval-after-load "helm-gtags"
   '(progn
      (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
@@ -137,103 +142,48 @@
      (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
-(global-set-key (kbd "C-x _") 'maximize-window)
-(add-hook 'c-mode-common-hook
-          (lambda()
-            (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
-;; Some terminals don’t interpret Alt-Up/Down as M-<up/down>.
-(global-set-key (kbd "ESC <up>") 'move-line-up)
-(global-set-key (kbd "ESC <down>") 'move-line-down)
+(helm-mode 1)
+(eval-after-load 'company
+  '(progn
+     (define-key company-mode-map (kbd "C-:") 'helm-company)
+     (define-key company-active-map (kbd "C-:") 'helm-company)))
 
-(global-whitespace-mode 1)
-(setq-default indent-tabs-mode nil)
+;; Add gobgen to the load path. It’s temporary until gobgen finally
+;; gets to MELPA
+(add-to-list 'load-path (concat user-emacs-directory "gobgen"))
+
+; Nyanyanyanyanya
+(add-hook 'after-init-hook 'nyan-mode)
+
+(add-hook 'eshell-load-hook 'nyan-prompt-enable)
+
+(setq zone-programs [zone-nyan])
+(zone-when-idle 30)
+
+;; Waka-waka
+(add-hook 'after-init-hook 'global-wakatime-mode)
+
+;; `c-mode' settings
+(add-hook 'c-mode-hook
+          (lambda ()
+            (helm-gtags-mode t)
+            (ggtags-mode 1)
+            (which-func-mode)
+            (flyspell-prog-mode)))
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (local-set-key (kbd "C-c o") 'ff-find-other-file)
+            (c-set-style "PERSONAL")
+            (setq tab-width 4
+                  indent-tabs-mode nil)
+            (c-toggle-auto-newline 1)
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
+(add-hook 'c-initialization-hook
+          (lambda ()
+            (define-key c-mode-base-map (kbd "C-m") 'c-context-line-break)))
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'cperl-indent-level 'tab-width)
-
-;(c-add-style "my"
-;             '(
-;               (c-basic-offset . 4)
-;               (c-offsets-alist
-;                (arglist-cont . 0)
-;                (arglist-intro . ++)
-;                (block-close . 0)
-;                (brace-entry-open . 0)
-;                (brace-list-close . 0)
-;                (brace-list-intro . +)
-;                (case-label . +)
-;                (class-close . 0)
-;                (defun-block-intro . +)
-;                (defun-close . 0)
-;                (defun-open . 0)
-;                (inclass . +)
-;                (statement . 0)
-;                (statement-block-intro . +)
-;                (statement-case-intro . +)
-;                (statement-cont . 4)
-;                (substatement-open . 0)
-;                (topmost-intro . 0)
-;                (topmost-intro-cont . 0)
-;                (access-label . -)
-;                (annotation-top-cont . 0)
-;                (annotation-var-cont . +)
-;                (arglist-close . c-lineup-close-paren)
-;                (arglist-cont-nonempty . c-lineup-arglist)
-;                (block-open . 0)
-;                (brace-list-entry . 0)
-;                (brace-list-open . 0)
-;                (c . c-lineup-C-comments)
-;                (catch-clause . 0)
-;                (class-open . 0)
-;                (comment-intro . c-lineup-comment)
-;                (composition-close . 0)
-;                (composition-open . 0)
-;                (cpp-define-intro c-lineup-cpp-define +)
-;                (cpp-macro . -1000)
-;                (cpp-macro-cont . +)
-;                (do-while-closure . 0)
-;                (else-clause . 0)
-;                (extern-lang-close . 0)
-;                (extern-lang-open . 0)
-;                (friend . 0)
-;                (func-decl-cont . +)
-;                (incomposition . +)
-;                (inexpr-class . +)
-;                (inexpr-statement . +)
-;                (inextern-lang . +)
-;                (inher-cont . c-lineup-multi-inher)
-;                (inher-intro . +)
-;                (inlambda . c-lineup-inexpr-block)
-;                (inline-close . 0)
-;                (inline-open . +)
-;                (inmodule . +)
-;                (innamespace . +)
-;                (knr-argdecl . 0)
-;                (knr-argdecl-intro . +)
-;                (label . 2)
-;                (lambda-intro-cont . +)
-;                (member-init-cont . c-lineup-multi-inher)
-;                (member-init-intro . +)
-;                (module-close . 0)
-;                (module-open . 0)
-;                (namespace-close . 0)
-;                (namespace-open . 0)
-;                (objc-method-args-cont . c-lineup-ObjC-method-args)
-;                (objc-method-call-cont c-lineup-ObjC-method-call-colons c-lineup-ObjC-method-call +)
-;                (objc-method-intro .
-;                                   [0])
-;                (statement-case-open . 0)
-;                (stream-op . c-lineup-streamop)
-;                (string . -1000)
-;                (substatement . +)
-;                (substatement-label . 2)
-;                (template-args-cont c-lineup-template-args +))))
-
-(defun my-c-initialization-hook ()
-  (define-key c-mode-base-map (kbd "C-m") 'c-context-line-break))
-(add-hook 'c-initialization-hook 'my-c-initialization-hook)
-(setq c-offset-alist '((member-init-intro . ++)))
-
 (defconst my-c-style
   '((c-tab-always-indent        . t)
     (c-comment-only-line-offset . 4)
@@ -257,99 +207,56 @@
     (c-echo-syntactic-information-p . t))
   "My C Programming Style")
 (c-add-style "PERSONAL" my-c-style)
-(defun my-c-mode-common-hook ()
-  (c-set-style "PERSONAL")
-  (setq tab-width 4
-        indent-tabs-mode nil)
-  (c-toggle-auto-newline 1))
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+(setq c-offset-alist '((member-init-intro . ++)))
 
-(add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
-(add-hook 'after-init-hook 'fiplr-clear-cache)
-
-(setq rcirc-default-nick "GPolonkai")
-(setq rcirc-default-user-name "polesz")
-(setq rcirc-default-full-name "Gergely Polonkai")
-
-(defun delete-current-line ()
-  "Kill the whole line on which point is"
-  (interactive)
-  (beginning-of-line)
-  (kill-line 1))
-
-(defun copy-func-prototype ()
-  "Copy the current function's prototype to the kill-ring"
-
-  (interactive)
-
-  (save-excursion (beginning-of-defun)
-                  (setq protocopy-begin (point))
-                  (forward-list)
-                  (setq protocopy-end (point))
-                  (kill-ring-save protocopy-begin protocopy-end)))
-
-(defun duplicate-line()
-  (interactive)
-  (save-excursion
-    (move-beginning-of-line 1)
-    (kill-line)
-    (yank)
-    (open-line 1)
-    (next-line 1)
-    (yank)))
-
+;; Custom key bindings
+(global-set-key (kbd "C-x _") 'maximize-window)
+;; Some terminals don’t interpret Alt-Up/Down as M-<up/down>.
+(global-set-key (kbd "ESC <up>") 'move-line-up)
+(global-set-key (kbd "ESC <down>") 'move-line-down)
 (global-set-key (kbd "C-c C-y") 'duplicate-line)
-
-(add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode))
-(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-
-(defun toggle-char-case (arg-move-point)
-  "Toggle the case of the char after point. Based on Xah's toggle letter
-case defun version 2015-12-22
-
-URL `http://ergoemacs.org/emacs/modernization_upcase-word.html'
-Version 2016-02-16"
-  (interactive "P")
-  (let ((case-fold-search nil))
-    (cond
-     ((looking-at "[[:lower:]]") (upcase-region (point) (1+ (point))))
-     ((looking-at "[[:upper:]]") (downcase-region (point) (1+ (point)))))
-    (cond
-     (arg-move-point (right-char)))))
-
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x b") 'helm-mini)
-
-(require 'helm-config)
-(helm-mode 1)
-(eval-after-load 'company
-  '(progn
-     (define-key company-mode-map (kbd "C-:") 'helm-company)
-     (define-key company-active-map (kbd "C-:") 'helm-company)))
-(require 'xlicense)
-
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(global-origami-mode t)
-(show-paren-mode t)
 (global-set-key (kbd "M-i") 'helm-swoop)
-
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-(global-git-gutter-mode t)
-
-(require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "M-(") 'æ-enclose-region)
+(global-set-key (kbd "C-x w") 'webjump)
+(global-set-key (kbd "<C-return>") 'open-line-below)
+(global-set-key (kbd "<C-S-return>") 'open-line-above)
+(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+(global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x ~") 'toggle-char-case)
+(global-set-key (kbd "C-x M-a") 'ag)
+(global-set-key (kbd "C-x C-M-a") 'ag-regexp)
+
+;; Set up some global minor modes
+(global-whitespace-mode 1)
+(add-hook 'after-init-hook 'global-company-mode)
+(global-origami-mode t)
+(show-paren-mode t)
+(projectile-global-mode)
+(global-git-gutter-mode t)
+(sml/setup)
+(global-prettify-symbols-mode t)
+(drag-stuff-global-mode t)
+
+;; Projectile settings
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
+;; Don’t allow tabs to be inserted during indentation
+(setq-default indent-tabs-mode nil)
+
+;; Enable some functions
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+;; Disable `blink-matching-paren' in `multiple-cursors-mode'
 (add-hook 'multiple-cursors-mode-enabled-hook
           (lambda ()
             (setq blink-matching-paren nil)))
@@ -357,16 +264,26 @@ Version 2016-02-16"
           (lambda ()
             (setq blink-matching-paren t)))
 
-(sml/setup)
-
+;; org-mode settings
 (add-hook 'org-mode-hook
           (lambda ()
             (if (display-graphic-p) (org-bullets-mode t))))
 
+;; text-mode settings
 (add-hook 'text-mode-hook (lambda () (visual-line-mode t)))
 
-(global-set-key (kbd "M-(") 'æ-enclose-region)
+;; UI hacks: turn off scroll bar (that’s why Nyan-cat is here) and the
+;; toolbar (I don’t really use it)
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
+;; Add some symbols to be prettified
+(setq prettify-symbols-alist
+      '(("lambda" . 955)  ; λ
+        ("->" . 8594)     ; →
+        ("=>" . 8658)     ; ⇒
+        ("map" . 8614)))  ; ↦
+;; …and some pairs to complete
 ;; TODO: maybe add-to-list is a better way to do it
 (setq insert-pair-alist
       '(
@@ -386,43 +303,21 @@ Version 2016-02-16"
        (187 171)    ; »«
       ))
 
-;; Other parens might be added later (in no particular order):
-; （） ［］ ｛｝ ｟｠
-; ⦅⦆ 〚〛 ⦃⦄ 「」 〈〉 《》 【】 〔〕 ⦗⦘
-; 『』 〖〗 〘〙
-; ｢｣
-; ⟦⟧ ⟨⟩ ⟪⟫ ⟮⟯ ⟬⟭ ⌈⌉ ⌊⌋ ⦇⦈ ⦉⦊
-; ❛❜ ❝❞ ❨❩ ❪❫ ❴❵ ❬❭ ❮❯ ❰❱ ❲❳
-; ﴾﴿
-;
-; ⏜⏝ ⎴⎵ ⏞⏟ ⏠⏡
-; ﹁﹂ ﹃﹄ ︹︺ ︻︼ ︗︘ ︿﹀ ︽︾ ﹇﹈ ︷︸
-; 〈〉 ⦑⦒ ⧼⧽
-; ﹙﹚ ﹛﹜ ﹝﹞
-; ⁽⁾ ₍₎
-; ⦋⦌ ⦍⦎ ⦏⦐ ⁅⁆
-; ⸢⸣ ⸤⸥
-; ⟅⟆ ⦓⦔ ⦕⦖ ⸦⸧ ⸨⸩ ⧘⧙ ⧚⧛; ⸜⸝ ⸌⸍ ⸂⸃ ⸄⸅ ⸉⸊
-; ᚛᚜ ༺༻ ༼༽
-
-(setq prettify-symbols-alist
-      '(("lambda" . 955)  ; λ
-        ("->" . 8594)     ; →
-        ("=>" . 8658)     ; ⇒
-        ("map" . 8614)))  ; ↦
-(global-prettify-symbols-mode t)
-
-; Bind webjump to a key. It’s pretty handy
-(global-set-key (kbd "C-x w") 'webjump)
-
-; Turn off scroll bar (that’s why Nyan-cat is here) and the toolbar (I
-; don’t really use it)
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-
-(require 'saveplace)
+;; Setup `save-place'
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
+;; Setup eshell
+(add-hook 'eshell-mode-hook
+          (lambda () (local-set-key (kbd "C-d") #'eshell-C-d)))
+
+;; Stuff to do after initialization is done
+
+;; TODO: Unordered stuff
+(add-hook 'after-init-hook 'fiplr-clear-cache)
+(add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode))
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 ; Temporary show line numbers while in the goto minibuffer. Copied
 ; from http://whattheemacsd.com/key-bindings.el-01.html
@@ -436,7 +331,6 @@ Version 2016-02-16"
   (linum-mode linum-state)
   (git-gutter-mode gitgutter-state))
 
-(require 'linum)
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line
   number input"
@@ -454,97 +348,3 @@ Version 2016-02-16"
           (goto-line (read-number "Goto line: "))
           (æ-restore-goto-modes old-linum-mode old-gitgutter-mode))
       (æ-restore-goto-modes old-linum-mode old-gitgutter-mode))))
-
-; Copied from http://whattheemacsd.com/editing-defuns.el-01.html
-(defun open-line-below ()
-  (interactive)
-
-  (end-of-line)
-  (newline)
-  (indent-for-tab-command))
-
-(defun open-line-above ()
-  (interactive)
-
-  (beginning-of-line)
-  (newline)
-  (forward-line -1)
-  (indent-for-tab-command))
-
-(global-set-key (kbd "<C-return>") 'open-line-below)
-(global-set-key (kbd "<C-S-return>") 'open-line-above)
-
-; Copied from http://whattheemacsd.com/file-defuns.el-01.html
-(defun rename-current-buffer-file ()
-  "Renames current buffer and file it is visiting."
-  (interactive)
-
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
-      (let ((new-name (read-file-name "New name: " filename)))
-        (if (get-buffer new-name)
-            (error "A buffer named '%s' already exists!" new-name)
-          (rename-file filename new-name 1)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          ; TODO: this is suspicious for me…
-          (set-buffer-modified-p nil)
-          (message "File '%s' successfully renamed to '%s'"
-                   name (file-name-nondirectory new-name)))))))
-
-(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
-
-; Copied from http://whattheemacsd.com/file-defuns.el-02.html
-(defun delete-current-buffer-file ()
-  "Removes file connected to current buffer and kills the
-  buffer."
-  (interactive)
-
-  (let ((filename (buffer-file-name))
-        (name (buffer-name))
-        (buffer (current-buffer)))
-    (if (not (and filename (file-exists-p filename)))
-        (kill-buffer buffer)
-      (when (yes-or-no-p "Are you sure you want to remove this file? ")
-        (delete-file filename)
-        (kill-buffer buffer)
-        (message "File '%s' successfully removed" filename)))))
-
-(global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
-
-(drag-stuff-global-mode t)
-
-(global-set-key (kbd "C-x g") 'magit-status)
-
-; Nyanify eshell!
-(add-hook 'eshell-load-hook 'nyan-prompt-enable)
-
-; Nyanify zone!
-(setq zone-programs [zone-nyan])
-(require 'zone)
-(zone-when-idle 30)
-
-; delete-char or close eshell
-; Copied from https://ryuslash.org/posts/C-d-to-close-eshell.html
-(defun eshell-C-d ()
-  "Either call `delete-char' interactively or quit."
-  (interactive)
-
-  (condition-case err
-      (call-interactively #'delete-char)
-    (error (if (and (eq (car err) 'end-of-buffer)
-                    (looking-back eshell-prompt-regexp))
-               (kill-buffer)
-             (signal (car err) (cdr err))))))
-
-(add-hook 'eshell-mode-hook
-          (lambda () (local-set-key (kbd "C-d") #'eshell-C-d)))
-
-(global-set-key (kbd "C-x ~") 'toggle-char-case)
-
-(require 'magithub)
-
-(global-set-key (kbd "C-x M-a") 'ag)
-(global-set-key (kbd "C-x C-M-a") 'ag-regexp)
