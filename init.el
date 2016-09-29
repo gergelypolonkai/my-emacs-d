@@ -545,3 +545,6 @@ Version 2016-02-16"
 (global-set-key (kbd "C-x ~") 'toggle-char-case)
 
 (require 'magithub)
+
+(global-set-key (kbd "C-x M-a") 'ag)
+(global-set-key (kbd "C-x C-M-a") 'ag-regexp)
