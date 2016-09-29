@@ -80,7 +80,8 @@
  '(sml/theme (quote powerline))
  '(tab-width 4)
  '(wakatime-api-key "3f97611e-c959-4ce3-a526-bf0241307e17")
- '(wakatime-cli-path "/usr/local/bin/wakatime"))
+ '(wakatime-cli-path "/usr/local/bin/wakatime")
+ '(zone-nyan-hide-progress t))
 
 ;; Custom face settings
 (custom-set-faces
