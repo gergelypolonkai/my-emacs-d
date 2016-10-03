@@ -110,6 +110,7 @@
 (require 'linum)
 (require 'zone)
 (require 'magithub)
+(require 'origami)
 
 ;; Load my own functions
 (load "gnu-c-header.el")
@@ -235,6 +236,22 @@
 (global-set-key (kbd "C-x ~") 'toggle-char-case)
 (global-set-key (kbd "C-x M-a") 'ag)
 (global-set-key (kbd "C-x C-M-a") 'ag-regexp)
+
+;; Origami mode keys
+(define-key global-map (kbd "C-x C-z") 'origami-mode-map)
+(define-prefix-command 'origami-mode-map)
+(define-key origami-mode-map (kbd "o") 'origami-open-node)
+(define-key origami-mode-map (kbd "O") 'origami-open-node-recursively)
+(define-key origami-mode-map (kbd "c") 'origami-close-node)
+(define-key origami-mode-map (kbd "C") 'origami-close-node-recursively)
+(define-key origami-mode-map (kbd "a") 'origami-toggle-node)
+(define-key origami-mode-map (kbd "A") 'origami-recursively-toggle-node)
+(define-key origami-mode-map (kbd "R") 'origami-open-all-nodes)
+(define-key origami-mode-map (kbd "M") 'origami-close-all-nodes)
+(define-key origami-mode-map (kbd "v") 'origami-show-only-node)
+(define-key origami-mode-map (kbd "k") 'origami-previous-fold)
+(define-key origami-mode-map (kbd "j") 'origami-forward-fold)
+(define-key origami-mode-map (kbd "x") 'origami-reset)
 
 ;; Set up some global minor modes
 (global-whitespace-mode 1)
