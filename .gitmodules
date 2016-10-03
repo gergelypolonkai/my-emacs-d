@@ -1,3 +1,0 @@
-[submodule "gobgen"]
-	path = gobgen
-	url = git://github.com/gergelypolonkai/gobgen.el.git
