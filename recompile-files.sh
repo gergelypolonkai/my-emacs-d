@@ -1,15 +1,20 @@
 #! /bin/sh
 
+cd `dirname $0`
 pwd=`pwd`
 
 for file in `find -iname '*.elc'`
 do
+    elc=`basename "$file"`
+    el="${elc%c}"
+
     cd `dirname "$file"`
 
-    if test $file -ot ${file%c}
+    if test "$elc" -ot "$el"
     then
-        echo "Recompiling ${file%c}"
-        emacs --batch --eval '(byte-compile-file "'${file%c}'")'
+        echo "Recompiling ${el}"
+
+        emacs --batch --eval '(byte-compile-file "'${el}'")'
     fi
 
     cd $pwd
