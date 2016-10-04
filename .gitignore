@@ -7,3 +7,11 @@
 /semanticdb/
 /elpa/*-readme.txt
 /elpa/*.signed
+/.places
+/network-security.data
+/projectile-bookmarks.eld
+/recentf
+/url/
+
+# Stack exchange. This file contains the auth token for SX sites
+/.sx/
