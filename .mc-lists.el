@@ -18,4 +18,5 @@
       '(
         drag-stuff-right
         end-of-buffer
+        helm-find-files
         ))

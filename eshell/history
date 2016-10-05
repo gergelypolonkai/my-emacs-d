@@ -39,3 +39,16 @@ git verify
 git status
 git --no-pager verify
 ssh 5250
+jekyll serve
+cd ..
+jekyll serve
+jekyll serve
+rm -rf _site/
+jekyll serve
+ls _site/
+ls _site/2016
+jekyll serve
+ls _site/2016/
+jekyll help
+jekyll build
+jekyll serve
