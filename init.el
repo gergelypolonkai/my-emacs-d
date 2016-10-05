@@ -160,7 +160,7 @@
 (add-hook 'eshell-load-hook 'nyan-prompt-enable)
 
 (setq zone-programs [zone-nyan])
-(zone-when-idle 30)
+(zone-when-idle 60)
 
 ;; Waka-waka
 (add-hook 'after-init-hook 'global-wakatime-mode)
