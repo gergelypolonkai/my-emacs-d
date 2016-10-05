@@ -52,3 +52,18 @@ ls _site/2016/
 jekyll help
 jekyll build
 jekyll serve
+git status
+git add -p
+git commit -m 'Add MoM about CSCF Git migration meeting'
+git status
+git add -p
+git status
+git commit -m 'Update package ToDo'
+git add
+git status
+git add notes.org 
+git commit -m 'Add a list of hex words'
+git status
+git status
+git diff
+exit
