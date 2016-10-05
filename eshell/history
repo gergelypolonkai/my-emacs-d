@@ -1,3 +1,16 @@
+echo $PS1
+ls
+(message "hullo")
+exit
+which wakatime
+dpkg -S /usr/bin/wakatime
+rpm -q --whatprovides /usr/bin/wakatime
+exit
+ls
+git rm -rf move-line
+rm -rf move-line
+ls
+git status
 help
 ls
 exit
