@@ -48,7 +48,6 @@
  '(nxml-outline-child-indent 4)
  '(nyan-animate-nyancat t)
  '(nyan-wavy-trail t)
- '(org-agenda-files "~/.agenda_files")
  '(org-crypt-key "B0740C4C")
  '(org-default-notes-file
    (concat user-documents-directory
@@ -56,6 +55,9 @@
  '(org-directory
    (concat user-documents-directory
            (convert-standard-filename "/orgmode/")))
+ '(org-agenda-files
+   (concat user-documents-directory
+           (convert-standard-filename "/orgmode/agenda_files")))
  '(org-ellipsis "…#")
  '(org-mobile-directory
    (concat user-documents-directory
