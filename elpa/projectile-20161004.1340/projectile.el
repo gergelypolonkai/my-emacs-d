@@ -4,7 +4,7 @@
 
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/projectile
-;; Package-Version: 20160926.1133
+;; Package-Version: 20161004.1340
 ;; Keywords: project, convenience
 ;; Version: 0.15.0-cvs
 ;; Package-Requires: ((pkg-info "0.4"))
@@ -38,12 +38,11 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'compile)
-(require 'eshell)
-(require 'grep)
-(require 'ibuf-ext)
-(require 'ibuffer)
 (require 'thingatpt)
+(require 'ibuffer)
+(require 'ibuf-ext)
+(require 'compile)
+(require 'grep)
 
 (eval-when-compile
   (defvar ag-ignore-list)
@@ -226,13 +225,13 @@ Otherwise consider the current directory the project root."
   "The tag backend that Projectile should use.
 
 If set to 'auto', `projectile-find-tag' will automatically choose
-which backend to use. Preference order is ggtags -> etags-select
--> find-tag. Variable can also be set to specify which backend to
-use. If selected backend is unavailable, fall back to `find-tag'.
+which backend to use.  Preference order is ggtags -> etags-select
+-> `find-tag'.  Variable can also be set to specify which backend to
+use.  If selected backend is unavailable, fall back to `find-tag'.
 
 If this variable is set to 'auto' and ggtags is available, or if
 set to 'ggtags', then ggtags will be used for
-`projectile-regenerate-tags'. For all other settings
+`projectile-regenerate-tags'.  For all other settings
 `projectile-tags-command' will be used."
   :group 'projectile
   :type '(radio
@@ -1077,29 +1076,9 @@ they are excluded from the results of this function."
     (when cmd
       (projectile-files-via-ext-command cmd))))
 
-(defun projectile-call-process-to-string (program &rest args)
-  "Invoke the executable PROGRAM with ARGS and return the output as a string."
-  (with-temp-buffer
-    (apply 'call-process program nil (current-buffer) nil args)
-    (buffer-string)))
-
-(defun projectile-shell-command-to-string (command)
-  "Try to run COMMAND without actually using a shell and return the output.
-
-The function `eshell-search-path' will be used to search the PATH
-environment variable for an appropriate executable using the text
-occuring before the first space.  If no executable is found,
-fallback to `shell-command-to-string'."
-  (cl-destructuring-bind
-      (the-command . args) (split-string command " ")
-    (let ((binary-path (eshell-search-path the-command)))
-      (if binary-path
-          (apply 'projectile-call-process-to-string binary-path args)
-        (shell-command-to-string command)))))
-
 (defun projectile-files-via-ext-command (command)
   "Get a list of relative file names in the project root by executing COMMAND."
-  (split-string (projectile-shell-command-to-string command) "\0" t))
+  (split-string (shell-command-to-string command) "\0" t))
 
 (defun projectile-index-directory (directory patterns progress-reporter)
   "Index DIRECTORY taking into account PATTERNS.

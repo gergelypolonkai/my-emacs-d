@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "wakatime-mode" "wakatime-mode.el" (22510 25032
-;;;;;;  328539 79000))
+;;;### (autoloads nil "wakatime-mode" "wakatime-mode.el" (22516 57893
+;;;;;;  981476 105000))
 ;;; Generated autoloads from wakatime-mode.el
 
 (autoload 'wakatime-mode "wakatime-mode" "\

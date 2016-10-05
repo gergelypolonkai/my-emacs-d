@@ -3576,7 +3576,7 @@ If action buffer is selected, back to the helm buffer."
                          (setq helm-pattern 'dummy)
                          (helm-check-minibuffer-input))))
                   (t (message "No Actions available")))
-          (helm-display-mode-line src)
+          (helm-display-mode-line (helm-get-current-source))
           (run-hooks 'helm-window-configuration-hook))))))
 (put 'helm-select-action 'helm-only t)
 
@@ -3592,7 +3592,7 @@ If action buffer is selected, back to the helm buffer."
             :nomark t
             :keymap 'helm-map
             :candidates actions
-            :mode-line '("Action(s)" "TAB:BackToCands RET/f1/f2/fn:NthAct")
+            :mode-line '("Action(s)" "\\<helm-map>\\[helm-select-action]:BackToCands RET/f1/f2/fn:NthAct")
             :candidate-transformer
              (lambda (candidates)
                (cl-loop for (i . j) in candidates
@@ -5354,7 +5354,9 @@ or `helm-follow-input-idle-delay' or `helm-input-idle-delay' secs."
                (helm-window)
                (helm-get-selection nil nil src))
       (helm-follow-mode-set-source 1 src)
-      (run-with-idle-timer at nil #'helm-execute-persistent-action))))
+      (run-with-idle-timer at nil (lambda ()
+                                    (when helm-alive-p
+                                      (helm-execute-persistent-action)))))))
 
 (defun helm-follow-mode-p (&optional source)
   (with-helm-buffer

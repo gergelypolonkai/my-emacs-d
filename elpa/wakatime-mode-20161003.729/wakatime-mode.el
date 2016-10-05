@@ -6,7 +6,7 @@
 ;; Maintainer: Alan Hamlett <alan@wakatime.com>
 ;; Website: https://wakatime.com
 ;; Keywords: calendar, comm
-;; Package-Version: 20160929.624
+;; Package-Version: 20161003.729
 ;; Version: 1.0.2
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -145,8 +145,8 @@
    Set DONT-USE-KEY to t if you want to omit --key from the command
    line."
   (let ((key (if dont-use-key
-                 (format "--key %s" wakatime-api-key)
-               "")))
+                 ""
+               (format "--key %s" wakatime-api-key))))
     (format "%s %s --file \"%s\" %s --plugin %s/%s %s --time %.2f"
       wakatime-python-bin
       wakatime-cli-path
