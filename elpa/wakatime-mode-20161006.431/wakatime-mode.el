@@ -6,7 +6,7 @@
 ;; Maintainer: Alan Hamlett <alan@wakatime.com>
 ;; Website: https://wakatime.com
 ;; Keywords: calendar, comm
-;; Package-Version: 20161003.729
+;; Package-Version: 20161006.431
 ;; Version: 1.0.2
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -189,12 +189,12 @@
              )
              (when (= 102 exit-status)
                ; If we are retrying already, error out
-               (if retrying
+               (if ,retrying
                    (error "WakaTime Error (%s)" exit-status)
                  ; otherwise, ask for an API key and call ourselves
                  ; recursively
                  (wakatime-prompt-api-key)
-                 (wakatime-call savep t)
+                 (wakatime-call ,savep t)
                )
              )
            )
