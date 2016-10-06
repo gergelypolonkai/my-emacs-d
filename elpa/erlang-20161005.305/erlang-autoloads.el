@@ -1,9 +1,9 @@
 ;;; erlang-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "erlang" "erlang.el" (22490 24938 259400 312000))
+;;;### (autoloads nil "erlang" "erlang.el" (22518 4433 253987 51000))
 ;;; Generated autoloads from erlang.el
 
 (autoload 'erlang-mode "erlang" "\
@@ -118,8 +118,8 @@ editing control characters:
 
 ;;;***
 
-;;;### (autoloads nil "erlang-start" "erlang-start.el" (22490 24938
-;;;;;;  243400 358000))
+;;;### (autoloads nil "erlang-start" "erlang-start.el" (22518 4433
+;;;;;;  225986 910000))
 ;;; Generated autoloads from erlang-start.el
 
 (let ((a '("\\.erl\\'" . erlang-mode)) (b '("\\.hrl\\'" . erlang-mode))) (or (assoc (car a) auto-mode-alist) (setq auto-mode-alist (cons a auto-mode-alist))) (or (assoc (car b) auto-mode-alist) (setq auto-mode-alist (cons b auto-mode-alist))))
@@ -132,7 +132,7 @@ editing control characters:
 
 ;;;### (autoloads nil nil ("erlang-eunit.el" "erlang-flymake.el"
 ;;;;;;  "erlang-pkg.el" "erlang-skels-old.el" "erlang-skels.el" "erlang-test.el"
-;;;;;;  "erlang_appwiz.el") (22490 24938 297767 827000))
+;;;;;;  "erlang_appwiz.el") (22518 4433 269987 132000))
 
 ;;;***
 
