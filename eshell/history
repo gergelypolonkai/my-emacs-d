@@ -2,3 +2,34 @@ hub
 hub ci-status
 hub ci-status
 hub ci-status
+scp sw_report.html 5250:
+../..
+ls
+Projects/python
+ls
+mkdir dyn-dashboar
+mv dyn-dashboar/ dyn-dashboard
+ls
+cd dyn-dashboard/
+ls
+virtualenv venv
+venv/bin/pip install django
+venv/bin/django-admin.py createproject --help
+venv/bin/django-admin.py 
+venv/bin/django-admin.py createproject
+venv/bin/django-admin.py startproject
+venv/bin/django-admin.py startproject dyndashboard .
+ls
+ls venv
+venv/bin/pip freeze
+venv/bin/pip install --upgrade pip
+venv/bin/pip freeze
+venv/bin/pip freeze > requirements.txt
+venv/bin/python manage.py startapp accounts
+venv/bin/python manage.py check
+..
+venv/bin/python manage.py check
+venv/bin/python manage.py check
+venv/bin/python manage.py runserver
+venv/bin/python manage.py makemigrations
+venv/bin/python manage.py runserver
