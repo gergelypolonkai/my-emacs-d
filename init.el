@@ -188,7 +188,6 @@
 (setq user-mail-address "gergely@polonkai.eu")
 
 ;; Load some custom libraries
-(require 'whitespace)
 (require 'thingatpt)
 (require 'helm-config)
 (require 'xlicense)
@@ -198,6 +197,15 @@
 (require 'zone)
 (require 'magithub)
 (require 'origami)
+
+;; Whitespace mode
+;;
+;; It is turned on by default, and can be toggled with F10
+(use-package whitespace
+  :config
+  (global-whitespace-mode t)
+  :bind
+  (([f10] . global-whitespace-mode)))
 (use-package smartparens-config
   :ensure smartparens
   :config
@@ -343,7 +351,6 @@
 (define-key origami-mode-map (kbd "x") 'origami-reset)
 
 ;; Set up some global minor modes
-(global-whitespace-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
 (global-origami-mode t)
 (show-paren-mode t)
