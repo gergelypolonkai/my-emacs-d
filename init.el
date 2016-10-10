@@ -226,8 +226,6 @@
 ;; Custom key bindings
 (global-set-key (kbd "C-x _") 'maximize-window)
 ;; Some terminals don’t interpret Alt-Up/Down as M-<up/down>.
-(global-set-key (kbd "ESC <up>") 'move-line-up)
-(global-set-key (kbd "ESC <down>") 'move-line-down)
 (global-set-key (kbd "C-c C-y") 'duplicate-line)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
