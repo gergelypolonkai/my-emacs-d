@@ -138,8 +138,7 @@
  '(savehist-mode t)
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
- '(tab-width 4)
- '(wakatime-cli-path "/usr/local/bin/wakatime")
+ '(tab-width 4))
 
 ;; Custom face settings
 (custom-set-faces
@@ -398,6 +397,13 @@
             (lambda ()
               (if (display-graphic-p) org-bullets-mode))))
 
+;; Waka-waka
+(use-package wakatime-mode
+  :init
+  (setq-default wakatime-cli-path "/usr/local/bin/wakatime")
+  :config
+  (global-wakatime-mode t))
+
 (use-package ace-window
   :bind
   (("M-p" . ace-window)))
@@ -415,9 +421,6 @@
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Waka-waka
-(add-hook 'after-init-hook 'global-wakatime-mode)
 
 ;; `c-mode' settings
 (add-hook 'c-mode-hook
