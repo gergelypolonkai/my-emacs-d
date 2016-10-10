@@ -229,6 +229,12 @@
   :config
   (setq-default save-place t)
   (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
+
+;; Nyanyanyanyanya
+(use-package nyan-prompt
+  :config
+  (add-hook 'eshell-load-hook 'nyan-prompt-enable))
+
 (use-package smartparens-config
   :ensure smartparens
   :config
@@ -283,8 +289,6 @@
 
 ; Nyanyanyanyanya
 (add-hook 'after-init-hook 'nyan-mode)
-
-(add-hook 'eshell-load-hook 'nyan-prompt-enable)
 
 (setq zone-programs [zone-nyan])
 (zone-when-idle 60)
