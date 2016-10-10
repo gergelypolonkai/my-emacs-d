@@ -342,6 +342,10 @@
   :config
   (helm-projectile-on))
 
+(use-package drag-stuff
+  :config
+  (drag-stuff-global-mode t))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -434,7 +438,6 @@
 (show-paren-mode t)
 (global-git-gutter-mode t)
 (global-prettify-symbols-mode t)
-(drag-stuff-global-mode t)
 
 ;; Enable some functions
 (put 'downcase-region 'disabled nil)
