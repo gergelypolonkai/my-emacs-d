@@ -219,6 +219,11 @@
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
+(use-package eshell
+  :config
+  (add-hook 'eshell-mode-hook
+            (lambda () (local-set-key (kbd "C-d") #'eshell-C-d))))
+
 ;; Save place
 (use-package saveplace
   :config
@@ -427,10 +432,6 @@
        (171 187)    ; «»
        (187 171)    ; »«
       ))
-
-;; Setup eshell
-(add-hook 'eshell-mode-hook
-          (lambda () (local-set-key (kbd "C-d") #'eshell-C-d)))
 
 ;; Stuff to do after initialization is done
 
