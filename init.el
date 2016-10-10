@@ -192,7 +192,6 @@
 (require 'helm-config)
 (require 'xlicense)
 (require 'linum)
-(require 'magithub)
 (require 'origami)
 
 ;; Whitespace mode
@@ -251,6 +250,8 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   :bind
   (("C-x g" . magit-status)))
+
+(use-package magithub)
 
 (use-package ag
   :bind
