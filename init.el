@@ -244,6 +244,11 @@
   (setq zone-programs [zone-nyan])
   (zone-when-idle 60))
 
+(use-package ag
+  :bind
+  (("C-x M-a" . ag)
+   ("C-x C-M-a" . ag-regexp)))
+
 (use-package smartparens-config
   :ensure smartparens
   :config
@@ -361,8 +366,6 @@
 (global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x ~") 'toggle-char-case)
-(global-set-key (kbd "C-x M-a") 'ag)
-(global-set-key (kbd "C-x C-M-a") 'ag-regexp)
 
 ;; Origami mode keys
 (define-key global-map (kbd "C-x C-z") 'origami-mode-map)
