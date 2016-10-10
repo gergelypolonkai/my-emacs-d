@@ -253,6 +253,10 @@
 
 (use-package magithub)
 
+(use-package magit-gerrit
+  :init
+  (setq-default magit-gerrit-remote "gerrit"))
+
 (use-package ag
   :bind
   (("C-x M-a" . ag)
@@ -288,10 +292,6 @@
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Magit settings
-(setq-default magit-gerrit-remote "gerrit")
-(add-hook 'after-init-hook (lambda () (require 'magit-gerrit)))
 
 ;; Helm settings
 (setq helm-M-x-fuzzy-match t
