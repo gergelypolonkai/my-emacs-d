@@ -42,9 +42,6 @@
       (".#*" "*.so" "*~")))))
  '(foreground-color "#5c5cff")
  '(global-hl-line-mode t)
- '(helm-gtags-auto-update t)
- '(helm-gtags-ignore-case t)
- '(helm-gtags-path-style (quote relative))
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
@@ -219,6 +216,25 @@
               (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
                 (ggtags-mode t)))))
 
+(use-package helm-gtags
+  :init
+  (setq-default helm-gtags-auto-update t
+                helm-gtags-ignore-case t
+                helm-gtags-path-style 'relative)
+  :config
+  (add-hook 'c-mode-hook
+            (lambda ()
+              (helm-gtags-mode t)))
+  :bind
+  (:map helm-gtags-mode-map
+   ("M-t" . helm-gtags-find-tag)
+   ("M-r" . helm-gtags-find-rtag)
+   ("M-s" . helm-gtags-find-symbol)
+   ("M-g M-p" . helm-gtags-parse-file)
+   ("C-c <" . helm-gtags-previous-history)
+   ("C-c >" . helm-gtags-next-history)
+   ("M-," . helm-gtags-pop-stack)))
+
 ;; Whitespace mode
 ;;
 ;; It is turned on by default, and can be toggled with F10
@@ -333,24 +349,12 @@
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Helm settings
-(eval-after-load "helm-gtags"
-  '(progn
-     (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
-     (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
-     (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
-     (define-key helm-gtags-mode-map (kbd "M-g M-p") 'helm-gtags-parse-file)
-     (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-     (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
-
 ;; Waka-waka
 (add-hook 'after-init-hook 'global-wakatime-mode)
 
 ;; `c-mode' settings
 (add-hook 'c-mode-hook
           (lambda ()
-            (helm-gtags-mode t)
             (which-func-mode)
             (flyspell-prog-mode)))
 (add-hook 'c-mode-common-hook
