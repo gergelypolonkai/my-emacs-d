@@ -191,7 +191,6 @@
 (require 'thingatpt)
 (require 'helm-config)
 (require 'xlicense)
-(require 'multiple-cursors)
 (require 'saveplace)
 (require 'linum)
 (require 'zone)
@@ -206,6 +205,20 @@
   (global-whitespace-mode t)
   :bind
   (([f10] . global-whitespace-mode)))
+
+;; Multiple cursors
+(use-package multiple-cursors
+  :config
+  (add-hook 'multiple-cursors-mode-enabled-hook
+            (lambda ()
+              (setq blink-matching-paren nil)))
+  (add-hook 'multiple-cursors-mode-disabled-hook
+            (lambda ()
+              (setq blink-matching-paren t)))
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this)))
 (use-package smartparens-config
   :ensure smartparens
   :config
@@ -319,10 +332,6 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-i") 'helm-swoop)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "M-(") 'æ-enclose-region)
 (global-set-key (kbd "C-x w") 'webjump)
 (global-set-key (kbd "<C-return>") 'open-line-below)
@@ -370,14 +379,6 @@
 ;; Enable some functions
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-
-;; Disable `blink-matching-paren' in `multiple-cursors-mode'
-(add-hook 'multiple-cursors-mode-enabled-hook
-          (lambda ()
-            (setq blink-matching-paren nil)))
-(add-hook 'multiple-cursors-mode-disabled-hook
-          (lambda ()
-            (setq blink-matching-paren t)))
 
 ;; org-mode settings
 (add-hook 'org-mode-hook
