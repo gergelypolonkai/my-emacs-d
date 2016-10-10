@@ -244,6 +244,14 @@
   (setq zone-programs [zone-nyan])
   (zone-when-idle 60))
 
+;; Magit and friends
+(use-package magit
+  :init
+  (setq magit-auto-revert-mode nil)
+  (setq magit-last-seen-setup-instructions "1.4.0")
+  :bind
+  (("C-x g" . magit-status)))
+
 (use-package ag
   :bind
   (("C-x M-a" . ag)
@@ -281,8 +289,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Magit settings
-(setq magit-auto-revert-mode nil)
-(setq magit-last-seen-setup-instructions "1.4.0")
 (setq-default magit-gerrit-remote "gerrit")
 (add-hook 'after-init-hook (lambda () (require 'magit-gerrit)))
 
@@ -368,7 +374,6 @@
 (global-set-key (kbd "<C-S-return>") 'open-line-above)
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 (global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
-(global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x ~") 'toggle-char-case)
 
 ;; Origami mode keys
