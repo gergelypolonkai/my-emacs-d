@@ -191,7 +191,6 @@
 (require 'thingatpt)
 (require 'helm-config)
 (require 'xlicense)
-(require 'saveplace)
 (require 'linum)
 (require 'zone)
 (require 'magithub)
@@ -219,6 +218,12 @@
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
+
+;; Save place
+(use-package saveplace
+  :config
+  (setq-default save-place t)
+  (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
 (use-package smartparens-config
   :ensure smartparens
   :config
@@ -418,10 +423,6 @@
        (171 187)    ; «»
        (187 171)    ; »«
       ))
-
-;; Setup `save-place'
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
 ;; Setup eshell
 (add-hook 'eshell-mode-hook
