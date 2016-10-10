@@ -262,6 +262,10 @@
   :config
   (fiplr-clear-cache))
 
+(use-package smart-mode-line
+  :config
+  (sml/setup))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -389,7 +393,6 @@
 (show-paren-mode t)
 (projectile-global-mode)
 (global-git-gutter-mode t)
-(sml/setup)
 (global-prettify-symbols-mode t)
 (drag-stuff-global-mode t)
 
