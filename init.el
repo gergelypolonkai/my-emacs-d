@@ -160,7 +160,6 @@
 (require 'thingatpt)
 (require 'xlicense)
 (require 'linum)
-(require 'origami)
 
 (use-package helm
   :init
@@ -280,6 +279,28 @@
 (use-package magit-gerrit
   :init
   (setq-default magit-gerrit-remote "gerrit"))
+
+(use-package origami
+  :ensure t
+  :demand
+  :config
+  (define-prefix-command 'origami-mode-map)
+  (global-set-key (kbd "C-x C-z") 'origami-mode-map)
+  (global-origami-mode)
+  :bind
+  (:map origami-mode-map
+   ("o" . origami-open-node)
+   ("O" . origami-open-node-recursively)
+   ("c" . origami-close-node)
+   ("C" . origami-close-node-recursively)
+   ("a" . origami-toggle-node)
+   ("A" . origami-recursively-toggle-node)
+   ("R" . origami-open-all-nodes)
+   ("M" . origami-close-all-nodes)
+   ("v" . origami-show-only-node)
+   ("k" . origami-previous-fold)
+   ("j" . origami-forward-fold)
+   ("x" . origami-reset)))
 
 (use-package ag
   :bind
@@ -452,24 +473,7 @@
 (global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
 (global-set-key (kbd "C-x ~") 'toggle-char-case)
 
-;; Origami mode keys
-(define-key global-map (kbd "C-x C-z") 'origami-mode-map)
-(define-prefix-command 'origami-mode-map)
-(define-key origami-mode-map (kbd "o") 'origami-open-node)
-(define-key origami-mode-map (kbd "O") 'origami-open-node-recursively)
-(define-key origami-mode-map (kbd "c") 'origami-close-node)
-(define-key origami-mode-map (kbd "C") 'origami-close-node-recursively)
-(define-key origami-mode-map (kbd "a") 'origami-toggle-node)
-(define-key origami-mode-map (kbd "A") 'origami-recursively-toggle-node)
-(define-key origami-mode-map (kbd "R") 'origami-open-all-nodes)
-(define-key origami-mode-map (kbd "M") 'origami-close-all-nodes)
-(define-key origami-mode-map (kbd "v") 'origami-show-only-node)
-(define-key origami-mode-map (kbd "k") 'origami-previous-fold)
-(define-key origami-mode-map (kbd "j") 'origami-forward-fold)
-(define-key origami-mode-map (kbd "x") 'origami-reset)
-
 ;; Set up some global minor modes
-(global-origami-mode t)
 (show-paren-mode t)
 (global-prettify-symbols-mode t)
 
