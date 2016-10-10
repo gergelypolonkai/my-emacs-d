@@ -231,6 +231,10 @@
   (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
 
 ;; Nyanyanyanyanya
+(use-package nyan-mode
+  :config
+  (nyan-mode t))
+
 (use-package nyan-prompt
   :config
   (add-hook 'eshell-load-hook 'nyan-prompt-enable))
@@ -288,8 +292,6 @@
      (define-key company-active-map (kbd "C-:") 'helm-company)))
 
 ; Nyanyanyanyanya
-(add-hook 'after-init-hook 'nyan-mode)
-
 (setq zone-programs [zone-nyan])
 (zone-when-idle 60)
 
