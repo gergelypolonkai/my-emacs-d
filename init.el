@@ -206,6 +206,10 @@
    ("C-x C-f" . helm-find-files)
    ("C-x b" . helm-mini)))
 
+(use-package helm-swoop
+  :bind
+  (("M-i" . helm-swoop)))
+
 
 ;; Whitespace mode
 ;;
@@ -383,7 +387,6 @@
 (global-set-key (kbd "C-x _") 'maximize-window)
 ;; Some terminals don’t interpret Alt-Up/Down as M-<up/down>.
 (global-set-key (kbd "C-c C-y") 'duplicate-line)
-(global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-(") 'æ-enclose-region)
 (global-set-key (kbd "C-x w") 'webjump)
 (global-set-key (kbd "<C-return>") 'open-line-below)
