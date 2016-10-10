@@ -189,10 +189,23 @@
 
 ;; Load some custom libraries
 (require 'thingatpt)
-(require 'helm-config)
 (require 'xlicense)
 (require 'linum)
 (require 'origami)
+
+(use-package helm
+  :init
+  (require 'helm-config)
+  (setq helm-M-x-fuzzy-match t
+        helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t)
+  :config
+  (helm-mode t)
+  :bind
+  (("M-x" . helm-M-x)
+   ("C-x C-f" . helm-find-files)
+   ("C-x b" . helm-mini)))
+
 
 ;; Whitespace mode
 ;;
@@ -307,9 +320,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Helm settings
-(setq helm-M-x-fuzzy-match t
-      helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match t)
 (eval-after-load "helm-gtags"
   '(progn
      (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
@@ -319,7 +329,6 @@
      (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
-(helm-mode 1)
 
 ;; Waka-waka
 (add-hook 'after-init-hook 'global-wakatime-mode)
@@ -374,9 +383,6 @@
 (global-set-key (kbd "C-x _") 'maximize-window)
 ;; Some terminals don’t interpret Alt-Up/Down as M-<up/down>.
 (global-set-key (kbd "C-c C-y") 'duplicate-line)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-(") 'æ-enclose-region)
 (global-set-key (kbd "C-x w") 'webjump)
