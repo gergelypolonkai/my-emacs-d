@@ -335,6 +335,12 @@
   :config
   (projectile-global-mode t))
 
+(use-package helm-projectile
+  :init
+  (setq projectile-completion-system 'helm)
+  :config
+  (helm-projectile-on))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -428,10 +434,6 @@
 (global-git-gutter-mode t)
 (global-prettify-symbols-mode t)
 (drag-stuff-global-mode t)
-
-;; Projectile settings
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
 
 ;; Don’t allow tabs to be inserted during indentation
 (setq-default indent-tabs-mode nil)
