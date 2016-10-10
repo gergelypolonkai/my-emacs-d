@@ -233,6 +233,10 @@
   (add-hook 'markdown-mode-hook
             'turn-on-smartparens-strict-mode))
 
+(use-package fiplr
+  :config
+  (fiplr-clear-cache))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -431,7 +435,6 @@
 ;; Stuff to do after initialization is done
 
 ;; TODO: Unordered stuff
-(add-hook 'after-init-hook 'fiplr-clear-cache)
 (add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode))
 (add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
