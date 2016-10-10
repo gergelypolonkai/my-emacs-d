@@ -192,7 +192,6 @@
 (require 'helm-config)
 (require 'xlicense)
 (require 'linum)
-(require 'zone)
 (require 'magithub)
 (require 'origami)
 
@@ -238,6 +237,12 @@
 (use-package nyan-prompt
   :config
   (add-hook 'eshell-load-hook 'nyan-prompt-enable))
+
+;; Zone!
+(use-package zone
+  :config
+  (setq zone-programs [zone-nyan])
+  (zone-when-idle 60))
 
 (use-package smartparens-config
   :ensure smartparens
@@ -290,10 +295,6 @@
   '(progn
      (define-key company-mode-map (kbd "C-:") 'helm-company)
      (define-key company-active-map (kbd "C-:") 'helm-company)))
-
-; Nyanyanyanyanya
-(setq zone-programs [zone-nyan])
-(zone-when-idle 60)
 
 ;; Waka-waka
 (add-hook 'after-init-hook 'global-wakatime-mode)
