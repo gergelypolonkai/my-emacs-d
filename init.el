@@ -279,6 +279,15 @@
   :config
   (sml/setup))
 
+(use-package company
+  :bind
+  (:map company-mode-map
+   ("C-:" . helm-company)
+   :map company-active-map
+   ("C-:" . helm-company))
+  :config
+  (global-company-mode t))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -307,10 +316,6 @@
      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
 (helm-mode 1)
-(eval-after-load 'company
-  '(progn
-     (define-key company-mode-map (kbd "C-:") 'helm-company)
-     (define-key company-active-map (kbd "C-:") 'helm-company)))
 
 ;; Waka-waka
 (add-hook 'after-init-hook 'global-wakatime-mode)
@@ -394,7 +399,6 @@
 (define-key origami-mode-map (kbd "x") 'origami-reset)
 
 ;; Set up some global minor modes
-(add-hook 'after-init-hook 'global-company-mode)
 (global-origami-mode t)
 (show-paren-mode t)
 (projectile-global-mode)
