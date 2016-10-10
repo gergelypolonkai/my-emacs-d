@@ -199,10 +199,13 @@
 (require 'magithub)
 (require 'origami)
 (use-package smartparens-config
-             :ensure smartparens
-             :config
-             (progn
-               (show-smartparens-global-mode t)))
+  :ensure smartparens
+  :config
+  (show-smartparens-global-mode t)
+  (add-hook 'prog-mode-hook
+            'turn-on-smartparens-strict-mode)
+  (add-hook 'markdown-mode-hook
+            'turn-on-smartparens-strict-mode))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
@@ -299,12 +302,6 @@
   "My C Programming Style")
 (c-add-style "PERSONAL" my-c-style)
 (setq c-offset-alist '((member-init-intro . ++)))
-
-;; smartparen stuff
-(add-hook 'prog-mode-hook
-          'turn-on-smartparens-strict-mode)
-(add-hook 'markdown-mode-hook
-          'turn-on-smartparens-strict-mode)
 
 ;; Custom key bindings
 (global-set-key (kbd "C-x _") 'maximize-window)
