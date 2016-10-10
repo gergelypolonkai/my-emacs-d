@@ -27,6 +27,7 @@
  '(ediff-merge-split-window-function (quote split-window-horizontally))
  '(ediff-split-window-function (quote split-window-vertically))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(eww-search-prefix "https://www.google.com/?q=")
  '(fiplr-ignored-globs
    (quote
     ((directories
