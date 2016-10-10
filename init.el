@@ -23,7 +23,13 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279"
+     "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223"
+     "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa"
+     "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e"
+     "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365"
+     "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6"
+     default)))
  '(ediff-merge-split-window-function (quote split-window-horizontally))
  '(ediff-split-window-function (quote split-window-vertically))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
@@ -74,13 +80,90 @@
      ("e6h" . "http://www.e6h.org/packages/"))))
  '(package-selected-packages
    (quote
-    (typescript-mode sx spinner queue projectile-direnv pcache origami org-projectile org-jira org-bullets ng2-mode marshal logito ht gh use-package smartparens git-timemachine gobgen goto-last-change wakatime-mode command-log-mode magithub nyan-prompt zone-nyan helm-google helm-projectile helm-spotify helm-swoop helm-unicode id-manager identica-mode mc-extras multiple-cursors electric-spacing flycheck-pkg-config focus git-messenger gitconfig github-notifier gnome-calendar gnugo google helm-chrome helm-company helm-flycheck electric-case emamux flycheck drag-stuff django-manage hyde org-jekyll smart-mode-line-powerline-theme yaml-mode xlicense vala-mode sass-mode nyan-mode muse markdown-mode mark magit-gerrit json-mode js2-mode jinja2-mode helm-make helm-gtags helm-flyspell helm-ag go-mode gitignore-mode gitconfig-mode git-gutter ggtags fiplr erlang django-mode company-shell company-quickhelp company-c-headers coffee-mode buffer-move ag)))
- '(safe-local-variable-values
-   (quote
-    ((company-clang-arguments "-I.." "-I/home/polesz/jhbuild/install/include/atk-1.0" "-I/home/polesz/jhbuild/install/include/at-spi-2.0" "-I/home/polesz/jhbuild/install/include/at-spi2-atk/2.0" "-I/home/polesz/jhbuild/install/include/cairo" "-I/home/polesz/jhbuild/install/include/gdk-pixbuf-2.0" "-I/home/polesz/jhbuild/install/include/gio-unix-2.0/" "-I/home/polesz/jhbuild/install/include/glib-2.0" "-I/home/polesz/jhbuild/install/include/gtk-3.0" "-I/home/polesz/jhbuild/install/include/harfbuzz" "-I/home/polesz/jhbuild/install/include/libgda-5.0" "-I/home/polesz/jhbuild/install/include/libgda-5.0/libgda" "-I/home/polesz/jhbuild/install/include/librsvg-2.0" "-I/home/polesz/jhbuild/install/include/libsoup-2.4" "-I/home/polesz/jhbuild/install/include/pango-1.0" "-I/home/polesz/jhbuild/install/include/swe-glib" "-I/home/polesz/jhbuild/install/include/webkitgtk-4.0" "-I/home/polesz/jhbuild/install/lib/glib-2.0/include" "-I/usr/include/dbus-1.0" "-I/usr/include/freetype2" "-I/usr/include/libdrm" "-I/usr/include/libpng16" "-I/usr/include/libxml2" "-I/usr/include/pixman-1" "-I/usr/lib64/dbus-1.0/include")
-     (company-clang-arguments "-I.." "-I/home/polesz/jhbuild/install/include" "-I/home/polesz/jhbuild/install/include/atk-1.0" "-I/home/polesz/jhbuild/install/include/at-spi-2.0" "-I/home/polesz/jhbuild/install/include/at-spi2-atk/2.0" "-I/home/polesz/jhbuild/install/include/cairo" "-I/home/polesz/jhbuild/install/include/gdk-pixbuf-2.0" "-I/home/polesz/jhbuild/install/include/gio-unix-2.0/" "-I/home/polesz/jhbuild/install/include/glib-2.0" "-I/home/polesz/jhbuild/install/include/gtk-3.0" "-I/home/polesz/jhbuild/install/include/harfbuzz" "-I/home/polesz/jhbuild/install/include/libgda-5.0" "-I/home/polesz/jhbuild/install/include/libgda-5.0/libgda" "-I/home/polesz/jhbuild/install/include/librsvg-2.0" "-I/home/polesz/jhbuild/install/include/libsoup-2.4" "-I/home/polesz/jhbuild/install/include/pango-1.0" "-I/home/polesz/jhbuild/install/include/swe-glib" "-I/home/polesz/jhbuild/install/include/webkitgtk-4.0" "-I/home/polesz/jhbuild/install/lib/glib-2.0/include" "-I/usr/include/dbus-1.0" "-I/usr/include/freetype2" "-I/usr/include/libdrm" "-I/usr/include/libpng16" "-I/usr/include/libxml2" "-I/usr/include/pixman-1" "-I/usr/lib64/dbus-1.0/include")
-     (company-clang-arguments "-I/home/polesz/jhbuild/install/include" "-I/home/polesz/jhbuild/install/include/atk-1.0" "-I/home/polesz/jhbuild/install/include/at-spi-2.0" "-I/home/polesz/jhbuild/install/include/at-spi2-atk/2.0" "-I/home/polesz/jhbuild/install/include/cairo" "-I/home/polesz/jhbuild/install/include/gdk-pixbuf-2.0" "-I/home/polesz/jhbuild/install/include/gio-unix-2.0/" "-I/home/polesz/jhbuild/install/include/glib-2.0" "-I/home/polesz/jhbuild/install/include/gtk-3.0" "-I/home/polesz/jhbuild/install/include/harfbuzz" "-I/home/polesz/jhbuild/install/include/libgda-5.0" "-I/home/polesz/jhbuild/install/include/libgda-5.0/libgda" "-I/home/polesz/jhbuild/install/include/librsvg-2.0" "-I/home/polesz/jhbuild/install/include/libsoup-2.4" "-I/home/polesz/jhbuild/install/include/pango-1.0" "-I/home/polesz/jhbuild/install/include/swe-glib" "-I/home/polesz/jhbuild/install/include/webkitgtk-4.0" "-I/home/polesz/jhbuild/install/lib/glib-2.0/include" "-I/usr/include/dbus-1.0" "-I/usr/include/freetype2" "-I/usr/include/libdrm" "-I/usr/include/libpng16" "-I/usr/include/libxml2" "-I/usr/include/pixman-1" "-I/usr/lib64/dbus-1.0/include")
-     (company-clang-arguments "-I/usr/include/glib-2.0"))))
+    (ag
+     buffer-move
+     coffee-mode
+     command-log-mode
+     company-c-headers
+     company-quickhelp
+     company-shell
+     django-manage
+     django-mode
+     drag-stuff
+     electric-case
+     electric-spacing
+     emamux
+     erlang
+     fiplr
+     flycheck
+     flycheck-pkg-config
+     focus
+     ggtags
+     gh
+     git-gutter
+     git-messenger
+     git-timemachine
+     gitconfig
+     gitconfig-mode
+     github-notifier
+     gitignore-mode
+     gnome-calendar
+     gnugo
+     go-mode
+     gobgen
+     google
+     goto-last-change
+     helm-ag
+     helm-chrome
+     helm-company
+     helm-flycheck
+     helm-flyspell
+     helm-google
+     helm-gtags
+     helm-make
+     helm-projectile
+     helm-spotify
+     helm-swoop
+     helm-unicode
+     ht
+     hyde
+     id-manager
+     identica-mode
+     jinja2-mode
+     js2-mode
+     json-mode
+     logito
+     magit-gerrit
+     magithub
+     mark
+     markdown-mode
+     marshal
+     mc-extras
+     multiple-cursors
+     muse
+     ng2-mode
+     nyan-mode
+     nyan-prompt
+     org-bullets
+     org-jekyll
+     org-jira
+     org-projectile
+     origami
+     pcache
+     projectile-direnv
+     queue
+     sass-mode
+     smart-mode-line-powerline-theme
+     smartparens
+     spinner
+     sx
+     typescript-mode
+     use-package
+     vala-mode
+     wakatime-mode
+     xlicense
+     yaml-mode
+     zone-nyan)))
  '(savehist-mode t)
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
