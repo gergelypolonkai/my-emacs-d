@@ -61,7 +61,7 @@
  '(org-ellipsis "…#")
  '(org-mobile-directory
    (concat user-documents-directory
-           (convert-standard-filename "/orgmode/")))
+           (convert-standard-filename "/orgmode/mobile/")))
  '(org-mobile-inbox-for-pull
    (concat user-documents-directory
            (convert-standard-filename "/orgmode/from-mobile.org")))
