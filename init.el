@@ -288,6 +288,10 @@
   :config
   (global-company-mode t))
 
+(use-package projectile
+  :config
+  (projectile-global-mode t))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -401,7 +405,6 @@
 ;; Set up some global minor modes
 (global-origami-mode t)
 (show-paren-mode t)
-(projectile-global-mode)
 (global-git-gutter-mode t)
 (global-prettify-symbols-mode t)
 (drag-stuff-global-mode t)
