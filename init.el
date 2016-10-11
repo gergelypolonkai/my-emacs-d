@@ -285,7 +285,9 @@
   (add-hook 'prog-mode-hook
             'turn-on-smartparens-strict-mode)
   (add-hook 'markdown-mode-hook
-            'turn-on-smartparens-strict-mode))
+            'turn-on-smartparens-strict-mode)
+  :bind
+  (([f9] . smartparens-strict-mode)))
 
 (use-package fiplr
   :config
