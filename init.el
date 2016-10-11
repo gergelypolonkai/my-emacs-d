@@ -167,7 +167,6 @@
  '(sml/theme (quote powerline))
  '(tab-width 4)
  '(wakatime-cli-path "/usr/local/bin/wakatime")
- '(zone-nyan-hide-progress t))
 
 ;; Custom face settings
 (custom-set-faces
@@ -280,6 +279,10 @@
   (add-hook 'eshell-load-hook 'nyan-prompt-enable))
 
 ;; Zone!
+(use-package zone-nyan
+  :init
+  (setq-default zone-nyan-hide-progress t))
+
 (use-package zone
   :config
   (setq zone-programs [zone-nyan])
