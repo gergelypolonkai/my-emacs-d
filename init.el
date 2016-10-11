@@ -156,7 +156,6 @@
  '(savehist-mode t)
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
- '(sml/theme (quote powerline))
  '(tab-width 4)
  '(wakatime-cli-path "/usr/local/bin/wakatime")
 
@@ -325,6 +324,8 @@
   (fiplr-clear-cache))
 
 (use-package smart-mode-line
+  :init
+  (setq-default sml/theme 'powerline)
   :config
   (sml/setup))
 
