@@ -13,5 +13,10 @@
 /recentf
 /url/
 
+# History-related files. It’s a real pain merging them together
+/history
+/eshell/history
+/eshell/lastdir
+
 # Stack exchange. This file contains the auth token for SX sites
 /.sx/
