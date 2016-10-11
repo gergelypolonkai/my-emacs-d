@@ -34,12 +34,6 @@
  '(ediff-split-window-function (quote split-window-vertically))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(eww-search-prefix "https://www.google.com/?q=")
- '(fiplr-ignored-globs
-   (quote
-    ((directories
-      (".git" ".svn" ".hg" ".bzr"))
-     (files
-      (".#*" "*.so" "*~")))))
  '(foreground-color "#5c5cff")
  '(global-hl-line-mode t)
  '(indent-tabs-mode nil)
@@ -319,6 +313,13 @@
   (([f9] . smartparens-strict-mode)))
 
 (use-package fiplr
+  :init
+  (setq-default fiplr-ignored-globs
+                (quote
+                 ((directories
+                   (".git" ".svn" ".hg" ".bzr"))
+                  (files
+                   (".#*" "*.so" "*~")))))
   :config
   (fiplr-clear-cache))
 
