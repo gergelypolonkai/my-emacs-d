@@ -44,8 +44,6 @@
  '(nxml-attribute-indent 4)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 4)
- '(nyan-animate-nyancat t)
- '(nyan-wavy-trail t)
  '(org-crypt-key "B0740C4C")
  '(org-default-notes-file
    (concat user-documents-directory
@@ -265,6 +263,9 @@
 
 ;; Nyanyanyanyanya
 (use-package nyan-mode
+  :init
+  (setq-default nyan-animate-nyancat t
+                nyan-wavy-trail t)
   :config
   (nyan-mode t))
 
