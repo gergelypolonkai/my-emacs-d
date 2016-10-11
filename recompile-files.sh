@@ -7,8 +7,9 @@ for file in `find -iname '*.elc'`
 do
     elc=`basename "$file"`
     el="${elc%c}"
+    dir=`dirname "$file"`
 
-    cd `dirname "$file"`
+    cd "$dir"
 
     if test "$elc" -ot "$el"
     then
