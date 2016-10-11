@@ -209,6 +209,15 @@
   :bind
   (("M-i" . helm-swoop)))
 
+(use-package ggtags
+  :config
+  (add-hook 'c-mode-hook
+            (lambda ()
+              (ggtags-mode t)))
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                (ggtags-mode t)))))
 
 ;; Whitespace mode
 ;;
@@ -342,7 +351,6 @@
 (add-hook 'c-mode-hook
           (lambda ()
             (helm-gtags-mode t)
-            (ggtags-mode 1)
             (which-func-mode)
             (flyspell-prog-mode)))
 (add-hook 'c-mode-common-hook
@@ -351,9 +359,7 @@
             (c-set-style "PERSONAL")
             (setq tab-width 4
                   indent-tabs-mode nil)
-            (c-toggle-auto-newline 1)
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
+            (c-toggle-auto-newline 1)))
 (add-hook 'c-initialization-hook
           (lambda ()
             (define-key c-mode-base-map (kbd "C-m") 'c-context-line-break)))
