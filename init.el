@@ -346,6 +346,11 @@
   :config
   (drag-stuff-global-mode t))
 
+;; Git gutter
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode t))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -436,7 +441,6 @@
 ;; Set up some global minor modes
 (global-origami-mode t)
 (show-paren-mode t)
-(global-git-gutter-mode t)
 (global-prettify-symbols-mode t)
 
 ;; Enable some functions
