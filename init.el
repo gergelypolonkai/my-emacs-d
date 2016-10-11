@@ -42,6 +42,7 @@
       (".#*" "*.so" "*~")))))
  '(foreground-color "#5c5cff")
  '(global-hl-line-mode t)
+ '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
@@ -434,9 +435,6 @@
 (global-git-gutter-mode t)
 (global-prettify-symbols-mode t)
 (drag-stuff-global-mode t)
-
-;; Don’t allow tabs to be inserted during indentation
-(setq-default indent-tabs-mode nil)
 
 ;; Enable some functions
 (put 'downcase-region 'disabled nil)
