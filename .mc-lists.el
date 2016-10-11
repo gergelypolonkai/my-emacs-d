@@ -8,6 +8,7 @@
         c-indent-line-or-region
         electric-newline-and-maybe-indent
         indent-for-tab-command
+        kill-region
         org-cycle
         org-end-of-line
         org-kill-line
