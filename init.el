@@ -42,7 +42,6 @@
       (".#*" "*.so" "*~")))))
  '(foreground-color "#5c5cff")
  '(global-hl-line-mode t)
- '(global-whitespace-mode t)
  '(helm-gtags-auto-update t)
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
