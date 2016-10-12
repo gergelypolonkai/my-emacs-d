@@ -361,6 +361,12 @@
                                            (convert-standard-filename
                                             "/orgmode/from-mobile.org"))))
 
+(use-package org-bullets
+  :init
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (if (display-graphic-p) org-bullets-mode))))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -456,11 +462,6 @@
 ;; Enable some functions
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-
-;; org-mode settings
-(add-hook 'org-mode-hook
-          (lambda ()
-            (if (display-graphic-p) (org-bullets-mode t))))
 
 ;; text-mode settings
 (add-hook 'text-mode-hook (lambda () (visual-line-mode t)))
