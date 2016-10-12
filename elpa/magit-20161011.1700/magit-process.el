@@ -791,7 +791,8 @@ as argument."
           default-dir (process-get arg 'default-dir)
           section     (process-get arg 'section)
           arg         (process-exit-status arg)))
-  (magit-process-unset-mode-line)
+  (with-current-buffer process-buf
+    (magit-process-unset-mode-line))
   (when (featurep 'dired)
     (dired-uncache default-dir))
   (when (buffer-live-p process-buf)
@@ -866,8 +867,8 @@ as argument."
 
 ;;; magit-process.el ends soon
 
-(define-obsolete-variable-alias 'magit-git-output-coding-system
-  'magit-log-output-coding-system "Magit 2.9.0")
+(define-obsolete-variable-alias 'magit-log-output-coding-system
+  'magit-git-output-coding-system "Magit 2.9.0")
 
 (provide 'magit-process)
 ;; Local Variables:

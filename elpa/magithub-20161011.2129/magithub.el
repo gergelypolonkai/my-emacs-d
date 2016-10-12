@@ -5,7 +5,7 @@
 ;; Author: Sean Allred <code@seanallred.com>
 ;; Keywords: git, tools, vc
 ;; Homepage: https://github.com/vermiculus/magithub
-;; Package-Requires: ((emacs "24.3") (magit "2.8.0") (git-commit "20160821.1338") (with-editor "20160828.1025") (cl-lib "1.0") (s "20160711.525"))
+;; Package-Requires: ((emacs "24.4") (magit "2.8.0") (git-commit "20160821.1338") (with-editor "20160828.1025") (cl-lib "1.0") (s "20160711.525"))
 ;; Package-Version: 0.1
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -48,6 +48,7 @@
 (require 'with-editor)
 (require 'cl-lib)
 (require 's)
+(require 'dash)
 
 (require 'magithub-core)
 (require 'magithub-issue)
@@ -197,11 +198,10 @@ This function will return nil for matches to
 
 (defun magithub-check-buffer ()
   "If this is a buffer created by hub, perform setup."
-  (let ((type (magithub--edit-file-type buffer-file-name)))
-    (when type
-      (magithub-setup-edit-buffer)
-      (when (eq type 'issue)
-        (magithub-setup-new-issue-buffer)))))
+  (--when-let (magithub--edit-file-type buffer-file-name)
+    (magithub-setup-edit-buffer)
+    (when (eq it 'issue)
+      (magithub-setup-new-issue-buffer))))
 (add-hook 'find-file-hook #'magithub-check-buffer)
 
 (defun magithub-clone--get-repo ()

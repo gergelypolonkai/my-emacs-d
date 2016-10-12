@@ -25,13 +25,13 @@
 ;;; Code:
 
 (require 'magit)
+(require 'dash)
 
 (defun magithub-github-repository-p ()
   "Non-nil if \"origin\" points to GitHub or a whitelisted domain."
-  (let ((url (magit-get "remote" "origin" "url")))
-    (when url
-      (cl-some (lambda (domain) (s-contains? domain url))
-               (cons "github.com" (magit-get-all "hub" "host"))))))
+  (--when-let (magit-get "remote" "origin" "url")
+    (-some? (lambda (domain) (s-contains? domain it))
+            (cons "github.com" (magit-get-all "hub" "host")))))
 
 (defun magithub-repo-id ()
   "Returns an identifying value for this repository."
@@ -111,6 +111,17 @@ and returns its output as a list of lines."
   "Quickly execute COMMAND with ARGS."
   (ignore (magithub--command-output command args)))
 
+(defun magithub-hub-version ()
+  "Return the `hub' version as a string."
+  (-> "--version"
+      magithub--command-output cadr
+      split-string cddr car
+      (split-string "-") car))
+
+(defun magithub-hub-version-at-least (version-string)
+  "Return t if `hub's version is at least VERSION-STRING."
+  (version<= version-string (magithub-hub-version)))
+
 (defun magithub--meta-new-issue ()
   "Open a new Magithub issue.
 See /.github/ISSUE_TEMPLATE.md in this repository."
@@ -118,7 +129,7 @@ See /.github/ISSUE_TEMPLATE.md in this repository."
   (browse-url "https://github.com/vermiculus/magithub/issues/new"))
 
 (defun magithub--meta-help ()
-  "Opens Magithub help."
+  "Open Magithub help."
   (interactive)
   (browse-url "https://gitter.im/vermiculus/magithub"))
 
@@ -179,6 +190,21 @@ See /.github/ISSUE_TEMPLATE.md in this repository."
         trace))))
     (magithub--meta-new-issue))
   (error err-message))
+
+(defmacro magithub--deftoggle (name hook func s)
+  "Define a section-toggle command."
+  (declare (indent defun))
+  `(defun ,name ()
+     ,(concat "Toggle the " s " section.")
+     (interactive)
+     (if (memq ,func ,hook)
+         (remove-hook ',hook ,func)
+       (if (executable-find magithub-hub-executable)
+           (add-hook ',hook ,func t)
+         (message ,(concat "`hub' isn't installed, so I can't insert " s))))
+     (when (derived-mode-p 'magit-status-mode)
+       (magit-refresh))
+     (memq ,func ,hook)))
 
 (provide 'magithub-core)
 ;;; magithub-core.el ends here

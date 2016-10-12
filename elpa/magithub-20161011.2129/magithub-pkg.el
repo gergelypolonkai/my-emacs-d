@@ -1,5 +1,5 @@
-(define-package "magithub" "20161004.523" "Magit interfaces for GitHub"
-  '((emacs "24.3")
+(define-package "magithub" "20161011.2129" "Magit interfaces for GitHub"
+  '((emacs "24.4")
     (magit "2.8.0")
     (git-commit "20160821.1338")
     (with-editor "20160828.1025")
