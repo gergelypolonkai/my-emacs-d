@@ -5,8 +5,6 @@
 (add-to-list 'load-path (concat
                          user-emacs-directory
                          (convert-standard-filename "lisp/")))
-;; Load xdg-paths; it is needed to set `org-directory'
-(require 'xdg-paths)
 
 ;; Custom stuff
 (custom-set-variables
@@ -44,24 +42,6 @@
  '(nxml-attribute-indent 4)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 4)
- '(org-crypt-key "B0740C4C")
- '(org-default-notes-file
-   (concat user-documents-directory
-           (convert-standard-filename "/orgmode/notes.org")))
- '(org-directory
-   (concat user-documents-directory
-           (convert-standard-filename "/orgmode/")))
- '(org-agenda-files
-   (concat user-documents-directory
-           (convert-standard-filename "/orgmode/agenda_files")))
- '(org-ellipsis "…#")
- '(org-mobile-directory
-   (concat user-documents-directory
-           (convert-standard-filename "/orgmode/mobile/")))
- '(org-mobile-inbox-for-pull
-   (concat user-documents-directory
-           (convert-standard-filename "/orgmode/from-mobile.org")))
- '(org-startup-folded (quote content))
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
@@ -356,6 +336,30 @@
 (use-package git-gutter
   :config
   (global-git-gutter-mode t))
+
+;; Org mode
+(use-package org
+  :ensure t
+  :init
+  (require 'xdg-paths)
+  (setq-default org-crypt-key "B0740C4C"
+                org-default-notes-file (concat user-documents-directory
+                                               (convert-standard-filename
+                                                "/orgmode/notes.org"))
+                org-directory (concat user-documents-directory
+                                      (convert-standard-filename "/orgmode/"))
+                org-agenda-files (concat user-documents-directory
+                                         (convert-standard-filename
+                                          "/orgmode/agenda_files"))
+                org-ellipsis "…#"
+                org-startup-folded 'content
+                org-mobile-directory (concat user-documents-directory
+                                             (convert-standard-filename
+                                              "/orgmode/mobile/"))
+                org-mobile-inbox-for-pull (concat
+                                           user-documents-directory
+                                           (convert-standard-filename
+                                            "/orgmode/from-mobile.org"))))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
