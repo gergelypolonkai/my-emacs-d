@@ -310,13 +310,18 @@
   (sml/setup))
 
 (use-package company
+  :config
+  (global-company-mode))
+
+(use-package helm-company
+  :after
+  company
+  helm
   :bind
   (:map company-mode-map
    ("C-:" . helm-company)
    :map company-active-map
-   ("C-:" . helm-company))
-  :config
-  (global-company-mode t))
+   ("C-:" . helm-company)))
 
 (use-package projectile
   :config
