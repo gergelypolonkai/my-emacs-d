@@ -49,7 +49,9 @@
      ("e6h" . "http://www.e6h.org/packages/"))))
  '(package-selected-packages
    (quote
-    (ag
+    (ace-window
+     ag
+     avy
      buffer-move
      coffee-mode
      command-log-mode
@@ -371,6 +373,10 @@
   (add-hook 'org-mode-hook
             (lambda ()
               (if (display-graphic-p) org-bullets-mode))))
+
+(use-package ace-window
+  :bind
+  (("M-p" . ace-window)))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
