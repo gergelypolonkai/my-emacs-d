@@ -406,7 +406,7 @@
 
 (use-package ace-window
   :bind
-  (("M-p" . ace-window)))
+  (("M-P" . ace-window)))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
