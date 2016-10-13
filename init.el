@@ -212,10 +212,13 @@
 ;;
 ;; It is turned on by default, and can be toggled with F10
 (use-package whitespace
+  :ensure t
+  :demand
   :config
-  (global-whitespace-mode t)
+  (global-whitespace-mode 1)
   :bind
-  (([f10] . global-whitespace-mode)))
+  (([f10] . whitespace-mode)
+   ([(shift f10)] . global-whitespace-mode)))
 
 ;; Multiple cursors
 (use-package multiple-cursors
