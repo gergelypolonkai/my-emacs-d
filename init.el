@@ -401,9 +401,95 @@
   :bind
   (([f8] . focus-mode)))
 
+(use-package coffee-mode)
+
+(use-package command-log-mode)
+
+(use-package company-c-headers)
+
+(use-package company-quickhelp
+  :config
+  (add-hook 'company-mode-hook 'company-quickhelp-mode))
+
+(use-package company-shell)
+
+(use-package electric-case
+  :config
+  (add-hook 'c-mode-hook ''electric-case-c-init))
+
+(use-package electric-spacing
+  :bind
+  (([f7] . electric-spacing-mode)))
+
+(use-package emamux)
+
+(use-package flycheck)
+
+(use-package flycheck-pkg-config)
+
+(use-package git-messenger)
+
+(use-package git-timemachine
+  :bind
+  (([f6] . git-timemachine-toggle)))
+
+(use-package gitconfig-mode)
+
+(use-package gitignore-mode)
+
+(use-package gnugo)
+
+(use-package gobgen)
+
+(use-package goto-last-change
+  :bind
+  (("M-g /" . goto-last-change)))
+
+(use-package helm-chrome)
+
+(use-package helm-flycheck)
+
+(use-package helm-flyspell)
+
+(use-package helm-github-stars)
+
+(use-package helm-google)
+
+(use-package helm-spotify)
+
+(use-package hyde)
+
+(use-package id-manager)
+
+(use-package identica-mode)
+
+(use-package jinja2-mode)
+
+(use-package js2-mode)
+
+(use-package json-mode)
+
+(use-package mark)
+
+(use-package markdown-mode)
+
+(use-package mc-extras)
+
+(use-package ng2-mode)
+
+(use-package org-projectile)
+
+(use-package sass-mode)
+
 (use-package smart-mode-line-powerline-theme
   :init
   (setq-default sml/theme 'powerline))
+
+(use-package spinner)
+
+(use-package sx)
+
+(use-package typescript-mode)
 
 (use-package vala-mode
   :init
