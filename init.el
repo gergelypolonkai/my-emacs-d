@@ -237,9 +237,10 @@
   :config
   (nyan-mode t))
 
-(use-package nyan-prompt
-  :config
-  (add-hook 'eshell-load-hook 'nyan-prompt-enable))
+(when (display-graphic-p)
+  (use-package nyan-prompt
+    :config
+    (add-hook 'eshell-load-hook 'nyan-prompt-enable)))
 
 ;; Zone!
 (use-package zone-nyan
