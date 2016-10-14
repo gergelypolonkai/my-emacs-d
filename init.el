@@ -57,7 +57,6 @@
      command-log-mode
      company
      company-c-headers
-     company-quickhelp
      company-shell
      diminish
      drag-stuff
@@ -87,7 +86,6 @@
      helm-google
      helm-gtags
      helm-projectile
-     helm-spotify
      helm-swoop
      helm-unicode
      hyde
@@ -407,10 +405,6 @@
 
 (use-package company-c-headers)
 
-(use-package company-quickhelp
-  :config
-  (add-hook 'company-mode-hook 'company-quickhelp-mode))
-
 (use-package company-shell)
 
 (use-package electric-case
@@ -454,8 +448,6 @@
 (use-package helm-github-stars)
 
 (use-package helm-google)
-
-(use-package helm-spotify)
 
 (use-package hyde)
 
