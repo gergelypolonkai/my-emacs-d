@@ -146,7 +146,6 @@
 
 ;; Load some custom libraries
 (require 'thingatpt)
-(require 'xlicense)
 (require 'linum)
 
 (use-package helm
@@ -403,6 +402,8 @@
 (use-package focus
   :bind
   (([f8] . focus-mode)))
+
+(use-package xlicense)
 
 ;; Load my own functions
 (load "gnu-c-header.el")
