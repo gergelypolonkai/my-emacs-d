@@ -55,11 +55,11 @@
      avy
      coffee-mode
      command-log-mode
+     company
      company-c-headers
      company-quickhelp
      company-shell
      diminish
-     django-mode
      drag-stuff
      electric-case
      electric-spacing
@@ -98,6 +98,7 @@
      jinja2-mode
      js2-mode
      json-mode
+     magit
      magit-gerrit
      magithub
      mark
@@ -107,12 +108,15 @@
      ng2-mode
      nyan-mode
      nyan-prompt
+     org
      org-bullets
      org-jekyll
      org-projectile
      origami
+     projectile
      projectile-direnv
      sass-mode
+     smart-mode-line
      smart-mode-line-powerline-theme
      smartparens
      spinner
