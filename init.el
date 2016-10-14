@@ -306,8 +306,6 @@
   (([f9] . smartparens-strict-mode)))
 
 (use-package smart-mode-line
-  :init
-  (setq-default sml/theme 'powerline)
   :config
   (sml/setup))
 
@@ -402,6 +400,10 @@
 (use-package focus
   :bind
   (([f8] . focus-mode)))
+
+(use-package smart-mode-line-powerline-theme
+  :init
+  (setq-default sml/theme 'powerline))
 
 (use-package xlicense)
 
