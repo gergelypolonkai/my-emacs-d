@@ -405,7 +405,15 @@
   :init
   (setq-default sml/theme 'powerline))
 
+(use-package vala-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode)))
+
 (use-package xlicense)
+
+(use-package yaml-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
@@ -520,9 +528,6 @@
 ;; Stuff to do after initialization is done
 
 ;; TODO: Unordered stuff
-(add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode))
-(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 ; Temporary show line numbers while in the goto minibuffer. Copied
 ; from http://whattheemacsd.com/key-bindings.el-01.html
