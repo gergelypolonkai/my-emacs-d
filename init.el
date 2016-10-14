@@ -52,35 +52,28 @@
     (ace-window
      ag
      avy
-     buffer-move
      coffee-mode
      command-log-mode
      company-c-headers
      company-quickhelp
      company-shell
-     django-manage
      django-mode
      drag-stuff
      electric-case
      electric-spacing
      emamux
-     erlang
-     fiplr
      flycheck
      flycheck-pkg-config
      focus
      ggtags
-     gh
      git-gutter
      git-messenger
      git-timemachine
      gitconfig
      gitconfig-mode
-     github-notifier
      gitignore-mode
      gnome-calendar
      gnugo
-     go-mode
      gobgen
      google
      goto-last-change
@@ -91,38 +84,30 @@
      helm-flyspell
      helm-google
      helm-gtags
-     helm-make
      helm-projectile
      helm-spotify
      helm-swoop
      helm-unicode
-     ht
      hyde
      id-manager
      identica-mode
      jinja2-mode
      js2-mode
      json-mode
-     logito
      magit-gerrit
      magithub
      mark
      markdown-mode
-     marshal
      mc-extras
      multiple-cursors
-     muse
      ng2-mode
      nyan-mode
      nyan-prompt
      org-bullets
      org-jekyll
-     org-jira
      org-projectile
      origami
-     pcache
      projectile-direnv
-     queue
      sass-mode
      smart-mode-line-powerline-theme
      smartparens
@@ -317,17 +302,6 @@
             'turn-on-smartparens-strict-mode)
   :bind
   (([f9] . smartparens-strict-mode)))
-
-(use-package fiplr
-  :init
-  (setq-default fiplr-ignored-globs
-                (quote
-                 ((directories
-                   (".git" ".svn" ".hg" ".bzr"))
-                  (files
-                   (".#*" "*.so" "*~")))))
-  :config
-  (fiplr-clear-cache))
 
 (use-package smart-mode-line
   :init
