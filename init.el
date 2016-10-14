@@ -71,10 +71,8 @@
      git-gutter
      git-messenger
      git-timemachine
-     gitconfig
      gitconfig-mode
      gitignore-mode
-     gnome-calendar
      gnugo
      gobgen
      google
@@ -110,11 +108,9 @@
      nyan-prompt
      org
      org-bullets
-     org-jekyll
      org-projectile
      origami
      projectile
-     projectile-direnv
      sass-mode
      smart-mode-line
      smart-mode-line-powerline-theme
