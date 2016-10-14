@@ -290,10 +290,9 @@
    ("j" . origami-forward-fold)
    ("x" . origami-reset)))
 
-(use-package ag
+(use-package helm-ag
   :bind
-  (("C-x M-a" . ag)
-   ("C-x C-M-a" . ag-regexp)))
+  (("C-x M-a" . helm-ag)))
 
 (use-package smartparens-config
   :ensure smartparens
