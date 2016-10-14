@@ -308,6 +308,7 @@
 
 (use-package smartparens-config
   :ensure smartparens
+  :demand
   :config
   (show-smartparens-global-mode t)
   (add-hook 'prog-mode-hook
