@@ -78,11 +78,13 @@
      gobgen
      google
      goto-last-change
+     helm
      helm-ag
      helm-chrome
      helm-company
      helm-flycheck
      helm-flyspell
+     helm-github-stars
      helm-google
      helm-gtags
      helm-projectile
