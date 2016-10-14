@@ -401,6 +401,10 @@
 (use-package diminish
   :defer t)
 
+(use-package focus
+  :bind
+  (([f8] . focus-mode)))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
