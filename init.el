@@ -47,7 +47,7 @@
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")
-     ("e6h" . "http://www.e6h.org/packages/"))))
+     ("marmalade" . "http://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
     (ace-window
