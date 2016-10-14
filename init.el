@@ -293,8 +293,8 @@
   :bind
   (("C-x M-a" . helm-ag)))
 
-(use-package smartparens-config
-  :ensure smartparens
+(use-package smartparens
+  :ensure t
   :demand
   :config
   (show-smartparens-global-mode t)
