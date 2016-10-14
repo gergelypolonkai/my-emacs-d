@@ -57,6 +57,7 @@
      company-c-headers
      company-quickhelp
      company-shell
+     diminish
      django-mode
      drag-stuff
      electric-case
@@ -393,6 +394,9 @@
    ("M-g f" . avy-goto-line)
    ("M-g w" . avy-goto-word-1)
    ("M-g e" . avy-goto-word-0)))
+
+(use-package diminish
+  :defer t)
 
 ;; Load my own functions
 (load "gnu-c-header.el")
