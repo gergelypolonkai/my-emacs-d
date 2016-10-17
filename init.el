@@ -105,6 +105,7 @@
      org-bullets
      org-projectile
      origami
+     plantuml-mode
      projectile
      sass-mode
      smart-mode-line
@@ -506,6 +507,8 @@
   (setq-default ediff-merge-split-window-function 'split-window-horizontally
                 ediff-split-window-function 'split-window-vertically
                 ediff-window-setup-function 'ediff-setup-windows-plain))
+
+(use-package plantuml-mode)
 
 ;; Load my own functions
 (load "gnu-c-header.el")
