@@ -103,11 +103,16 @@
      nyan-prompt
      org
      org-bullets
+     org-jekyll
      org-projectile
+     org-random-todo
+     org-rtm
      origami
      plantuml-mode
      projectile
      sass-mode
+     simple-rtm
+     slack
      smart-mode-line
      smart-mode-line-powerline-theme
      smartparens
