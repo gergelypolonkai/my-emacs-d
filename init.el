@@ -508,7 +508,15 @@
                 ediff-split-window-function 'split-window-vertically
                 ediff-window-setup-function 'ediff-setup-windows-plain))
 
-(use-package plantuml-mode)
+(use-package plantuml-mode
+  :init
+  (setq plantuml-jar-path
+        (expand-file-name "~/Downloads/plantuml.jar"))
+  (defvaralias 'org-plantuml-jar-path 'plantuml-jar-path)
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((plantuml . t))))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
