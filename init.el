@@ -86,6 +86,7 @@
      helm-google
      helm-gtags
      helm-projectile
+     helm-smex
      helm-swoop
      helm-unicode
      hyde
@@ -497,6 +498,10 @@
 (use-package yaml-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
+(use-package helm-smex
+  :bind
+  (("M-X" . helm-smex)))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
