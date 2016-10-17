@@ -31,7 +31,6 @@
  '(eww-search-prefix "https://www.google.com/?q=")
  '(foreground-color "#5c5cff")
  '(global-hl-line-mode t)
- '(helm-github-stars-username "gergelypolonkai")
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
@@ -448,7 +447,9 @@
 
 (use-package helm-flyspell)
 
-(use-package helm-github-stars)
+(use-package helm-github-stars
+  :init
+  (setq-default helm-github-stars-username "gergelypolonkai"))
 
 (use-package helm-google)
 
