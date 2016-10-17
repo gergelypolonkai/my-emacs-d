@@ -135,7 +135,8 @@
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:inherit nil :background "gray25"))))
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
- '(whitespace-line ((t (:inherit nil :background "orange")))))
+ '(whitespace-line ((t (:inherit nil :background "orange"))))
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 (set-face-attribute 'default t :font "Hack-10")
 (set-frame-font "Hack-10" nil t)
 
@@ -379,6 +380,9 @@
   (global-wakatime-mode t))
 
 (use-package ace-window
+  :init
+  (setq aw-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n)
+        aw-background nil)
   :bind
   (("M-P" . ace-window)))
 
