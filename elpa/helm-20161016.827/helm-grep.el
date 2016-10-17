@@ -417,10 +417,12 @@ It is intended to use as a let-bound variable, DON'T set this globaly.")
                                  ;; we need to pass an empty string
                                  ;; to types to avoid error.
                                  (or include "")))
-         (smartcase         (if (helm-grep-use-ack-p) ""
-                              (unless (let ((case-fold-search nil))
-                                        (string-match-p
-                                         "[[:upper:]]" helm-pattern)) "i")))
+         (smartcase         (if (helm-grep-use-ack-p)
+                                ""
+                                (unless (let ((case-fold-search nil))
+                                          (string-match-p
+                                           "[[:upper:]]" helm-pattern))
+                                  "i")))
          (helm-grep-default-command
           (concat helm-grep-default-command " %m")) ; `%m' like multi.
          (patterns (split-string helm-pattern))
@@ -429,8 +431,10 @@ It is intended to use as a let-bound variable, DON'T set this globaly.")
               (cl-loop with pipcom = (pcase (helm-grep-command)
                                        ;; Use grep for GNU regexp based tools.
                                        ((or "grep" "zgrep" "git-grep")
-                                        (format "grep --color=always %s"
-                                                (if smartcase "-i" "")))
+                                        (replace-regexp-in-string
+                                         "\\s-\\'" ""
+                                         (format "grep --color=always %s"
+                                                 (if smartcase "-i" ""))))
                                        ;; Use ack-grep for PCRE based tools.
                                        ;; Sometimes ack-grep cmd is ack only.
                                        ((and (pred (string-match-p "ack")) ack)
@@ -1259,16 +1263,28 @@ If a prefix arg is given run grep on all buffers ignoring non--file-buffers."
      (format-spec helm-pdfgrep-default-read-command
                   (list (cons ?f fname) (cons ?p pageno))))))
 
-;;; AG - PT
+;;; AG - PT - RG
 ;;
 ;;  https://github.com/ggreer/the_silver_searcher
 ;;  https://github.com/monochromegane/the_platinum_searcher
+;;  https://github.com/BurntSushi/ripgrep
 
 (defcustom helm-grep-ag-command
   "ag --line-numbers -S --hidden --color --nogroup %s %s %s"
-  "The default command for AG or PT.
+  "The default command for AG, PT or RG.
+
 Takes three format specs, the first for type(s), the second for pattern
 and the third for directory.
+
+Here the command line to use with ripgrep:
+
+    rg --smart-case --no-heading --line-number %s %s %s
+
+If you want native color output with ripgrep (--color=always)
+you have to use a workaround as ripgrep is not supporting emacs
+dumb terminal, here it is:
+
+    TERM=eterm-color rg --color=always --smart-case --no-heading --line-number %s %s %s
 
 You must use an output format that fit with helm grep, that is:
 
@@ -1276,32 +1292,47 @@ You must use an output format that fit with helm grep, that is:
 
 The option \"--nogroup\" allow this.
 The option \"--line-numbers\" is also mandatory except with PT (not supported).
+For RG the options \"--no-heading\" and \"--line-number\" are the ones to use.
 
-You can use safely \"--color\" (default)."
+You can use safely \"--color\" (used by default) with AG and PT."
   :group 'helm-grep
   :type 'string)
 
 (defun helm-grep--ag-command ()
-  (car (split-string helm-grep-ag-command)))
+  (car (helm-remove-if-match
+        "\\`[A-Z]*=" (split-string helm-grep-ag-command))))
 
 (defun helm-grep-ag-get-types ()
   "Returns a list of AG types if available with AG version.
-See AG option \"--list-file-types\"."
+See AG option \"--list-file-types\"
+Ripgrep (rg) types are also supported if this backend is used."
   (with-temp-buffer
-    (when (equal (call-process (helm-grep--ag-command)
-                               nil t nil "--list-file-types") 0)
-      (goto-char (point-min))
-      (cl-loop while (re-search-forward "^ *\\(--[a-z]*\\)" nil t)
-               collect (match-string 1)))))
+    (let* ((com (helm-grep--ag-command))
+           (ripgrep (string= com "rg"))
+           (regex (if ripgrep "^\\(.*\\):" "^ *\\(--[a-z]*\\)"))
+           (prefix (if ripgrep "-t" "")))
+      (when (equal (call-process com
+                                 nil t nil
+                                 (if ripgrep
+                                     "--type-list" "--list-file-types")) 0)
+        (goto-char (point-min))
+        (cl-loop while (re-search-forward regex nil t)
+                 for type = (match-string 1)
+                 collect (cons type (concat prefix type)))))))
 
 (defun helm-grep-ag-prepare-cmd-line (pattern directory &optional type)
   "Prepare AG command line to search PATTERN in DIRECTORY.
 When TYPE is specified it is one of what returns `helm-grep-ag-get-types'
 if available with current AG version."
   (let* ((patterns (split-string pattern))
-         (pipe-cmd (cond ((executable-find "ack") "ack --color")
-                         ((executable-find "ack-grep") "ack-grep --color")
-                         (t "grep --perl-regexp --color=always")))
+         (smartcase (let ((case-fold-search nil))
+                      (string-match-p
+                       "[[:upper:]]" helm-pattern)))
+         (pipe-cmd (cond ((executable-find "ack") "ack --smart-case --color")
+                         ((executable-find "ack-grep") "ack-grep --smart-case --color")
+                         (t (replace-regexp-in-string
+                             "\\s-\\'" "" (format "grep --perl-regexp --color=always %s"
+                                                  (if smartcase "-i" ""))))))
          (cmd (format helm-grep-ag-command
                       (mapconcat 'identity type " ")
                       (shell-quote-argument (car patterns))
