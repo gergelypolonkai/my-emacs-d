@@ -114,3 +114,16 @@ Version 2016-02-16"
                     (looking-back eshell-prompt-regexp))
                (kill-buffer)
              (signal (car err) (cdr err))))))
+
+(defun æ-kill-or-copy-whole-line (kill)
+  "Kill or copy the whole line point is on.
+
+If KILL is non-nil, the line gets killed. Otherwise, it gets just
+copied to the kill-ring."
+  (interactive "P")
+
+  (if kill
+      (kill-whole-line)
+    (let ((beginning (progn (beginning-of-line) (point)))
+          (end (progn (end-of-line) (point))))
+      (copy-region-as-kill beginning end))))
