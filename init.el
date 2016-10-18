@@ -632,37 +632,3 @@
        (171 187)    ; «»
        (187 171)    ; »«
       ))
-
-;; Stuff to do after initialization is done
-
-;; TODO: Unordered stuff
-
-; Temporary show line numbers while in the goto minibuffer. Copied
-; from http://whattheemacsd.com/key-bindings.el-01.html
-(global-set-key [remap goto-line] 'goto-line-with-feedback)
-
-; TODO git-gutter-mode and linum-mode don’t play together well. This
-; is an attempt to make them nice to each other, but it seems futile.
-(defun æ-restore-goto-modes (linum-state gitgutter-state)
-  (linum-mode -1)
-  (git-gutter-mode -1)
-  (linum-mode linum-state)
-  (git-gutter-mode gitgutter-state))
-
-(defun goto-line-with-feedback ()
-  "Show line numbers temporarily, while prompting for the line
-  number input"
-
-  (interactive)
-
-  (let ((old-linum-mode linum-mode)
-        (old-gitgutter-mode git-gutter-mode))
-    (unwind-protect
-        (progn
-          ; Stay safe with git-gutter turned off
-          (git-gutter-mode -1)
-          ; Turn on linum, before asking for the line number
-          (linum-mode 1)
-          (goto-line (read-number "Goto line: "))
-          (æ-restore-goto-modes old-linum-mode old-gitgutter-mode))
-      (æ-restore-goto-modes old-linum-mode old-gitgutter-mode))))
