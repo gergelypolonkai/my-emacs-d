@@ -528,6 +528,8 @@
    'org-babel-load-languages
    '((plantuml . t))))
 
+(use-package org-random-todo)
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
