@@ -595,7 +595,6 @@
 
 ;; Custom key bindings
 (global-set-key (kbd "C-x _") 'maximize-window)
-;; Some terminals don’t interpret Alt-Up/Down as M-<up/down>.
 (global-set-key (kbd "C-c C-y") 'duplicate-line)
 (global-set-key (kbd "M-(") 'æ-enclose-region)
 (global-set-key (kbd "C-x w") 'webjump)
