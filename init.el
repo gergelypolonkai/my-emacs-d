@@ -604,6 +604,15 @@
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 (global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
 (global-set-key (kbd "C-x ~") 'toggle-char-case)
+(define-key isearch-mode-map (kbd "<C-return>")
+  #'isearch-exit-other-end)
+
+(defun isearch-exit-other-end ()
+  "Exit isearch, at the opposite end of the string"
+  (interactive)
+
+  (isearch-exit)
+  (goto-char isearch-other-end))
 
 ;; Set up some global minor modes
 (show-paren-mode t)
