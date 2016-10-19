@@ -1,5 +1,16 @@
-;; Initialize the package system
+;; Initialize the package system and use-package
+(require 'package)
+(add-to-list 'package-archives
+             '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;; Add path to my custom lisp functions
 (add-to-list 'load-path (concat
@@ -39,11 +50,6 @@
  '(nxml-attribute-indent 4)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 4)
- '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/")
-     ("marmalade" . "http://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
     (ace-window
