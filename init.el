@@ -372,7 +372,14 @@
                 org-mobile-inbox-for-pull (concat
                                            user-documents-directory
                                            (convert-standard-filename
-                                            "/orgmode/from-mobile.org"))))
+                                            "/orgmode/from-mobile.org")))
+  :config
+  (unless (boundp 'org-capture-templates)
+    (setq org-capture-templates nil))
+  (add-to-list 'org-capture-templates
+               '("p" "Blog post"
+                 entry (file+datetree (concat org-directory "blog.org"))
+                 "* %^{Title}  :blog:\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?")))
 
 (use-package org-bullets
   :init
