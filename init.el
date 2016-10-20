@@ -126,9 +126,11 @@
      typescript-mode
      use-package
      vala-mode
+     vala-snippets
      wakatime-mode
      xlicense
      yaml-mode
+     yasnippet
      zone-nyan)))
  '(savehist-mode t)
  '(sgml-basic-offset 4)
@@ -541,6 +543,14 @@
 (use-package calendar
   :init
   (setq calendar-week-start-day 1))
+
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
+(use-package vala-snippets
+  :after
+  yasnippet)
 
 ;; Load my own functions
 (load "gnu-c-header.el")
