@@ -55,6 +55,7 @@
     (ace-window
      ag
      avy
+     beacon
      coffee-mode
      command-log-mode
      company
@@ -567,6 +568,10 @@
 (use-package hungarian-holidays
   :config
   (hungarian-holidays-add))
+
+(use-package beacon
+  :config
+  (beacon-mode 1))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
