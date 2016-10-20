@@ -548,7 +548,13 @@
 
 (use-package calendar
   :init
-  (setq calendar-week-start-day 1))
+  (setq calendar-week-start-day 1
+        calendar-latitude 47.4
+        calendar-longitude 19.0
+        calendar-location-name "Budapest, Hungary"
+        calendar-time-zone 60
+        calendar-standard-time-zone-name "CET"
+        calendar-daylight-time-zone-name "CEST"))
 
 (use-package yasnippet
   :config
