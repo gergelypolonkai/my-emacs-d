@@ -13,11 +13,15 @@
         org-end-of-line
         org-kill-line
         org-self-insert-command
+        sp-backward-kill-word
+        sp-backward-delete-char
+        sp-delete-char
         ))
 
 (setq mc/cmds-to-run-once
       '(
         drag-stuff-right
         end-of-buffer
+        helm-M-x
         helm-find-files
         ))
