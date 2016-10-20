@@ -383,7 +383,8 @@
   (add-to-list 'org-capture-templates
                '("p" "Blog post"
                  entry (file+datetree (concat org-directory "blog.org"))
-                 "* %^{Title}  :blog:\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?")))
+                 "* %^{Title}  :blog:\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?"))
+  (setq org-time-stamp-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>")))
 
 (use-package org-bullets
   :init
