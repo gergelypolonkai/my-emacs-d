@@ -637,6 +637,9 @@
 (define-key isearch-mode-map (kbd "<C-return>")
   #'isearch-exit-other-end)
 
+
+;; Kudos goes to
+;; http://endlessparentheses.com/leave-the-cursor-at-start-of-match-after-isearch.html
 (defun isearch-exit-other-end ()
   "Exit isearch, at the opposite end of the string"
   (interactive)
