@@ -83,6 +83,8 @@
      helm-ag
      helm-chrome
      helm-company
+     helm-descbinds
+     helm-describe-modes
      helm-flycheck
      helm-flyspell
      helm-github-stars
@@ -581,6 +583,10 @@
   (add-hook 'text-mode-hook
             (lambda ()
               (flyspell-mode 1))))
+
+(use-package helm-descbinds)
+
+(use-package helm-describe-modes)
 
 ;; Load my own functions
 (load "gnu-c-header.el")
