@@ -223,12 +223,8 @@ You probably don't need to use this unless you know what you are doing."
 
 (defcustom helm-grep-ag-pipe-cmd-switches nil
   "A list of additional parameters to pass to grep-ag pipe command.
-You can use either grep or ack-grep backend, give options according
-to which backend you use.
-Here are the commands where you may want to add switches:
-
-    grep --perl-regexp --color=always
-    ack-grep --smart-case --color
+Use parameters compatibles with the backend you are using
+\(i.e AG for AG, PT for PT or RG for RG)
 
 You probably don't need to use this unless you know what you are doing."
   :group 'helm-grep
@@ -1351,20 +1347,12 @@ Ripgrep (rg) types are also supported if this backend is used."
 When TYPE is specified it is one of what returns `helm-grep-ag-get-types'
 if available with current AG version."
   (let* ((patterns (split-string pattern))
-         (smartcase (let ((case-fold-search nil))
-                      (string-match-p
-                       "[[:upper:]]" helm-pattern)))
          (pipe-switches (mapconcat 'identity helm-grep-ag-pipe-cmd-switches " "))
-         (pipe-cmd (helm-acond ((or (executable-find "ack")
-                                    (executable-find "ack-grep"))
-                                (replace-regexp-in-string
-                                 "\\s-\\'" ""
-                                 (format "%s --smart-case --color %s"
-                                         (helm-basename it)
-                                         pipe-switches)))
-                                (t (format "grep --perl-regexp --color=always%s %s"
-                                           (if smartcase " -i" "")
-                                           pipe-switches))))
+         (pipe-cmd (pcase (helm-grep--ag-command)
+                     ((and com (or "ag" "pt"))
+                      (format "%s -S --color%s" com (concat " " pipe-switches)))
+                     (`"rg" (format "TERM=eterm-color rg -S --color=always%s"
+                                    (concat " " pipe-switches)))))
          (cmd (format helm-grep-ag-command
                       (mapconcat 'identity type " ")
                       (shell-quote-argument (car patterns))
