@@ -91,6 +91,7 @@
      helm-smex
      helm-swoop
      helm-unicode
+     hungarian-holidays
      hyde
      id-manager
      identica-mode
@@ -555,6 +556,10 @@
 (use-package vala-snippets
   :after
   yasnippet)
+
+(use-package hungarian-holidays
+  :config
+  (hungarian-holidays-add))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
