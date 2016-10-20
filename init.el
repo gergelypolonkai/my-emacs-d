@@ -372,7 +372,8 @@
                 org-mobile-inbox-for-pull (concat
                                            user-documents-directory
                                            (convert-standard-filename
-                                            "/orgmode/from-mobile.org")))
+                                            "/orgmode/from-mobile.org"))
+                org-log-done 'time)
   :config
   (unless (boundp 'org-capture-templates)
     (setq org-capture-templates nil))
@@ -536,6 +537,10 @@
    '((plantuml . t))))
 
 (use-package org-random-todo)
+
+(use-package calendar
+  :init
+  (setq calendar-week-start-day 1))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
