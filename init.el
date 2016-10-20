@@ -466,7 +466,11 @@
 
 (use-package helm-flycheck)
 
-(use-package helm-flyspell)
+(use-package helm-flyspell
+  :demand
+  :bind
+  (:map flyspell-mode-map
+   ("C-M-i" . helm-flyspell-correct)))
 
 (use-package helm-github-stars
   :init
