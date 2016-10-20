@@ -573,6 +573,15 @@
   :config
   (beacon-mode 1))
 
+(use-package flyspell
+  :config
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (flyspell-prog-mode)))
+  (add-hook 'text-mode-hook
+            (lambda ()
+              (flyspell-mode 1))))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -590,8 +599,7 @@
 ;; `c-mode' settings
 (add-hook 'c-mode-hook
           (lambda ()
-            (which-func-mode)
-            (flyspell-prog-mode)))
+            (which-func-mode)))
 (add-hook 'c-mode-common-hook
           (lambda ()
             (local-set-key (kbd "C-c o") 'ff-find-other-file)
