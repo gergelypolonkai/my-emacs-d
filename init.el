@@ -305,7 +305,7 @@
 
 (use-package helm-ag
   :bind
-  (("C-x M-a" . helm-ag)))
+  (("C-x M-a" . helm-do-ag)))
 
 (use-package smartparens
   :ensure t
