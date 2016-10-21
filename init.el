@@ -580,11 +580,9 @@
 (use-package flyspell
   :config
   (add-hook 'prog-mode-hook
-            (lambda ()
-              (flyspell-prog-mode)))
+            'flyspell-prog-mode)
   (add-hook 'text-mode-hook
-            (lambda ()
-              (flyspell-mode 1))))
+            'flyspell-mode))
 
 (use-package helm-descbinds)
 
