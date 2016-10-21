@@ -42,7 +42,6 @@
  '(echo-keystrokes 0.1)
  '(eww-search-prefix "https://www.google.com/?q=")
  '(foreground-color "#5c5cff")
- '(global-hl-line-mode t)
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
@@ -608,6 +607,10 @@
 (use-package hungry-delete
   :config
   (global-hungry-delete-mode))
+
+(use-package hl-line
+  :config
+  (global-hl-line-mode))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
