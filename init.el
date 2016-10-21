@@ -616,6 +616,11 @@
   :config
   (setq eww-search-prefix "https://www.google.com/?q="))
 
+(use-package electric
+  :config
+  ;; This seems to be the default, but let’s make sure…
+  (electric-indent-mode 1))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
