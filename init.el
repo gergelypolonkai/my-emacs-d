@@ -40,7 +40,6 @@
      "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6"
      default)))
  '(echo-keystrokes 0.1)
- '(eww-search-prefix "https://www.google.com/?q=")
  '(foreground-color "#5c5cff")
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
@@ -611,6 +610,10 @@
 (use-package hl-line
   :config
   (global-hl-line-mode))
+
+(use-package eww
+  :config
+  (setq eww-search-prefix "https://www.google.com/?q="))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
