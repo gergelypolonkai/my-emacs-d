@@ -588,6 +588,10 @@
 
 (use-package helm-describe-modes)
 
+(use-package paren
+  :config
+  (show-paren-mode t))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -667,7 +671,6 @@
   (goto-char isearch-other-end))
 
 ;; Set up some global minor modes
-(show-paren-mode t)
 (global-prettify-symbols-mode t)
 
 ;; Enable some functions
