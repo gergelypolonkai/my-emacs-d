@@ -640,6 +640,7 @@
 (load "jekyll.el")
 (load "enclose-string.el")
 (load "buf-manipulation.el")
+(load "package-manip")
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -748,3 +749,6 @@
        (171 187)    ; «»
        (187 171)    ; »«
       ))
+
+;; Check for package upgrades every Monday so I don’t forget.
+(check-for-package-upgrades-on-day 1)
