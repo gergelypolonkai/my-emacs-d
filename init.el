@@ -39,6 +39,7 @@
      "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365"
      "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6"
      default)))
+ '(echo-keystrokes 0.1)
  '(eww-search-prefix "https://www.google.com/?q=")
  '(foreground-color "#5c5cff")
  '(global-hl-line-mode t)
