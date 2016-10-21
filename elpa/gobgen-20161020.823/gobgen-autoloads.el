@@ -3,11 +3,11 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "gobgen" "gobgen.el" (22514 20100 637300 679000))
+;;;### (autoloads nil "gobgen" "gobgen.el" (22537 49881 33308 505000))
 ;;; Generated autoloads from gobgen.el
 
 (autoload 'gobgen "gobgen" "\
-Create widgets window for GObject creation
+Create widgets window for GObject creation.
 
 \(fn)" t nil)
 
