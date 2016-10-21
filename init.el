@@ -60,6 +60,7 @@
      command-log-mode
      company
      company-c-headers
+     company-restclient
      company-shell
      diminish
      drag-stuff
@@ -123,6 +124,8 @@
      projectile
      rainbow-delimiters
      rainbow-mode
+     restclient
+     restclient-helm
      sass-mode
      simple-rtm
      smart-mode-line
@@ -620,6 +623,12 @@
   :config
   ;; This seems to be the default, but let’s make sure…
   (electric-indent-mode 1))
+
+(use-package restclient)
+
+(use-package company-restclient)
+
+(use-package restclient-helm)
 
 ;; Load my own functions
 (load "gnu-c-header.el")
