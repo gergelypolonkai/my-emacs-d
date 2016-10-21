@@ -95,6 +95,7 @@
      helm-swoop
      helm-unicode
      hungarian-holidays
+     hungry-delete
      hyde
      id-manager
      identica-mode
@@ -602,6 +603,10 @@
             #'rainbow-delimiters-mode))
 
 (use-package rainbow-mode)
+
+(use-package hungry-delete
+  :config
+  (global-hungry-delete-mode))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
