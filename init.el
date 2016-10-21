@@ -592,6 +592,10 @@
   :config
   (show-paren-mode t))
 
+(use-package autorevert
+  :config
+  (global-auto-revert-mode 1))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
