@@ -559,7 +559,10 @@
    'org-babel-load-languages
    '((plantuml . t))))
 
-(use-package org-random-todo)
+(use-package org-random-todo
+  :config
+  ;; Don’t bug me too often…
+  (setq org-random-todo-how-often 3600))
 
 (use-package calendar
   :init
