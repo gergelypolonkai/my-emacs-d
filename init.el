@@ -120,6 +120,8 @@
      origami
      plantuml-mode
      projectile
+     rainbow-delimiters
+     rainbow-mode
      sass-mode
      simple-rtm
      smart-mode-line
@@ -595,6 +597,13 @@
 (use-package autorevert
   :config
   (global-auto-revert-mode 1))
+
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'prog-mode-hook
+            #'rainbow-delimiters-mode))
+
+(use-package rainbow-mode)
 
 ;; Load my own functions
 (load "gnu-c-header.el")
