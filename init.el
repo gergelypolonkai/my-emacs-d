@@ -59,6 +59,7 @@
    (quote
     (ace-window
      ag
+     alert
      avy
      beacon
      coffee-mode
@@ -638,6 +639,10 @@
 (use-package company-restclient)
 
 (use-package restclient-helm)
+
+(use-package alert
+  :config
+  (setq alert-default-style 'notifications))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
