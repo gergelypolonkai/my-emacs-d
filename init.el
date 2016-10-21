@@ -583,8 +583,12 @@
   (hungarian-holidays-add))
 
 (use-package beacon
+  :demand
   :config
-  (beacon-mode 1))
+  (beacon-mode 1)
+  :bind
+  (:map gpolonkai/pers-map
+   ("b" . beacon-blink)))
 
 (use-package flyspell
   :config
@@ -703,7 +707,6 @@
 (global-set-key (kbd "C-x ~") 'toggle-char-case)
 (define-key isearch-mode-map (kbd "<C-return>")
   #'isearch-exit-other-end)
-
 
 ;; Kudos goes to
 ;; http://endlessparentheses.com/leave-the-cursor-at-start-of-match-after-isearch.html
