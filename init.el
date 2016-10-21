@@ -371,6 +371,7 @@
 ;; Org mode
 (use-package org
   :ensure t
+  :demand
   :init
   (require 'xdg-paths)
   (setq-default org-crypt-key "B0740C4C"
@@ -399,7 +400,10 @@
                '("p" "Blog post"
                  entry (file+datetree (concat org-directory "blog.org"))
                  "* %^{Title}  :blog:\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?"))
-  (setq org-time-stamp-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>")))
+  (setq org-time-stamp-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
+  :bind
+  (:map org-mode-map
+        ("SPC" . org-space-key)))
 
 (use-package org-bullets
   :init
@@ -658,6 +662,7 @@
 (load "enclose-string.el")
 (load "buf-manipulation.el")
 (load "package-manip")
+(load "text-manip")
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
