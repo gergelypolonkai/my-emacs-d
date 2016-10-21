@@ -13,6 +13,11 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Set up my personal keymap early so I can use it in use-package
+;; calls
+(define-prefix-command 'gpolonkai/pers-map)
+(define-key ctl-x-map "t" 'gpolonkai/pers-map)
+
 ;; Add path to my custom lisp functions
 (add-to-list 'load-path (concat
                          user-emacs-directory
