@@ -62,10 +62,12 @@
      alert
      avy
      beacon
+     cheatsheet
      coffee-mode
      command-log-mode
      company
      company-c-headers
+     company-emoji
      company-restclient
      company-shell
      diminish
