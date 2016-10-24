@@ -273,11 +273,11 @@
 ;; Zone!
 (use-package zone-nyan
   :init
+  (setq zone-programs [zone-nyan])
   (setq-default zone-nyan-hide-progress t))
 
 (use-package zone
   :config
-  (setq zone-programs [zone-nyan])
   (zone-when-idle 60))
 
 ;; Magit and friends
