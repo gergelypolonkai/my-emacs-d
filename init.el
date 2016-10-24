@@ -773,15 +773,16 @@
 ;; https://zhm.github.io/symbola/
 (defun --set-emoji-font (frame)
   "Adjust the font setting of FRAME so Emacs can display Emoji properly."
-  (if (eq system-type 'darwin)
-      ;; For NS/Cocoa
-      (set-fontset-font t 'symbol
-                        (font-spec :family "Apple Color Emoji")
-                        frame 'prepend)
-    ;; For Linux
-    (set-fontset-font t 'symbol
-                      (font-spec :family "Symbola")
-                      frame 'prepend)))
+  (when (fboundp 'set-fontset-font)
+    (if (eq system-type 'darwin)
+        ;; For NS/Cocoa
+        (set-fontset-font t 'symbol
+                          (font-spec :family "Apple Color Emoji")
+                          frame 'prepend)
+      ;; For Linux
+      (set-fontset-ont t 'symbol
+                       (font-spec :family "Symbola")
+                       frame 'prepend))))
 
 (use-package company-emoji
   :ensure t
