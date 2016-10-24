@@ -169,6 +169,7 @@
 (require 'thingatpt)
 
 (use-package helm
+  :ensure t
   :init
   (require 'helm-config)
   (setq helm-M-x-fuzzy-match t
@@ -182,10 +183,12 @@
    ("C-x b" . helm-mini)))
 
 (use-package helm-swoop
+  :ensure t
   :bind
   (("M-i" . helm-swoop)))
 
 (use-package ggtags
+  :ensure t
   :config
   (add-hook 'c-mode-hook
             (lambda ()
@@ -196,6 +199,7 @@
                 (ggtags-mode t)))))
 
 (use-package helm-gtags
+  :ensure t
   :init
   (setq-default helm-gtags-auto-update t
                 helm-gtags-ignore-case t
@@ -218,7 +222,6 @@
 ;;
 ;; It is turned on by default, and can be toggled with F10
 (use-package whitespace
-  :ensure t
   :demand
   :config
   (global-whitespace-mode 1)
@@ -228,6 +231,7 @@
 
 ;; Multiple cursors
 (use-package multiple-cursors
+  :ensure t
   :config
   (add-hook 'multiple-cursors-mode-enabled-hook
             (lambda ()
@@ -253,6 +257,7 @@
 
 ;; Nyanyanyanyanya
 (use-package nyan-mode
+  :ensure t
   :init
   (setq-default nyan-animate-nyancat t
                 nyan-wavy-trail t)
@@ -261,11 +266,13 @@
 
 (when (display-graphic-p)
   (use-package nyan-prompt
+    :ensure t
     :config
     (add-hook 'eshell-load-hook 'nyan-prompt-enable)))
 
 ;; Zone!
 (use-package zone-nyan
+  :ensure t
   :init
   (setq zone-programs [zone-nyan])
   (setq-default zone-nyan-hide-progress t))
@@ -276,15 +283,18 @@
 
 ;; Magit and friends
 (use-package magit
+  :ensure t
   :init
   (setq magit-auto-revert-mode nil)
   (setq magit-last-seen-setup-instructions "1.4.0")
   :bind
   (("C-x g" . magit-status)))
 
-(use-package magithub)
+(use-package magithub
+  :ensure t)
 
 (use-package magit-gerrit
+  :ensure t
   :init
   (setq-default magit-gerrit-remote "gerrit"))
 
@@ -311,6 +321,7 @@
    ("x" . origami-reset)))
 
 (use-package helm-ag
+  :ensure t
   :bind
   (("C-x M-a" . helm-do-ag)))
 
@@ -327,14 +338,17 @@
   (([f9] . smartparens-strict-mode)))
 
 (use-package smart-mode-line
+  :ensure t
   :config
   (sml/setup))
 
 (use-package company
+  :ensure t
   :config
   (global-company-mode))
 
 (use-package helm-company
+  :ensure t
   :after
   company
   helm
@@ -345,21 +359,25 @@
    ("C-S-j" . helm-company)))
 
 (use-package projectile
+  :ensure t
   :config
   (projectile-global-mode t))
 
 (use-package helm-projectile
+  :ensure t
   :init
   (setq projectile-completion-system 'helm)
   :config
   (helm-projectile-on))
 
 (use-package drag-stuff
+  :ensure t
   :config
   (drag-stuff-global-mode t))
 
 ;; Git gutter
 (use-package git-gutter
+  :ensure t
   :config
   (global-git-gutter-mode t))
 
@@ -403,6 +421,7 @@
    ("SPC" . org-space-key)))
 
 (use-package org-bullets
+  :ensure t
   :init
   (add-hook 'org-mode-hook
             (lambda ()
@@ -410,12 +429,14 @@
 
 ;; Waka-waka
 (use-package wakatime-mode
+  :ensure t
   :init
   (setq-default wakatime-cli-path "/usr/local/bin/wakatime")
   :config
   (global-wakatime-mode t))
 
 (use-package ace-window
+  :ensure t
   :init
   (setq aw-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n)
         aw-background nil)
@@ -423,6 +444,7 @@
   (("M-P" . ace-window)))
 
 (use-package avy
+  :ensure t
   :demand
   :config
   (avy-setup-default)
@@ -434,121 +456,165 @@
    ("M-g e" . avy-goto-word-0)))
 
 (use-package diminish
+  :ensure t
   :defer t)
 
 (use-package focus
+  :ensure t
   :bind
   (([f8] . focus-mode)))
 
-(use-package coffee-mode)
+(use-package coffee-mode
+  :ensure t)
 
-(use-package command-log-mode)
+(use-package command-log-mode
+  :ensure t)
 
-(use-package company-c-headers)
+(use-package company-c-headers
+  :ensure t)
 
-(use-package company-shell)
+(use-package company-shell
+  :ensure t)
 
 (use-package electric-case
+  :ensure t
   :config
   (add-hook 'c-mode-hook ''electric-case-c-init))
 
 (use-package electric-spacing
+  :ensure t
   :bind
   (([f7] . electric-spacing-mode)))
 
-(use-package emamux)
+(use-package emamux
+  :ensure t)
 
-(use-package flycheck)
+(use-package flycheck
+  :ensure t)
 
-(use-package flycheck-pkg-config)
+(use-package flycheck-pkg-config
+  :ensure t)
 
-(use-package git-messenger)
+(use-package git-messenger
+  :ensure t)
 
 (use-package git-timemachine
+  :ensure t
   :bind
   (([f6] . git-timemachine-toggle)))
 
-(use-package gitconfig-mode)
+(use-package gitconfig-mode
+  :ensure t)
 
-(use-package gitignore-mode)
+(use-package gitignore-mode
+  :ensure t)
 
-(use-package gnugo)
+(use-package gnugo
+  :ensure t)
 
-(use-package gobgen)
+(use-package gobgen
+  :ensure t)
 
 (use-package goto-last-change
+  :ensure t
   :bind
   (("M-g /" . goto-last-change)))
 
-(use-package helm-chrome)
+(use-package helm-chrome
+  :ensure t)
 
-(use-package helm-flycheck)
+(use-package helm-flycheck
+  :ensure t)
 
 (use-package helm-flyspell
+  :ensure t
   :demand
   :bind
   (:map flyspell-mode-map
    ("C-M-i" . helm-flyspell-correct)))
 
 (use-package helm-github-stars
+  :ensure t
   :init
   (setq-default helm-github-stars-username "gergelypolonkai"))
 
-(use-package helm-google)
+(use-package helm-google
+  :ensure t)
 
-(use-package hyde)
+(use-package hyde
+  :ensure t)
 
-(use-package id-manager)
+(use-package id-manager
+  :ensure t)
 
-(use-package identica-mode)
+(use-package identica-mode
+  :ensure t)
 
-(use-package jinja2-mode)
+(use-package jinja2-mode
+  :ensure t)
 
-(use-package js2-mode)
+(use-package js2-mode
+  :ensure t)
 
-(use-package json-mode)
+(use-package json-mode
+  :ensure t)
 
-(use-package markdown-mode)
+(use-package markdown-mode
+  :ensure t)
 
-(use-package mc-extras)
+(use-package mc-extras
+  :ensure t)
 
-(use-package ng2-mode)
+(use-package ng2-mode
+  :ensure t)
 
-(use-package org-projectile)
+(use-package org-projectile
+  :ensure t)
 
-(use-package sass-mode)
+(use-package sass-mode
+  :ensure t)
 
 (use-package smart-mode-line-powerline-theme
+  :ensure t
   :init
   (setq-default sml/theme 'powerline))
 
-(use-package spinner)
+(use-package spinner
+  :ensure t)
 
-(use-package sx)
+(use-package sx
+  :ensure t)
 
-(use-package typescript-mode)
+(use-package typescript-mode
+  :ensure t)
 
 (use-package vala-mode
+  :ensure t
   :init
   (add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode)))
 
-(use-package xlicense)
+(use-package xlicense
+  :ensure t)
 
 (use-package yaml-mode
+  :ensure t
   :init
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
 (use-package helm-smex
+  :ensure t
   :bind
   (("M-X" . helm-smex)))
 
 (use-package ediff
+  :ensure t
   :init
   (setq-default ediff-merge-split-window-function 'split-window-horizontally
                 ediff-split-window-function 'split-window-vertically
                 ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package plantuml-mode
+  :ensure t
   :init
   (setq plantuml-jar-path
         (expand-file-name "~/Downloads/plantuml.jar"))
@@ -559,6 +625,7 @@
    '((plantuml . t))))
 
 (use-package org-random-todo
+  :ensure t
   :config
   ;; Don’t bug me too often…
   (setq org-random-todo-how-often 3600))
@@ -574,18 +641,22 @@
         calendar-daylight-time-zone-name "CEST"))
 
 (use-package yasnippet
+  :ensure t
   :config
   (yas-global-mode 1))
 
 (use-package vala-snippets
+  :ensure t
   :after
   yasnippet)
 
 (use-package hungarian-holidays
+  :ensure t
   :config
   (hungarian-holidays-add))
 
 (use-package beacon
+  :ensure t
   :demand
   :config
   (beacon-mode 1)
@@ -600,9 +671,11 @@
   (add-hook 'text-mode-hook
             'flyspell-mode))
 
-(use-package helm-descbinds)
+(use-package helm-descbinds
+  :ensure t)
 
-(use-package helm-describe-modes)
+(use-package helm-describe-modes
+  :ensure t)
 
 (use-package paren
   :config
@@ -613,13 +686,16 @@
   (global-auto-revert-mode 1))
 
 (use-package rainbow-delimiters
+  :ensure t
   :config
   (add-hook 'prog-mode-hook
             #'rainbow-delimiters-mode))
 
-(use-package rainbow-mode)
+(use-package rainbow-mode
+  :ensure t)
 
 (use-package hungry-delete
+  :ensure t
   :config
   (global-hungry-delete-mode))
 
@@ -636,13 +712,17 @@
   ;; This seems to be the default, but let’s make sure…
   (electric-indent-mode 1))
 
-(use-package restclient)
+(use-package restclient
+  :ensure t)
 
-(use-package company-restclient)
+(use-package company-restclient
+  :ensure t)
 
-(use-package restclient-helm)
+(use-package restclient-helm
+  :ensure t)
 
 (use-package alert
+  :ensure t
   :config
   (setq alert-default-style 'notifications))
 
