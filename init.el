@@ -145,7 +145,6 @@
      yaml-mode
      yasnippet
      zone-nyan)))
- '(savehist-mode t)
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
  '(tab-width 4))
@@ -668,6 +667,10 @@
   (setq nxml-attribute-indent 4
         nxml-child-indent 2
         nxml-outline-child-indent 4))
+
+(use-package savehist
+  :config
+  (savehist-mode 1))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
