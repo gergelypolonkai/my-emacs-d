@@ -130,7 +130,6 @@
      restclient
      restclient-helm
      sass-mode
-     simple-rtm
      smart-mode-line
      smart-mode-line-powerline-theme
      smartparens
