@@ -403,8 +403,10 @@
                  "* %^{Title}  :blog:\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?"))
   (setq org-time-stamp-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
   :bind
-  (:map org-mode-map
-        ("SPC" . org-space-key)))
+  (:map gpolonkai/pers-map
+   ("a" . org-agenda-list)
+   :map org-mode-map
+   ("SPC" . org-space-key)))
 
 (use-package org-bullets
   :init
