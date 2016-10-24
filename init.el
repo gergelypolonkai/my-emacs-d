@@ -750,6 +750,9 @@
   (:map gpolonkai/pers-map
    ("n" . newsticker-show-news)))
 
+(use-package cheatsheet
+  :ensure t)
+
 (use-package nxml
   :config
   (setq nxml-attribute-indent 4
