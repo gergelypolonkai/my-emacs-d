@@ -512,8 +512,6 @@
 
 (use-package json-mode)
 
-(use-package mark)
-
 (use-package markdown-mode)
 
 (use-package mc-extras)
