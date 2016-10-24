@@ -23,3 +23,6 @@
 
 # Stack exchange. This file contains the auth token for SX sites
 /.sx/
+
+# Newsticker
+/newsticker

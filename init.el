@@ -649,6 +649,21 @@
   :config
   (setq alert-default-style 'notifications))
 
+(use-package newsticker
+  :config
+  (setq newsticker-url-list '(("(or emacs irrelevant)"
+                               "http://oremacs.com/atom.xml"
+                               nil nil nil)
+                              ("think"
+                               "http://batsov.com/atom.xml"
+                               nil nil nil)
+                              ("Endless Parentheses"
+                               "http://endlessparentheses.com/atom.xml"
+                               nil inl nil)))
+  :bind
+  (:map gpolonkai/pers-map
+   ("n" . newsticker-show-news)))
+
 (use-package nxml
   :config
   (setq nxml-attribute-indent 4
