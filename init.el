@@ -582,7 +582,12 @@
   :ensure t)
 
 (use-package sx
-  :ensure t)
+  :ensure t
+  :demand
+  :bind
+  (:map gpolonkai/pers-map
+   ("qi" . sx-inbox)
+   ("qs" . sx-search)))
 
 (use-package typescript-mode
   :ensure t)
