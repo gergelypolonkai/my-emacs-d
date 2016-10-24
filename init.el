@@ -51,7 +51,6 @@
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
- '(jekyll-directory "~/Projektek/jekyll/gergely.polonkai.eu")
  '(package-selected-packages
    (quote
     (ace-window
@@ -677,7 +676,6 @@
 (load "transpose-windows.el")
 (load "zim.el")
 (load "clearcase.el")
-(load "jekyll.el")
 (load "enclose-string.el")
 (load "buf-manipulation.el")
 (load "package-manip")
