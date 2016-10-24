@@ -742,7 +742,10 @@
                                nil nil nil)
                               ("Endless Parentheses"
                                "http://endlessparentheses.com/atom.xml"
-                               nil inl nil)))
+                               nil inl nil)
+                              ("Irreal"
+                               "http://irreal.org/blog/?feed=rss2"
+                               nil nil nil)))
   :bind
   (:map gpolonkai/pers-map
    ("n" . newsticker-show-news)))
