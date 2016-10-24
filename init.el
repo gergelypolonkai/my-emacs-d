@@ -167,7 +167,6 @@
 
 ;; Load some custom libraries
 (require 'thingatpt)
-(require 'linum)
 
 (use-package helm
   :init
