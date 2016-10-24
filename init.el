@@ -52,9 +52,6 @@
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(jekyll-directory "~/Projektek/jekyll/gergely.polonkai.eu")
- '(nxml-attribute-indent 4)
- '(nxml-child-indent 2)
- '(nxml-outline-child-indent 4)
  '(package-selected-packages
    (quote
     (ace-window
@@ -651,6 +648,12 @@
 (use-package alert
   :config
   (setq alert-default-style 'notifications))
+
+(use-package nxml
+  :config
+  (setq nxml-attribute-indent 4
+        nxml-child-indent 2
+        nxml-outline-child-indent 4))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
