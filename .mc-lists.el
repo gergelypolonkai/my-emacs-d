@@ -7,14 +7,15 @@
         c-electric-semi&comma
         c-indent-line-or-region
         electric-newline-and-maybe-indent
+        hungry-delete-forward
         indent-for-tab-command
         kill-region
         org-cycle
         org-end-of-line
         org-kill-line
         org-self-insert-command
-        sp-backward-kill-word
         sp-backward-delete-char
+        sp-backward-kill-word
         sp-delete-char
         ))
 
@@ -24,4 +25,5 @@
         end-of-buffer
         helm-M-x
         helm-find-files
+        smartparens-strict-mode
         ))
