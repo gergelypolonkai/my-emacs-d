@@ -733,6 +733,7 @@
   (setq alert-default-style 'notifications))
 
 (use-package newsticker
+  :demand
   :config
   (setq newsticker-url-list '(("(or emacs irrelevant)"
                                "http://oremacs.com/atom.xml"
@@ -742,7 +743,7 @@
                                nil nil nil)
                               ("Endless Parentheses"
                                "http://endlessparentheses.com/atom.xml"
-                               nil inl nil)
+                               nil nil nil)
                               ("Irreal"
                                "http://irreal.org/blog/?feed=rss2"
                                nil nil nil)))
