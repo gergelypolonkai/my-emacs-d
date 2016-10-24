@@ -114,7 +114,6 @@
      magit
      magit-gerrit
      magithub
-     mark
      markdown-mode
      mc-extras
      multiple-cursors
