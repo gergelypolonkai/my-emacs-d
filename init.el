@@ -758,6 +758,31 @@
   :config
   (savehist-mode 1))
 
+;; Before this can be used, make sure the Symbola font is installed:
+;; https://zhm.github.io/symbola/
+(defun --set-emoji-font (frame)
+  "Adjust the font setting of FRAME so Emacs can display Emoji properly."
+  (if (eq system-type 'darwin)
+      ;; For NS/Cocoa
+      (set-fontset-font t 'symbol
+                        (font-spec :family "Apple Color Emoji")
+                        frame 'prepend)
+    ;; For Linux
+    (set-fontset-font t 'symbol
+                      (font-spec :family "Symbola")
+                      frame 'prepend)))
+
+(use-package company-emoji
+  :ensure t
+  :after
+  company
+  :init
+  (--set-emoji-font nil)
+  :config
+  (add-to-list 'company-backends 'company-emoji)
+  (add-hook 'after-make-frame-functions
+            '--set-emoji-font))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
