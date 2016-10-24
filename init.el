@@ -246,7 +246,10 @@
 (use-package eshell
   :config
   (add-hook 'eshell-mode-hook
-            (lambda () (local-set-key (kbd "C-d") #'eshell-C-d))))
+            (lambda () (local-set-key (kbd "C-d") #'eshell-C-d)))
+  :bind
+  (:map gpolonkai/pers-map
+   ("e" . eshell)))
 
 ;; Save place
 (use-package saveplace
