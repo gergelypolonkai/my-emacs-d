@@ -617,7 +617,14 @@
   :ensure t
   :init
   (setq plantuml-jar-path
-        (expand-file-name "~/Downloads/plantuml.jar"))
+        (expand-file-name
+         ;; Make sure we have a download location even if XDG is not
+         ;; working
+         (cond
+          ((xdg-user-dir "DOWNLOAD")
+           (concat (xdg-user-dir "DOWNLOAD") "/plantuml.jar"))
+          (t
+           "~/Downloads/plantuml.jar"))))
   (defvaralias 'org-plantuml-jar-path 'plantuml-jar-path)
   :config
   (org-babel-do-load-languages
