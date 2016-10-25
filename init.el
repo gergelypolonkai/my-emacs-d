@@ -814,6 +814,7 @@
 (load "buf-manipulation.el")
 (load "package-manip")
 (load "text-manip")
+(load "frame-manip")
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -869,8 +870,8 @@
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 (global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
 (global-set-key (kbd "C-x ~") 'toggle-char-case)
-(define-key isearch-mode-map (kbd "<C-return>")
-  #'isearch-exit-other-end)
+(define-key isearch-mode-map (kbd "<C-return>") #'isearch-exit-other-end)
+(define-key gpolonkai/pers-map (kbd "m") 'hidden-mode-line-mode)
 
 ;; Kudos goes to
 ;; http://endlessparentheses.com/leave-the-cursor-at-start-of-match-after-isearch.html
