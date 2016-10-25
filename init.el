@@ -787,7 +787,7 @@
                           (font-spec :family "Apple Color Emoji")
                           frame 'prepend)
       ;; For Linux
-      (set-fontset-ont t 'symbol
+      (set-fontset-font t 'symbol
                        (font-spec :family "Symbola")
                        frame 'prepend))))
 
