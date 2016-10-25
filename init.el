@@ -162,6 +162,13 @@
 (set-face-attribute 'default t :font "Hack-10")
 (set-frame-font "Hack-10" nil t)
 
+;; UI hacks: turn off the scroll bar (that’s why Nyan-cat is here),
+;; the toolbar (I don’t really use it), and the menu bar (I rarely use
+;; it, and in those rare occasions I can simply turn it on)
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
 ;; Some personal stuff
 (setq user-mail-address "gergely@polonkai.eu")
 
@@ -891,11 +898,6 @@
 
 ;; text-mode settings
 (add-hook 'text-mode-hook (lambda () (visual-line-mode t)))
-
-;; UI hacks: turn off scroll bar (that’s why Nyan-cat is here) and the
-;; toolbar (I don’t really use it)
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ;; Add some symbols to be prettified
 (setq prettify-symbols-alist
