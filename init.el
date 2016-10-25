@@ -754,6 +754,10 @@
                                nil nil nil)
                               ("Irreal"
                                "http://irreal.org/blog/?feed=rss2"
+                               nil nil nil)
+                              ;; The followint may supersede previous entries
+                              ("Planet Emacs"
+                               "http://planet.emacsen.org/atom.xml"
                                nil nil nil)))
   :bind
   (:map gpolonkai/pers-map
