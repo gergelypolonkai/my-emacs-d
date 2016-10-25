@@ -49,6 +49,7 @@
  '(foreground-color "#5c5cff")
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
+ '(inhibit-startup-echo-area-message (user-login-name))
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(package-selected-packages
