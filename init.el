@@ -287,9 +287,18 @@
   (setq zone-programs [zone-nyan])
   (setq-default zone-nyan-hide-progress t))
 
-(use-package zone
-  :config
+(defun gpolonkai/zone-enable ()
+  (interactive)
   (zone-when-idle 60))
+
+(use-package zone
+  :demand
+  :config
+  (zone-when-idle 60)
+  :bind
+  (:map gpolonkai/pers-map
+   ("zi" . gpolonkai/zone-enable)
+   ("zq" . zone-leave-me-alone)))
 
 ;; Magit and friends
 (use-package magit
