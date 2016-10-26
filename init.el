@@ -144,7 +144,8 @@
      xlicense
      yaml-mode
      yasnippet
-     zone-nyan)))
+     zone-nyan
+     zygospore)))
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
  '(tab-width 4))
@@ -818,6 +819,12 @@
   (add-to-list 'company-backends 'company-emoji)
   (add-hook 'after-make-frame-functions
             '--set-emoji-font))
+
+(use-package zygospore
+  :ensure t
+  :bind
+  (:map gpolonkai/pers-map
+        ("w" . zygospore-toggle-delete-other-windows)))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
