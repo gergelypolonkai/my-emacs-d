@@ -516,7 +516,10 @@
   :ensure t)
 
 (use-package git-messenger
-  :ensure t)
+  :ensure t
+  :bind
+  (:map gpolonkai/pers-map
+   ("gm" . git-messenger:popup-message)))
 
 (use-package git-timemachine
   :ensure t
