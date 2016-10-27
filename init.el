@@ -840,6 +840,11 @@
   (:map gpolonkai/pers-map
    ("w" . zygospore-toggle-delete-other-windows)))
 
+(use-package webjump
+  :bind
+  (:map gpolonkai/pers-map
+   ("j" . webjump)))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -901,7 +906,6 @@
 (define-key ctl-x-map (kbd "_") 'maximize-window)
 (global-set-key (kbd "C-c C-y") 'duplicate-line)
 (global-set-key (kbd "M-(") 'æ-enclose-region)
-(define-key ctl-x-map (kbd "w") 'webjump)
 (global-set-key (kbd "<C-return>") 'open-line-below)
 (global-set-key (kbd "<C-S-return>") 'open-line-above)
 (define-key ctl-x-map (kbd "C-r") 'rename-current-buffer-file)
