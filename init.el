@@ -398,8 +398,12 @@
 ;; Git gutter
 (use-package git-gutter
   :ensure t
+  :demand
   :config
-  (global-git-gutter-mode t))
+  (global-git-gutter-mode t)
+  :bind
+  (:map gpolonkai/pers-map
+        ("gg" . "git-gutter:update-all-windows")))
 
 ;; Org mode
 (use-package org
