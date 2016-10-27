@@ -15,6 +15,8 @@
 
 ;; Set up my personal keymap early so I can use it in use-package
 ;; calls
+(defvar gpolonkai/pers-map (make-sparse-keymap)
+  "My own, personal, keymap!")
 (define-prefix-command 'gpolonkai/pers-map)
 (define-key ctl-x-map "t" 'gpolonkai/pers-map)
 
