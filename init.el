@@ -187,8 +187,9 @@
   (helm-mode t)
   :bind
   (("M-x" . helm-M-x)
-   ("C-x C-f" . helm-find-files)
-   ("C-x b" . helm-mini)))
+   :map ctl-x-map
+   ("C-f" . helm-find-files)
+   ("b" . helm-mini)))
 
 (use-package helm-swoop
   :ensure t
@@ -308,7 +309,8 @@
   (setq magit-auto-revert-mode nil)
   (setq magit-last-seen-setup-instructions "1.4.0")
   :bind
-  (("C-x g" . magit-status)))
+  (:map ctl-x-map
+   ("g" . magit-status)))
 
 (use-package magithub
   :ensure t)
@@ -323,7 +325,7 @@
   :demand
   :config
   (define-prefix-command 'origami-mode-map)
-  (global-set-key (kbd "C-x C-z") 'origami-mode-map)
+  (define-key ctl-x-map (kbd "C-z") 'origami-mode-map)
   (global-origami-mode)
   :bind
   (:map origami-mode-map
@@ -343,7 +345,8 @@
 (use-package helm-ag
   :ensure t
   :bind
-  (("C-x M-a" . helm-do-ag)))
+  (:map gpolonkai/pers-map
+   ("s" . helm-do-ag)))
 
 (use-package smartparens
   :ensure t
@@ -403,7 +406,7 @@
   (global-git-gutter-mode t)
   :bind
   (:map gpolonkai/pers-map
-        ("gg" . "git-gutter:update-all-windows")))
+   ("gg" . git-gutter:update-all-windows)))
 
 ;; Org mode
 (use-package org
@@ -636,7 +639,7 @@
 (use-package helm-smex
   :ensure t
   :bind
-  (("M-X" . helm-smex)))
+  (("M-S-x" . helm-smex)))
 
 (use-package ediff
   :ensure t
@@ -835,7 +838,7 @@
   :ensure t
   :bind
   (:map gpolonkai/pers-map
-        ("w" . zygospore-toggle-delete-other-windows)))
+   ("w" . zygospore-toggle-delete-other-windows)))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
@@ -895,15 +898,15 @@
 (setq c-offset-alist '((member-init-intro . ++)))
 
 ;; Custom key bindings
-(global-set-key (kbd "C-x _") 'maximize-window)
+(define-key ctl-x-map (kbd "_") 'maximize-window)
 (global-set-key (kbd "C-c C-y") 'duplicate-line)
 (global-set-key (kbd "M-(") 'æ-enclose-region)
-(global-set-key (kbd "C-x w") 'webjump)
+(define-key ctl-x-map (kbd "w") 'webjump)
 (global-set-key (kbd "<C-return>") 'open-line-below)
 (global-set-key (kbd "<C-S-return>") 'open-line-above)
-(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
-(global-set-key (kbd "C-x C-d") 'delete-current-buffer-file)
-(global-set-key (kbd "C-x ~") 'toggle-char-case)
+(define-key ctl-x-map (kbd "C-r") 'rename-current-buffer-file)
+(define-key ctl-x-map (kbd "C-d") 'delete-current-buffer-file)
+(define-key ctl-x-map (kbd "~") 'toggle-char-case)
 (define-key isearch-mode-map (kbd "<C-return>") #'isearch-exit-other-end)
 (define-key gpolonkai/pers-map (kbd "m") 'hidden-mode-line-mode)
 
