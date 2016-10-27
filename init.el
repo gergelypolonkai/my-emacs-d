@@ -291,7 +291,8 @@
 
 (defun gpolonkai/zone-enable ()
   (interactive)
-  (zone-when-idle 60))
+  (zone-when-idle 60)
+  (message "I will zone out after idling for 60 minutes."))
 
 (use-package zone
   :demand
