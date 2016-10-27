@@ -661,9 +661,13 @@
 
 (use-package org-random-todo
   :ensure t
+  :demand
   :config
   ;; Don’t bug me too often…
-  (setq org-random-todo-how-often 3600))
+  (setq org-random-todo-how-often 3600)
+  :bind
+  (:map gpolonkai/pers-map
+   ("r" . org-random-todo)))
 
 (use-package calendar
   :init
