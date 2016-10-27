@@ -846,6 +846,13 @@
   (:map gpolonkai/pers-map
    ("j" . webjump)))
 
+(use-package which-func
+  :config
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (which-func-mode)))
+  (setq which-func-unknown "∅"))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -863,9 +870,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; `c-mode' settings
-(add-hook 'c-mode-hook
-          (lambda ()
-            (which-func-mode)))
 (add-hook 'c-mode-common-hook
           (lambda ()
             (local-set-key (kbd "C-c o") 'ff-find-other-file)
