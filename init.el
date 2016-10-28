@@ -62,6 +62,7 @@
      alert
      avy
      beacon
+     bind-key
      cheatsheet
      coffee-mode
      command-log-mode
@@ -864,6 +865,9 @@
   :config
   (ace-popup-menu-mode 1))
 
+(use-package bind-key
+  :ensure t)
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -919,16 +923,21 @@
 (setq c-offset-alist '((member-init-intro . ++)))
 
 ;; Custom key bindings
-(define-key ctl-x-map (kbd "_") 'maximize-window)
-(global-set-key (kbd "C-c C-y") 'duplicate-line)
-(global-set-key (kbd "M-(") 'æ-enclose-region)
-(global-set-key (kbd "<C-return>") 'open-line-below)
-(global-set-key (kbd "<C-S-return>") 'open-line-above)
-(define-key ctl-x-map (kbd "C-r") 'rename-current-buffer-file)
-(define-key ctl-x-map (kbd "C-d") 'delete-current-buffer-file)
-(define-key ctl-x-map (kbd "~") 'toggle-char-case)
-(define-key isearch-mode-map (kbd "<C-return>") #'isearch-exit-other-end)
-(define-key gpolonkai/pers-map (kbd "m") 'hidden-mode-line-mode)
+(bind-keys
+ :map global-map
+ ("C-c C-y" . duplicate-line)
+ ("M-(" . æ-enclose-region)
+ ("<C-return>" . open-line-below)
+ ("<C-S-return>" . open-line-above)
+ :map ctl-x-map
+ ("_" . maximize-window)
+ ("C-r" . rename-current-buffer-file)
+ ("C-d" . delete-current-buffer-file)
+ ("~" . toggle-char-case)
+ :map isearch-mode-map
+ ("<C-return>" . isearch-exit-other-end)  ;; TODO: Is this OK this way?
+ :map gpolonkai/pers-map
+ ("m" . hidden-mode-line-mode))
 
 ;; Kudos goes to
 ;; http://endlessparentheses.com/leave-the-cursor-at-start-of-match-after-isearch.html
