@@ -56,7 +56,8 @@
  '(initial-scratch-message nil)
  '(package-selected-packages
    (quote
-    (ace-window
+    (ace-popup-menu
+     ace-window
      ag
      alert
      avy
@@ -854,6 +855,11 @@
             (lambda ()
               (which-func-mode)))
   (setq which-func-unknown "∅"))
+
+(use-package ace-popup-menu
+  :ensure t
+  :config
+  (ace-popup-menu-mode 1))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
