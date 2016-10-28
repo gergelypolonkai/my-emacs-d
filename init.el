@@ -594,7 +594,10 @@
   :ensure t)
 
 (use-package markdown-mode
-  :ensure t)
+  :ensure t
+  :config
+  (push '("\\.markdown\\'" . markdown-mode) auto-mode-alist)
+  (push '("\\.md\\'" . markdown-mode) auto-mode-alist))
 
 (use-package mc-extras
   :ensure t)
