@@ -58,6 +58,7 @@
    (quote
     (ace-popup-menu
      ace-window
+     achievements
      ag
      alert
      avy
@@ -867,6 +868,11 @@
 
 (use-package bind-key
   :ensure t)
+
+(use-package achievements
+  :ensure t
+  :config
+  (achievements-mode 1))
 
 ;; Load my own functions
 (load "gnu-c-header.el")
