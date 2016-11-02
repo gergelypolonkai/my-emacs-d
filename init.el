@@ -759,7 +759,6 @@
 (load "round-number-to-decimals.el")
 (load "transpose-windows.el")
 (load "zim.el")
-(load "clearcase.el")
 (load "enclose-string.el")
 (load "buf-manipulation.el")
 (load "text-manip")
