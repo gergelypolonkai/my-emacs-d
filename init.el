@@ -753,6 +753,14 @@
   (setq auto-package-update-interval 7
         auto-package-update-delete-old-versions t))
 
+(use-package cookie1
+  :demand t
+  :config
+  (setq cookie-file (concat user-emacs-directory "fortune-cookies.txt"))
+  :bind
+  (:map gpolonkai/pers-map
+   ("k" . cookie)))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
