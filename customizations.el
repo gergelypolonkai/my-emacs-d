@@ -10,8 +10,7 @@
  '(cursor-color "#5c5cff")
  '(cursor-type (quote bar))
  '(custom-enabled-themes (quote (tango-dark)))
- '(custom-file (concat user-emacs-directory
-                       "customizations.el"))
+ '(custom-file (concat user-emacs-directory "customizations.el"))
  '(custom-safe-themes
    (quote
     ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279"
@@ -35,6 +34,7 @@
      achievements
      ag
      alert
+     auto-highlight-symbol
      avy
      beacon
      bind-key

@@ -742,6 +742,11 @@
   :config
   (achievements-mode 1))
 
+(use-package auto-highlight-symbol
+  :ensure t
+  :config
+  (global-auto-highlight-symbol-mode t))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
