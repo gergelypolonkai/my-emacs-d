@@ -747,6 +747,12 @@
   :config
   (global-auto-highlight-symbol-mode t))
 
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-interval 7
+        auto-package-update-delete-old-versions t))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
@@ -756,7 +762,6 @@
 (load "clearcase.el")
 (load "enclose-string.el")
 (load "buf-manipulation.el")
-(load "package-manip")
 (load "text-manip")
 (load "frame-manip")
 
@@ -862,6 +867,3 @@
        (171 187)    ; «»
        (187 171)    ; »«
       ))
-
-;; Check for package upgrades every Monday so I don’t forget.
-(check-for-package-upgrades-on-day 1)

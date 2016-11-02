@@ -35,6 +35,7 @@
      ag
      alert
      auto-highlight-symbol
+     auto-package-update
      avy
      beacon
      bind-key
