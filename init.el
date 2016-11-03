@@ -315,6 +315,7 @@
   :bind
   (:map gpolonkai/pers-map
    ("a" . org-agenda-list)
+   ("c" . org-capture)
    :map org-mode-map
    ("SPC" . org-space-key)))
 
