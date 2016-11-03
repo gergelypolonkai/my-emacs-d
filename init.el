@@ -827,9 +827,11 @@
  ("C-d" . delete-current-buffer-file)
  ("~" . toggle-char-case)
  :map isearch-mode-map
- ("<C-return>" . isearch-exit-other-end)  ;; TODO: Is this OK this way?
+ ("<C-return>" . isearch-exit-other-end)
  :map gpolonkai/pers-map
- ("m" . hidden-mode-line-mode))
+ ("m" . hidden-mode-line-mode)
+ ("C-i e" . "gergely@polonkai.eu")
+ ("C-i w" . "http://gergely.polonkai.eu/"))
 
 ;; Kudos goes to
 ;; http://endlessparentheses.com/leave-the-cursor-at-start-of-match-after-isearch.html
