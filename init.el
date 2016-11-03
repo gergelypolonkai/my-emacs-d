@@ -673,7 +673,7 @@
 (use-package cheatsheet
   :ensure t)
 
-(use-package nxml
+(use-package nxml-mode
   :config
   (setq nxml-attribute-indent 4
         nxml-child-indent 2
