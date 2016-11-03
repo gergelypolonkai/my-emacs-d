@@ -712,8 +712,8 @@
 (use-package zygospore
   :ensure t
   :bind
-  (:map gpolonkai/pers-map
-   ("w" . zygospore-toggle-delete-other-windows)))
+  (:map ctl-x-map
+   ("1" . zygospore-toggle-delete-other-windows)))
 
 (use-package webjump
   :bind
