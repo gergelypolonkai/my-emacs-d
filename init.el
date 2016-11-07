@@ -332,7 +332,7 @@
 (use-package wakatime-mode
   :ensure t
   :init
-  (setq-default wakatime-cli-path "/usr/local/bin/wakatime")
+  (setq-default wakatime-cli-path "/usr/bin/wakatime")
   :config
   (global-wakatime-mode t))
 
