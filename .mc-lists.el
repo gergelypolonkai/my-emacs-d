@@ -16,6 +16,7 @@
         org-kill-line
         org-return
         org-self-insert-command
+        org-space-key
         sp-backward-delete-char
         sp-backward-kill-word
         sp-delete-char
