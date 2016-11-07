@@ -37,6 +37,8 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;; Maximize the frame
+(set-frame-parameter nil 'fullscreen 'maximized)
 
 ;; Some personal stuff
 (setq user-mail-address "gergely@polonkai.eu")
