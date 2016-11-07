@@ -42,6 +42,7 @@
      company-restclient
      company-shell
      diminish
+     dired-k
      drag-stuff
      electric-case
      electric-spacing

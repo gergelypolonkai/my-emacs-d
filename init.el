@@ -766,6 +766,12 @@
   (:map gpolonkai/pers-map
    ("k" . cookie)))
 
+(use-package dired-k
+  :ensure t
+  :bind
+  (:map dired-mode-map
+   ("K" . dired-k)))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
