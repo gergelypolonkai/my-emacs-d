@@ -820,6 +820,13 @@
  ("M-(" . æ-enclose-region)
  ("<C-return>" . open-line-below)
  ("<C-S-return>" . open-line-above)
+ ("M-t" . nil) ;; Remove the old keybinding
+ ("M-t c" . transpose-chars)
+ ("M-t w" . transpose-words)
+ ("M-t l" . transpose-lines)
+ ("M-t e" . transpose-sexps)
+ ("M-t s" . transpose-sentences)
+ ("M-t p" . transpose-paragraphs)
  :map ctl-x-map
  ("C-y" . duplicate-line)
  ("_" . maximize-window)
