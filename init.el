@@ -348,7 +348,7 @@
   :config
   (avy-setup-default)
   :bind
-  (("C-:" . avy-goto-char)
+  (("M-g c" . avy-goto-char)
    ("C-'" . avy-goto-char-2)
    ("M-g f" . avy-goto-line)
    ("M-g w" . avy-goto-word-1)
