@@ -138,4 +138,4 @@
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0))))
  '(hl-line ((t (:inherit nil :background "gray25"))))
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
- '(whitespace-line ((t (:inherit nil :background "orange")))))
+ '(whitespace-line ((t (:inherit nil :background "orange4")))))
