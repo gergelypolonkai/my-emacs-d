@@ -272,7 +272,7 @@
   (drag-stuff-global-mode t))
 
 ;; Git gutter
-(use-package git-gutter
+(use-package git-gutter-fringe
   :ensure t
   :demand
   :config

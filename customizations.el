@@ -54,7 +54,7 @@
      focus
      form-feed
      ggtags
-     git-gutter
+     git-gutter-fringe
      git-messenger
      git-timemachine
      gitconfig-mode
