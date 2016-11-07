@@ -838,7 +838,8 @@
  :map gpolonkai/pers-map
  ("m" . hidden-mode-line-mode)
  ("C-i e" . "gergely@polonkai.eu")
- ("C-i w" . "http://gergely.polonkai.eu/"))
+ ("C-i w" . "http://gergely.polonkai.eu/")
+ ("C-p" . package-list-packages))
 
 ;; Kudos goes to
 ;; http://endlessparentheses.com/leave-the-cursor-at-start-of-match-after-isearch.html
