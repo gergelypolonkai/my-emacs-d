@@ -15,6 +15,7 @@
    (quote
     ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(echo-keystrokes 0.1)
+ '(fill-column 76)
  '(foreground-color "#5c5cff")
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
@@ -47,6 +48,7 @@
      electric-case
      electric-spacing
      emamux
+     fill-column-indicator
      flycheck
      flycheck-pkg-config
      focus

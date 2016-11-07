@@ -772,6 +772,11 @@
   (:map dired-mode-map
    ("K" . dired-k)))
 
+(use-package fill-column-indicator
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'fci-mode))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
