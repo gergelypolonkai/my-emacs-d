@@ -817,11 +817,11 @@
 ;; Custom key bindings
 (bind-keys
  :map global-map
- ("C-c C-y" . duplicate-line)
  ("M-(" . æ-enclose-region)
  ("<C-return>" . open-line-below)
  ("<C-S-return>" . open-line-above)
  :map ctl-x-map
+ ("C-y" . duplicate-line)
  ("_" . maximize-window)
  ("C-r" . rename-current-buffer-file)
  ("C-d" . delete-current-buffer-file)
