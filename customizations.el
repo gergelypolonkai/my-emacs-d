@@ -52,6 +52,7 @@
      flycheck
      flycheck-pkg-config
      focus
+     form-feed
      ggtags
      git-gutter
      git-messenger

@@ -777,6 +777,11 @@
   :config
   (add-hook 'prog-mode-hook 'fci-mode))
 
+(use-package form-feed
+  :ensure t
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'form-feed-mode))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
