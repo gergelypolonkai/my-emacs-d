@@ -782,6 +782,11 @@
   :config
   (add-hook 'emacs-lisp-mode-hook 'form-feed-mode))
 
+(use-package anzu
+  :ensure t
+  :config
+  (global-anzu-mode 1))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")

@@ -29,6 +29,7 @@
      achievements
      ag
      alert
+     anzu
      auto-highlight-symbol
      auto-package-update
      avy
