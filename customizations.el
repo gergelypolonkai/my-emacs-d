@@ -32,6 +32,7 @@
      anzu
      auto-highlight-symbol
      auto-package-update
+     auto-virtualenv
      avy
      beacon
      bind-key

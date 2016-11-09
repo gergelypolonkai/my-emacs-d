@@ -787,6 +787,9 @@
   :config
   (global-anzu-mode 1))
 
+(use-package auto-virtualenv
+  :ensure t)
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
