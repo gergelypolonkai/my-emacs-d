@@ -282,14 +282,19 @@
   (drag-stuff-global-mode t))
 
 ;; Git gutter
-(use-package git-gutter-fringe
-  :ensure t
-  :demand
-  :config
-  (global-git-gutter-mode t)
-  :bind
-  (:map gpolonkai/pers-map
-   ("gg" . git-gutter:update-all-windows)))
+;; If we are in text-only mode, there is no fringe.
+(let ((gitgutter-package
+       (if (display-graphic-p)
+           "git-gutter-fringe"
+         "git-gutter")))
+  (eval `(use-package ,gitgutter-package
+    :ensure t
+    :demand
+    :config
+    (global-git-gutter-mode t)
+    :bind
+    (:map gpolonkai/pers-map
+     ("gg" . git-gutter:update-all-windows)))))
 
 ;; Org mode
 (use-package org
