@@ -24,7 +24,8 @@
  '(initial-scratch-message nil)
  '(package-selected-packages
    (quote
-    (ace-popup-menu
+    (ace-mc
+     ace-popup-menu
      ace-window
      achievements
      ag

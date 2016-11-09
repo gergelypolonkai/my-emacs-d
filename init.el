@@ -781,6 +781,9 @@
   (:map gpolonkai/pers-map
    ("k" . cookie)))
 
+(use-package ace-mc
+  :ensure t)
+
 (use-package dired-k
   :ensure t
   :bind
