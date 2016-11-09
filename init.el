@@ -158,6 +158,8 @@
 (when (display-graphic-p)
   (use-package zone-nyan
     :ensure t
+    :after
+    zone
     :config
     (setq-default zone-nyan-hide-progress t)
     (setq zone-programs (vconcat zone-programs [zone-nyan]))))
