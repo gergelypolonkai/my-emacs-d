@@ -53,6 +53,7 @@
      fill-column-indicator
      flycheck
      flycheck-pkg-config
+     flymake-python-pyflakes
      focus
      form-feed
      ggtags

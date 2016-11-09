@@ -790,6 +790,9 @@
 (use-package auto-virtualenv
   :ensure t)
 
+(use-package flymake-python-pyflakes
+  :ensure t)
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
