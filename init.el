@@ -155,11 +155,12 @@
     (add-hook 'eshell-load-hook 'nyan-prompt-enable)))
 
 ;; Zone!
-(use-package zone-nyan
-  :ensure t
-  :init
-  (setq zone-programs [zone-nyan])
-  (setq-default zone-nyan-hide-progress t))
+(when (display-graphic-p)
+  (use-package zone-nyan
+    :ensure t
+    :config
+    (setq-default zone-nyan-hide-progress t)
+    (setq zone-programs (vconcat zone-programs [zone-nyan]))))
 
 (defun gpolonkai/zone-enable ()
   (interactive)
