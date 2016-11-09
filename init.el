@@ -235,7 +235,16 @@
 
 (use-package smart-mode-line
   :ensure t
+  :after
+  org
   :config
+  (add-to-list 'sml/replacer-regexp-list
+               '("^~/Projects/" ":Proj:")
+               t)
+  (add-to-list 'sml/replacer-regexp-list
+               (list (concat "^" (regexp-quote user-documents-directory))
+                     ":Doc:")
+               t)
   (sml/setup))
 
 (use-package company
