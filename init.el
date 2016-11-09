@@ -336,7 +336,8 @@
    ("a" . org-agenda-list)
    ("c" . org-capture)
    :map org-mode-map
-   ("SPC" . org-space-key)))
+   ("SPC" . org-space-key)
+   ("C-c l" . org-toggle-link-display)))
 
 (use-package org-bullets
   :ensure t
