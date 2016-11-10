@@ -245,8 +245,14 @@
                '("^~/Projects/" ":Proj:")
                t)
   (add-to-list 'sml/replacer-regexp-list
+               '("^~/Projektek/" ":Proj:")
+               t)
+  (add-to-list 'sml/replacer-regexp-list
                (list (concat "^" (regexp-quote user-documents-directory))
                      ":Doc:")
+               t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^:Proj:jekyll/gergelypolonkai.github.io/" ":Blog:")
                t)
   (sml/setup))
 
