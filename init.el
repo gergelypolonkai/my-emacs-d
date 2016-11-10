@@ -928,23 +928,30 @@
       '(("lambda" . 955)  ; λ
         ("->" . 8594)     ; →
         ("=>" . 8658)     ; ⇒
-        ("map" . 8614)))  ; ↦
-;; …and some pairs to complete
-;; TODO: maybe add-to-list is a better way to do it
-(setq insert-pair-alist
-      '(
-       (40 41)      ; ()
-       (91 93)      ; []
-       (123 125)    ; {}
-       (60 62)      ; <>
-       (34 34)      ; ""
-       (39 39)      ; ''
-       (96 39)      ; `'
-       (8220 8221)  ; “”
-       (8222 8221)  ; „”
-       (8216 8217)  ; ‘’
-       (8249 8250)  ; ‹›
-       (8250 8249)  ; ›‹
-       (171 187)    ; «»
-       (187 171)    ; »«
-      ))
+        ("map" . 8614))   ; ↦
+
+      ;; …and some pairs to complete
+      ;; TODO: maybe add-to-list is a better way to do it
+      insert-pair-alist '(
+                          (40 41)      ; ()
+                          (91 93)      ; []
+                          (123 125)    ; {}
+                          (60 62)      ; <>
+                          (34 34)      ; ""
+                          (39 39)      ; ''
+                          (96 39)      ; `'
+                          (8220 8221)  ; “”
+                          (8222 8221)  ; „”
+                          (8216 8217)  ; ‘’
+                          (8249 8250)  ; ‹›
+                          (8250 8249)  ; ›‹
+                          (171 187)    ; «»
+                          (187 171))   ; »«
+
+      ;; Set the frame title to the current file name
+      frame-title-format '((:eval (concat system-name
+                                          ": "
+                                          (if (buffer-file-name)
+                                              (abbreviate-file-name
+                                               (buffer-file-name))
+                                            "%b")))))
