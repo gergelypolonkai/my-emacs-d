@@ -827,6 +827,7 @@
 (load "buf-manipulation.el")
 (load "text-manip")
 (load "frame-manip")
+(load "file-manip")
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
