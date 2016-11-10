@@ -139,7 +139,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "simp" :slant normal :weight normal :height 98 :width normal))))
- '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0))))
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 2.0))))
  '(hl-line ((t (:inherit nil :background "gray25"))))
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
  '(whitespace-line ((t (:inherit nil :background "orange4")))))
