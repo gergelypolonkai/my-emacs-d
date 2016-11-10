@@ -48,6 +48,7 @@
      diminish
      dired-k
      drag-stuff
+     easy-kill
      electric-case
      electric-spacing
      emamux

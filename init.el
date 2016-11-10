@@ -830,6 +830,12 @@
   (setq auto-save-file-name-transforms
         `((".*" ,temporary-file-directory t))))
 
+(use-package easy-kill
+  :ensure t
+  :demand t
+  :config
+  (global-set-key [remap kill-ring-save] 'easy-kill))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
