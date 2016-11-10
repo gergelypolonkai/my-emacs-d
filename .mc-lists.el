@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        avy-goto-char
         c-electric-brace
         c-electric-semi&comma
         c-indent-line-or-region
@@ -24,6 +25,11 @@
 
 (setq mc/cmds-to-run-once
       '(
+        ace-jump-move
+        ace-mc-add-char
+        ace-mc-add-multiple-cursors
+        ace-mc-add-single-cursor
+        ace-mc-do-keyboard-reset
         drag-stuff-right
         end-of-buffer
         helm-M-x
