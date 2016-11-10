@@ -63,6 +63,7 @@
      git-timemachine
      gitconfig-mode
      gitignore-mode
+     gitlab
      gnugo
      gobgen
      google

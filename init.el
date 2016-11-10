@@ -814,6 +814,9 @@
 (use-package flymake-python-pyflakes
   :ensure t)
 
+(use-package gitlab
+  :ensure t)
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
