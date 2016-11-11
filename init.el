@@ -844,6 +844,9 @@
   :bind
   (("C-c y" . helm-yas-complete)))
 
+(use-package helm-hunks
+  :ensure t)
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")

@@ -81,6 +81,7 @@
      helm-github-stars
      helm-google
      helm-gtags
+     helm-hunks
      helm-projectile
      helm-smex
      helm-swoop
