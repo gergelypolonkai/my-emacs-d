@@ -87,6 +87,7 @@
      helm-smex
      helm-swoop
      helm-unicode
+     hl-todo
      hungarian-holidays
      hungry-delete
      hyde

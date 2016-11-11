@@ -850,6 +850,9 @@
 (use-package helm-pydoc
   :ensure t)
 
+(use-package hl-todo
+  :ensure t)
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
