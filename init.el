@@ -847,6 +847,9 @@
 (use-package helm-hunks
   :ensure t)
 
+(use-package helm-pydoc
+  :ensure t)
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")

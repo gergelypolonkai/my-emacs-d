@@ -83,6 +83,7 @@
      helm-gtags
      helm-hunks
      helm-projectile
+     helm-pydoc
      helm-smex
      helm-swoop
      helm-unicode
