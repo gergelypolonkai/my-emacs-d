@@ -71,6 +71,7 @@
      goto-last-change
      helm
      helm-ag
+     helm-c-yasnippet
      helm-chrome
      helm-company
      helm-descbinds

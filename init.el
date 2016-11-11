@@ -836,6 +836,14 @@
   :config
   (global-set-key [remap kill-ring-save] 'easy-kill))
 
+(use-package helm-c-yasnippet
+  :ensure t
+  :demand t
+  :config
+  (setq helm-yas-space-match-any-greedy t)
+  :bind
+  (("C-c y" . helm-yas-complete)))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
