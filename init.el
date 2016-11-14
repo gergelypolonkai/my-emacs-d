@@ -853,6 +853,11 @@
 (use-package hl-todo
   :ensure t)
 
+(use-package glasses
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'glasses-mode))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
