@@ -858,6 +858,12 @@
   :config
   (add-hook 'prog-mode-hook 'glasses-mode))
 
+(when (display-graphic-p)
+  (use-package eshell-fringe-status
+    :ensure t
+    :config
+    (add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")

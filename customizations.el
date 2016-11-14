@@ -52,6 +52,7 @@
      electric-case
      electric-spacing
      emamux
+     eshell-fringe-status
      fill-column-indicator
      flycheck
      flycheck-pkg-config
