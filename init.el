@@ -864,6 +864,14 @@
     :config
     (add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)))
 
+(use-package eshell-prompt-extras
+  :ensure t
+  :config
+  (with-eval-after-load "esh-opt"
+    (autoload 'epe-theme-lambda "eshell-prompt-extras")
+    (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda)))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")
