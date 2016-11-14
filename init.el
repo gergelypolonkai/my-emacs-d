@@ -872,6 +872,12 @@
     (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda)))
 
+(use-package highlight-indent-guides
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'character))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "toggle-window-split.el")

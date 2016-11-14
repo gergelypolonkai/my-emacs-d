@@ -89,6 +89,7 @@
      helm-smex
      helm-swoop
      helm-unicode
+     highlight-indent-guides
      hl-todo
      hungarian-holidays
      hungry-delete
