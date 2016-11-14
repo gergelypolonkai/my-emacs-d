@@ -410,8 +410,8 @@
 
 (use-package electric-spacing
   :ensure t
-  :bind
-  (([f7] . electric-spacing-mode)))
+  :config
+  (add-hook 'c-mode-common-hook 'electric-spacing-mode))
 
 (use-package emamux
   :ensure t)
