@@ -406,7 +406,7 @@
 (use-package electric-case
   :ensure t
   :config
-  (add-hook 'c-mode-hook ''electric-case-c-init))
+  (add-hook 'c-mode-hook 'electric-case-c-init))
 
 (use-package electric-spacing
   :ensure t
