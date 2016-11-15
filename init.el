@@ -370,7 +370,8 @@
   (setq aw-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n)
         aw-background nil)
   :bind
-  (("M-P" . ace-window)))
+  (:map ctl-x-map
+   ("o" . ace-window)))
 
 (use-package avy
   :ensure t
