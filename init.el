@@ -815,7 +815,11 @@
   (global-anzu-mode 1))
 
 (use-package auto-virtualenv
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
+  (add-hook 'projectile-after-switch-project-hook
+            'auto-virtualenv-set-virtualenv))
 
 (use-package flymake-python-pyflakes
   :ensure t)
