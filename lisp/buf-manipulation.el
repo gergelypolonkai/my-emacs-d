@@ -127,3 +127,34 @@ copied to the kill-ring."
     (let ((beginning (progn (beginning-of-line) (point)))
           (end (progn (end-of-line) (point))))
       (copy-region-as-kill beginning end))))
+
+(defun gpolonkai/move-to-beginning-of-line ()
+  "Move to different beginnings of the line; in order: beginning
+of the visual line if `visual-line-mode' is active, the first
+non-whitespace (indentation), the actual beginning of the line.
+This function will jump between the first character and the
+indentation if used multiple times.
+
+Inspired by Bozhidar Batsov's solution:
+http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/"
+  (interactive)
+  (let ((last-pos (point)))
+    (when visual-line-mode
+      (beginning-of-visual-line))
+    (when (= (point) last-pos)
+      (back-to-indentation))
+    (when (= (point) last-pos)
+      (beginning-of-line))
+    (when (= (point) last-pos)
+      (back-to-indentation))))
+
+(defun gpolonkai/move-to-end-of-line ()
+  "Move to the end of the line.  If `visual-line-mode' is active,
+  jump to the end of the visual line first.  The jump to the
+  actual end of the line."
+  (interactive)
+  (let ((last-pos (point)))
+    (when visual-line-mode
+      (end-of-visual-line))
+    (when (= (point) last-pos)
+      (end-of-line))))

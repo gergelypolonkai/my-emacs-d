@@ -945,6 +945,8 @@
  ("M-t s" . transpose-sentences)
  ("M-t p" . transpose-paragraphs)
  ("M-t W" . transpose-windows)
+ ("C-a" . gpolonkai/move-to-beginning-of-line)
+ ("C-e" . gpolonkai/move-to-end-of-line)
  :map ctl-x-map
  ("C-y" . duplicate-line)
  ("_" . maximize-window)
