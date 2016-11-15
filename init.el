@@ -345,7 +345,9 @@
    ("c" . org-capture)
    :map org-mode-map
    ("SPC" . org-space-key)
-   ("C-c l" . org-toggle-link-display)))
+   ("C-c l" . org-toggle-link-display)
+   ("C-a" . gpolonkai/move-to-beginning-of-line)
+   ("C-e" . gpolonkai/move-to-end-of-line)))
 
 (use-package org-bullets
   :ensure t

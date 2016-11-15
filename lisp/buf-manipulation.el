@@ -145,6 +145,9 @@ http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-l
       (back-to-indentation))
     (when (= (point) last-pos)
       (beginning-of-line))
+    (when (and (eq major-mode 'org-mode)
+               (= (point) last-pos))
+      (org-beginning-of-line))
     (when (= (point) last-pos)
       (back-to-indentation))))
 
@@ -157,4 +160,7 @@ http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-l
     (when visual-line-mode
       (end-of-visual-line))
     (when (= (point) last-pos)
-      (end-of-line))))
+      (end-of-line))
+    (when (and (eq major-mode 'org-mode)
+               (= (point) last-pos))
+      (org-end-of-line))))
