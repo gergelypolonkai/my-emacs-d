@@ -944,6 +944,7 @@
  ("M-t e" . transpose-sexps)
  ("M-t s" . transpose-sentences)
  ("M-t p" . transpose-paragraphs)
+ ("M-t W" . transpose-windows)
  :map ctl-x-map
  ("C-y" . duplicate-line)
  ("_" . maximize-window)
