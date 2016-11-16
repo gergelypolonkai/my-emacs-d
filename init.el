@@ -836,12 +836,6 @@
   (setq auto-save-file-name-transforms
         `((".*" ,temporary-file-directory t))))
 
-(use-package easy-kill
-  :ensure t
-  :demand t
-  :config
-  (global-set-key [remap kill-ring-save] 'easy-kill))
-
 (use-package helm-c-yasnippet
   :ensure t
   :demand t
@@ -883,6 +877,12 @@
   :config
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (setq highlight-indent-guides-method 'character))
+
+(use-package expand-region
+  :ensure t
+  :bind
+  (:map ctl-x-map
+   ("*" . er/expand-region)))
 
 ;; Load my own functions
 (load "gnu-c-header.el")

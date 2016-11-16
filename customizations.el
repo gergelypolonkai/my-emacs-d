@@ -48,12 +48,12 @@
      diminish
      dired-k
      drag-stuff
-     easy-kill
      electric-case
      electric-spacing
      emamux
      eshell-fringe-status
      eshell-prompt-extras
+     expand-region
      fill-column-indicator
      flycheck
      flycheck-pkg-config
