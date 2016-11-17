@@ -8,6 +8,8 @@
         c-electric-semi&comma
         c-indent-line-or-region
         electric-newline-and-maybe-indent
+        gpolonkai/move-to-beginning-of-line
+        gpolonkai/move-to-end-of-line
         hungry-delete-backward
         hungry-delete-forward
         indent-for-tab-command
