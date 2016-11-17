@@ -338,7 +338,12 @@
                  "* %^{Title}  :blog:\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?"))
   (setq org-time-stamp-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "DOING(w@/!)" "BLOCKED(b@/!)" "|" "REVIEW(r@/!)" "DONE(d@/!)")))
+        '((sequence "TODO(t)"
+                    "DOING(w@/!)"
+                    "BLOCKED(b@/!)"
+                    "|"
+                    "REVIEW(r@/!)"
+                    "DONE(d@/!)")))
   :bind
   (:map gpolonkai/pers-map
    ("a" . org-agenda-list)
