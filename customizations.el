@@ -30,6 +30,7 @@
      achievements
      ag
      alert
+     anaconda-mode
      anzu
      auto-highlight-symbol
      auto-package-update
@@ -41,6 +42,7 @@
      coffee-mode
      command-log-mode
      company
+     company-anaconda
      company-c-headers
      company-emoji
      company-restclient

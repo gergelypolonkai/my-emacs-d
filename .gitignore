@@ -16,6 +16,7 @@
 /hgs-cache
 /smex-items
 /var/
+/anaconda-mode/
 # All hail use-package!
 /elpa/
 

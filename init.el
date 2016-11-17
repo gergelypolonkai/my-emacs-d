@@ -904,6 +904,19 @@
   (:map ctl-x-map
    ("*" . er/expand-region)))
 
+(use-package anaconda-mode
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+
+(use-package company-anaconda
+  :ensure t
+  :after
+  company
+  :config
+  (add-to-list 'company-backends 'company-anaconda))
+
 ;; Load my own functions
 (load "gnu-c-header.el")
 (load "round-number-to-decimals.el")
