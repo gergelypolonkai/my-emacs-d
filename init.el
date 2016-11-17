@@ -336,6 +336,11 @@
                '("p" "Blog post"
                  entry (file+datetree (concat org-directory "blog.org"))
                  "* %^{Title}  :blog:\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?"))
+  (add-to-list 'org-capture-templates
+               '("g" "GT2 note"
+                 entry (file+headline (concat org-directory "gt2-notes.org")
+                                      "Captures")
+                 "** %^{Title}\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?"))
   (setq org-time-stamp-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
   (setq org-todo-keywords
         '((sequence "TODO(t)"
