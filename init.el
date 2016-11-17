@@ -371,9 +371,18 @@
 
 (use-package ace-window
   :ensure t
-  :init
-  (setq aw-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n)
-        aw-background nil)
+  :config
+  (setq aw-background nil
+        aw-dispatch-always t)
+  (add-to-list 'aw-dispatch-alist
+               '(?s gpolonkai/scroll-window-up " Scroll window up")
+               t)
+  (add-to-list 'aw-dispatch-alist
+               '(?S gpolonkai/scroll-window-down " Scroll window down")
+               t)
+  (add-to-list 'aw-dispatch-alist
+               '(?q gpolonkai/bury-window " Bury (quit) window")
+               t)
   :bind
   (:map ctl-x-map
    ("o" . ace-window)))

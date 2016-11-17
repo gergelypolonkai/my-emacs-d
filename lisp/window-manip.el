@@ -35,3 +35,22 @@
           (select-window first-win)
           (if this-win-2nd (other-window 1))))
     (error "This works only for two windows!")))
+
+(defun gpolonkai/scroll-window-up (window)
+  "Scroll WINDOW up as `scroll-up-command' would."
+  (interactive)
+  (save-selected-window
+    (select-window window)
+    (scroll-up)))
+
+(defun gpolonkai/scroll-window-down (window)
+  "Scroll WINDOW down as `scroll-down-command' would."
+  (interactive)
+  (save-selected-window
+    (select-window window)
+    (scroll-down)))
+
+(defun gpolonkai/bury-window (window)
+  "Quit WINDOW without killing it."
+  (interactive)
+  (quit-window nil window))
