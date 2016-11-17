@@ -887,15 +887,14 @@
 
 ;; Load my own functions
 (load "gnu-c-header.el")
-(load "toggle-window-split.el")
 (load "round-number-to-decimals.el")
-(load "transpose-windows.el")
 (load "zim.el")
 (load "enclose-string.el")
 (load "buf-manipulation.el")
 (load "text-manip")
 (load "frame-manip")
 (load "file-manip")
+(load "window-manip")
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -960,6 +959,7 @@
  ("C-r" . rename-current-buffer-file)
  ("C-d" . delete-current-buffer-file)
  ("~" . toggle-char-case)
+ ("|" . toggle-window-split)
  :map isearch-mode-map
  ("<C-return>" . isearch-exit-other-end)
  :map gpolonkai/pers-map

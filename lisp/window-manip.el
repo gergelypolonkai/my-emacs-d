@@ -1,3 +1,15 @@
+(defun transpose-windows (arg)
+  "Transpose the buffers shown in two windows."
+  (interactive "p")
+  (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
+    (while (/= arg 0)
+      (let ((this-win (window-buffer))
+            (next-win (window-buffer (funcall selector))))
+        (set-window-buffer (selected-window) next-win)
+        (set-window-buffer (funcall selector) this-win)
+        (select-window (funcall selector)))
+      (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
+
 (defun toggle-window-split ()
   (interactive)
   (if (= (count-windows) 2)
@@ -23,5 +35,3 @@
           (select-window first-win)
           (if this-win-2nd (other-window 1))))
     (error "This works only for two windows!")))
-
-(global-set-key (kbd "C-x |") 'toggle-window-split)
