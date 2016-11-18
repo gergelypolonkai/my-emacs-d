@@ -511,7 +511,12 @@
   :ensure t)
 
 (use-package id-manager
-  :ensure t)
+  :ensure t
+  :config
+  (setq idm-database-file (expand-file-name "idm-db.gpg" user-emacs-directory))
+  :bind
+  (:map gpolonkai/pers-map
+   ("i" . idm-open-list-command)))
 
 (use-package identica-mode
   :ensure t)
