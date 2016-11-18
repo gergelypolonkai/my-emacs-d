@@ -248,7 +248,8 @@
   (add-hook 'markdown-mode-hook
             'turn-on-smartparens-strict-mode)
   :bind
-  (([f9] . smartparens-strict-mode)))
+  (([f9] . smartparens-strict-mode)
+   ("C-(" . sp-unwrap-sexp)))
 
 (use-package smart-mode-line
   :ensure t
@@ -667,10 +668,6 @@
 
 (use-package helm-describe-modes
   :ensure t)
-
-(use-package paren
-  :config
-  (show-paren-mode t))
 
 (use-package autorevert
   :config
