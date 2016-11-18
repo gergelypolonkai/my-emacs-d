@@ -107,6 +107,7 @@
      magithub
      markdown-mode
      mc-extras
+     mediawiki
      multiple-cursors
      ng2-mode
      nyan-mode

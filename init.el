@@ -937,6 +937,17 @@
   :config
   (add-to-list 'company-backends 'company-anaconda))
 
+(use-package mediawiki
+  :ensure t
+  :after
+  id-manager
+  :config
+  (add-to-list 'mediawiki-site-alist
+               '("WikEmacs"
+                 "http://wikemacs.org/wiki/"
+                 (gpolonkai/idm-get-id-for-account "WikEmacs")
+                 (gpolonkai/idm-get-password-for-account "WikEmacs"))))
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()
