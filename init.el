@@ -30,6 +30,20 @@
                          user-emacs-directory
                          (convert-standard-filename "lisp/")))
 
+;; Load my own functions
+(load "gnu-c-header")
+(load "round-number-to-decimals")
+(load "zim")
+(load "enclose-string")
+(load "buf-manipulation")
+(load "text-manip")
+(load "frame-manip")
+(load "file-manip")
+(load "window-manip")
+
+;; Define aliases
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (set-face-attribute 'default t :font "Hack-10")
 (set-frame-font "Hack-10" nil t)
 
@@ -916,20 +930,6 @@
   company
   :config
   (add-to-list 'company-backends 'company-anaconda))
-
-;; Load my own functions
-(load "gnu-c-header.el")
-(load "round-number-to-decimals.el")
-(load "zim.el")
-(load "enclose-string.el")
-(load "buf-manipulation.el")
-(load "text-manip")
-(load "frame-manip")
-(load "file-manip")
-(load "window-manip")
-
-;; Define aliases
-(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
