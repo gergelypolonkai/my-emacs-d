@@ -948,6 +948,12 @@
                  (gpolonkai/idm-get-id-for-account "WikEmacs")
                  (gpolonkai/idm-get-password-for-account "WikEmacs"))))
 
+(use-package github-notifier
+  :ensure t
+  :config
+  (setq github-notifier-token (gpolonkai/idm-get-password-for-account "GitHub"))
+  (github-notifier-mode))
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()

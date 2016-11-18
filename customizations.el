@@ -67,6 +67,7 @@
      git-messenger
      git-timemachine
      gitconfig-mode
+     github-notifier
      gitignore-mode
      gitlab
      gnugo
