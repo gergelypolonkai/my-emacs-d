@@ -40,6 +40,9 @@
 (load "frame-manip")
 (load "file-manip")
 (load "window-manip")
+(load "gpolonkai-misc")
+
+(advice-add 'define-key :before #'warn-key-rebind)
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
