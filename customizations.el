@@ -63,6 +63,7 @@
      focus
      form-feed
      ggtags
+     gist
      git-gutter-fringe
      git-messenger
      git-timemachine

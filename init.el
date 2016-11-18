@@ -954,6 +954,9 @@
   (setq github-notifier-token (gpolonkai/idm-get-password-for-account "GitHub"))
   (github-notifier-mode))
 
+(use-package gist
+  :ensure t)
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()
