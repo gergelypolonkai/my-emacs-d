@@ -513,6 +513,7 @@
 (use-package id-manager
   :ensure t
   :config
+  (load "idm")
   (setq idm-database-file (expand-file-name "idm-db.gpg" user-emacs-directory))
   :bind
   (:map gpolonkai/pers-map
