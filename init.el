@@ -950,6 +950,8 @@
 
 (use-package github-notifier
   :ensure t
+  :after
+  id-manager
   :config
   (setq github-notifier-token (gpolonkai/idm-get-password-for-account "GitHub"))
   (github-notifier-mode))
