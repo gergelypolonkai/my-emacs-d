@@ -9,10 +9,11 @@
 (defun gpolonkai/idm-get-field-for-account (account field)
   "Get id-manager password for ACCOUNT."
   (let ((db (idm-load-db))
-        (lookup-record))
+        (lookup-record nil))
     (dolist (record (funcall db 'get-all-records) password)
-      (when (string= "WikEmacs" (idm-record-name record))
-        (setq password (gpolonkai/idm-record-get-field record field))))))
+      (when (string= account (idm-record-name record))
+        (setq lookup-record (gpolonkai/idm-record-get-field record field))))
+    lookup-record))
 
 (defmacro gpolonkai/idm-get-password-for-account (account)
   `(gpolonkai/idm-get-field-for-account ,account 'password))
