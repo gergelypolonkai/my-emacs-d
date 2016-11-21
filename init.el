@@ -274,6 +274,7 @@
 (use-package company
   :ensure t
   :config
+  (setq company-idle-delay nil)
   (global-company-mode))
 
 (use-package helm-company
