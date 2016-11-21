@@ -47,12 +47,14 @@
      company-emoji
      company-restclient
      company-shell
+     company-web
      diminish
      dired-k
      drag-stuff
      electric-case
      electric-spacing
      emamux
+     enlive
      eshell-fringe-status
      eshell-prompt-extras
      expand-region

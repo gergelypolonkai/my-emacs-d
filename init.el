@@ -957,6 +957,14 @@
 (use-package gist
   :ensure t)
 
+(use-package company-web
+  :ensure t
+  :config
+  (require 'company-web-html))
+
+(use-package enlive
+  :ensure t)
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()
