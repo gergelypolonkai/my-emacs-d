@@ -269,6 +269,9 @@
   (add-to-list 'sml/replacer-regexp-list
                '("^:Proj:jekyll/gergelypolonkai.github.io/" ":Blog:")
                t)
+  (add-to-list 'sml/replacer-regexp-list
+               (list "^:Proj:python/" ":Proj:Py:")
+               t)
   (sml/setup))
 
 (use-package company
