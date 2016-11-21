@@ -124,6 +124,7 @@
      org-rtm
      origami
      plantuml-mode
+     po-mode
      projectile
      rainbow-delimiters
      rainbow-mode

@@ -965,6 +965,9 @@
 (use-package enlive
   :ensure t)
 
+(use-package po-mode
+  :ensure t)
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()
