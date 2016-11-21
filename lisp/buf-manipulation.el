@@ -164,3 +164,23 @@ http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-l
     (when (and (eq major-mode 'org-mode)
                (= (point) last-pos))
       (org-end-of-line))))
+
+(defvar gpolonkai/last-killed-buffer-file-name
+  nil
+  "The last killed buffer. Used by `gpolonkai/kill-this-buffer'
+  and `gpolonkai/undo-buffer-kill'.")
+
+(defun gpolonkai/kill-this-buffer ()
+  "Kill the current buffer, but save the buffer file name so it can be undone."
+  (interactive)
+  (setq gpolonkai/last-killed-buffer-file-name (buffer-file-name))
+  (kill-this-buffer))
+
+(defun gpolonkai/undo-buffer-kill ()
+  "Undo killing the last buffer. Esentially it visits the file again."
+  (interactive)
+  (if gpolonkai/last-killed-buffer-file-name
+      (progn
+        (find-file gpolonkai/last-killed-buffer-file-name)
+        (setq gpolonkai/last-killed-buffer-file-name))
+    (message "The buffer last killed didn’t visit a file.")))

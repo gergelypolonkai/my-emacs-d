@@ -1026,6 +1026,8 @@
  ("C-d" . delete-current-buffer-file)
  ("~" . toggle-char-case)
  ("|" . toggle-window-split)
+ ("k" . gpolonkai/kill-this-buffer)
+ ("M-k" . gpolonkai/undo-buffer-kill)
  :map isearch-mode-map
  ("<C-return>" . isearch-exit-other-end)
  :map gpolonkai/pers-map
