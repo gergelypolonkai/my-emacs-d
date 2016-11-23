@@ -48,6 +48,7 @@
      company-restclient
      company-shell
      company-web
+     dashboard
      diminish
      dired-k
      drag-stuff

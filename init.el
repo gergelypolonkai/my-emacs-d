@@ -971,6 +971,16 @@
 (use-package po-mode
   :ensure t)
 
+(use-package dashboard
+  :ensure t
+  :after
+  projectile
+  :config
+  (setq dashboard-items '((recents  . 5)
+                          (bookmarks . 5)
+                          (projects . 5)))
+  (dashboard-setup-startup-hook))
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()
