@@ -638,8 +638,14 @@
 
 (use-package yasnippet
   :ensure t
+  :demand
   :config
-  (yas-global-mode 1))
+  (yas-global-mode 1)
+  :bind
+  ;; Remove TAB binding to yas-expand.  It causes more harm than good.
+  (:map yas-minor-mode-map
+   ("TAB" . nil)
+   ([(tab)] . nil)))
 
 (use-package vala-snippets
   :ensure t
