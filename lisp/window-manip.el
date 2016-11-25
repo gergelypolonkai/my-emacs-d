@@ -54,3 +54,10 @@
   "Quit WINDOW without killing it."
   (interactive)
   (quit-window nil window))
+
+(defun gpolonkai/kill-this-buffer-delete-this-window ()
+  "Kill the buffer in the current window, and then try to delete
+the current window."
+  (interactive)
+  (kill-this-buffer)
+  (delete-window))
