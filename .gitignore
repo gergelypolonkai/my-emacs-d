@@ -17,6 +17,8 @@
 /smex-items
 /var/
 /anaconda-mode/
+/.last-package-update-day
+
 # All hail use-package!
 /elpa/
 

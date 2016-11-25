@@ -829,7 +829,10 @@
   :ensure t
   :config
   (setq auto-package-update-interval 7
-        auto-package-update-delete-old-versions t))
+        auto-package-update-delete-old-versions t)
+  ;; Let’s do this in after-init-hook, as use-package invocations may modify
+  ;; the list of installed packages
+  (add-hook 'after-init-hook 'auto-package-update-maybe))
 
 (use-package cookie1
   :demand t
