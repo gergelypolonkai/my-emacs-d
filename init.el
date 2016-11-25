@@ -203,10 +203,14 @@
    ("g" . magit-status)))
 
 (use-package magithub
-  :ensure t)
+  :ensure t
+  :after
+  magit)
 
 (use-package magit-gerrit
   :ensure t
+  :after
+  magit
   :init
   (setq-default magit-gerrit-remote "gerrit"))
 
