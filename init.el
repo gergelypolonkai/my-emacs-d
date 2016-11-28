@@ -364,14 +364,15 @@
                  entry (file+headline (concat org-directory "gt2-notes.org")
                                       "Captures")
                  "** %^{Title}\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?"))
-  (setq org-time-stamp-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
-  (setq org-todo-keywords
-        '((sequence "TODO(t)"
-                    "DOING(w@/!)"
-                    "BLOCKED(b@/!)"
-                    "|"
-                    "REVIEW(r@/!)"
-                    "DONE(d@/!)")))
+  (setq org-time-stamp-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>")
+        org-todo-keywords '((sequence "TODO(t)"
+                                      "DOING(w@/!)"
+                                      "BLOCKED(b@/!)"
+                                      "|"
+                                      "REVIEW(r@/!)"
+                                      "DONE(d@/!)"))
+        org-goto-interface 'outline-path-completion
+        org-goto-max-level 10)
   :bind
   (:map gpolonkai/pers-map
    ("a" . org-agenda-list)
