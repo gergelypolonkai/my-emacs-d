@@ -372,7 +372,12 @@
                                       "REVIEW(r@/!)"
                                       "DONE(d@/!)"))
         org-goto-interface 'outline-path-completion
-        org-goto-max-level 10)
+        org-goto-max-level 10
+        org-html-checkbox-type 'unicode
+        org-html-checkbox-types
+        '((unicode (on . "<span class=\"task-done\">☑</span>")
+            (off . "<span class=\"task-todo\">☐</span>")
+            (trans . "<span class=\"task-in-progress\">▣</span>"))))
   :bind
   (:map gpolonkai/pers-map
    ("a" . org-agenda-list)
