@@ -48,6 +48,7 @@
      company-restclient
      company-shell
      company-web
+     csharp-mode
      dashboard
      diminish
      dired-k

@@ -1002,6 +1002,9 @@
                           (projects . 5)))
   (dashboard-setup-startup-hook))
 
+(use-package csharp-mode
+  :ensure t)
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()
