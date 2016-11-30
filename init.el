@@ -1105,7 +1105,8 @@
       '(("lambda" . 955)  ; λ
         ("->" . 8594)     ; →
         ("=>" . 8658)     ; ⇒
-        ("map" . 8614))   ; ↦
+        ("map" . 8614)    ; ↦
+        ("not" . 172))    ; ¬
 
       ;; …and some pairs to complete
       ;; TODO: maybe add-to-list is a better way to do it
