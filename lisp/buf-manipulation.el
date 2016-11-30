@@ -182,5 +182,5 @@ http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-l
   (if gpolonkai/last-killed-buffer-file-name
       (progn
         (find-file gpolonkai/last-killed-buffer-file-name)
-        (setq gpolonkai/last-killed-buffer-file-name))
+        (setq gpolonkai/last-killed-buffer-file-name nil))
     (message "The buffer last killed didn’t visit a file.")))
