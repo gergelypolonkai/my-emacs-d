@@ -310,7 +310,8 @@
 (use-package drag-stuff
   :ensure t
   :config
-  (drag-stuff-global-mode t))
+  (drag-stuff-global-mode t)
+  (drag-stuff-define-keys))
 
 ;; Git gutter
 ;; If we are in text-only mode, there is no fringe.
