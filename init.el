@@ -992,9 +992,7 @@
   :after
   projectile
   :config
-  (setq dashboard-items '((recents  . 5)
-                          (bookmarks . 5)
-                          (projects . 5)))
+  (add-to-list 'dashboard-items '(projects . 5) t)
   (dashboard-setup-startup-hook))
 
 (use-package csharp-mode
