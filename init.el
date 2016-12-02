@@ -863,11 +863,6 @@
   (:map dired-mode-map
    ("K" . dired-k)))
 
-(use-package fill-column-indicator
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'fci-mode))
-
 (use-package form-feed
   :ensure t
   :config
