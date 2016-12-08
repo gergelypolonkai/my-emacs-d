@@ -328,6 +328,28 @@
     (:map gpolonkai/pers-map
      ("gg" . git-gutter:update-all-windows)))))
 
+;; From gmane.emacs.orgmode
+;; (http://article.gmane.org/gmane.emacs.orgmode/75222)
+(defun f-ediff-org-showhide (buf command &rest cmdargs)
+  "If buffer BUF exists and in org-mode, execute COMMAND with CMDARGS."
+  (when buf
+    (when (eq (buffer-local-value 'major-mode (get-buffer buf)) 'org-mode)
+      (save-excursion
+        (set-buffer buf)
+        (apply command cmdargs)))))
+
+(defun f-ediff-org-unfold-tree-element ()
+  "Unfold tree at diff location."
+  (f-ediff-org-showhide ediff-buffer-A 'org-reveal)
+  (f-ediff-org-showhide ediff-buffer-B 'org-reveal)
+  (f-ediff-org-showhide ediff-buffer-C 'org-reveal))
+
+(defun f-ediff-org-fold-tree ()
+  "Fold tree back to top level."
+  (f-ediff-org-showhide ediff-buffer-A 'hide-sublevels 1)
+  (f-ediff-org-showhide ediff-buffer-B 'hide-sublevels 1)
+  (f-ediff-org-showhide ediff-buffer-C 'hide-sublevels 1))
+
 ;; Org mode
 (use-package org
   :ensure t
@@ -380,6 +402,8 @@
             (off . "<span class=\"task-todo\">☐</span>")
             (trans . "<span class=\"task-in-progress\">▣</span>")))
         org-src-window-setup 'current-window)
+  (add-hook 'ediff-select-hook 'f-ediff-org-unfold-tree-element)
+  (add-hook 'ediff-unselect-hook 'f-ediff-org-fold-tree)
   :bind
   (:map gpolonkai/pers-map
    ("a" . org-agenda-list)
