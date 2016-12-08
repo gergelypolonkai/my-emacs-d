@@ -954,12 +954,6 @@
     (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda)))
 
-(use-package highlight-indent-guides
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-  (setq highlight-indent-guides-method 'character))
-
 (use-package expand-region
   :ensure t
   :bind

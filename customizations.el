@@ -68,22 +68,22 @@
      form-feed
      ggtags
      gist
-     gitconfig-mode
      git-gutter-fringe
+     git-messenger
+     git-timemachine
+     gitconfig-mode
      github-notifier
      gitignore-mode
      gitlab
-     git-messenger
-     git-timemachine
      gnugo
      gobgen
      google
      goto-last-change
      helm
      helm-ag
+     helm-c-yasnippet
      helm-chrome
      helm-company
-     helm-c-yasnippet
      helm-descbinds
      helm-describe-modes
      helm-flycheck
@@ -97,13 +97,12 @@
      helm-smex
      helm-swoop
      helm-unicode
-     highlight-indent-guides
      hl-todo
      hungarian-holidays
      hungry-delete
      hyde
-     identica-mode
      id-manager
+     identica-mode
      jinja2-mode
      js2-mode
      json-mode
