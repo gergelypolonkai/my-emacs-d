@@ -487,6 +487,7 @@
 
 (use-package electric-spacing
   :ensure t
+  :pin gnu
   :config
   (add-hook 'c-mode-common-hook 'electric-spacing-mode))
 
