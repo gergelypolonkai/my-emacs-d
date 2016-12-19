@@ -326,7 +326,9 @@
     (global-git-gutter-mode t)
     :bind
     (:map gpolonkai/pers-map
-     ("gg" . git-gutter:update-all-windows)))))
+     ("gg" . git-gutter:update-all-windows)
+     ("gn" . git-gutter:next-hunk)
+     ("gp" . git-gutter:previous-hunk)))))
 
 ;; From gmane.emacs.orgmode
 ;; (http://article.gmane.org/gmane.emacs.orgmode/75222)
