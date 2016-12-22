@@ -571,7 +571,8 @@
   :ensure t)
 
 (use-package js2-mode
-  :ensure t)
+  :ensure t
+  :pin melpa-stable)
 
 (use-package json-mode
   :ensure t)
