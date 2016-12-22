@@ -378,6 +378,7 @@
                                             "/orgmode/from-mobile.org"))
                 org-log-done 'time)
   :config
+  (require 'ox-md)
   (unless (boundp 'org-capture-templates)
     (setq org-capture-templates nil))
   (add-to-list 'org-capture-templates
