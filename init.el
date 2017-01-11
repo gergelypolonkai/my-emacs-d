@@ -1031,6 +1031,13 @@
 (use-package dockerfile-mode
   :ensure t)
 
+(add-hook 'python-mode-hook
+          (lambda ()
+            (add-to-list 'prettify-symbols-alist
+                         '("not" . 172))
+            (add-to-list 'prettify-symbols-alist
+                         '("in" . 8712))))
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()
