@@ -1028,6 +1028,9 @@
   :config
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
 
+(use-package dockerfile-mode
+  :ensure t)
+
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
           (lambda ()

@@ -52,6 +52,7 @@
      dashboard
      diminish
      dired-k
+     dockerfile-mode
      drag-stuff
      electric-case
      electric-spacing
