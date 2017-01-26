@@ -1041,6 +1041,14 @@
 (use-package dockerfile-mode
   :ensure t)
 
+(use-package phi-search
+  :ensure t)
+
+(use-package phi-search-mc
+  :ensure t
+  :config
+  (phi-search-mc/setup-keys))
+
 (add-hook 'python-mode-hook
           (lambda ()
             (add-to-list 'prettify-symbols-alist
