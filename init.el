@@ -260,7 +260,8 @@
             'turn-on-smartparens-strict-mode)
   :bind
   (([f9] . smartparens-strict-mode)
-   ("C-(" . sp-unwrap-sexp)))
+   ("C-c s u" . sp-unwrap-sexp)
+   ("C-c s k" . sp-kill-sexp)))
 
 (use-package smart-mode-line
   :ensure t
