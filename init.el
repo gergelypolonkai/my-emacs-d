@@ -136,10 +136,15 @@
   (add-hook 'multiple-cursors-mode-disabled-hook
             (lambda ()
               (setq blink-matching-paren t)))
-  :bind (("C-S-c C-S-c" . mc/edit-lines)
-         ("C->" . mc/mark-next-like-this)
-         ("C-<" . mc/mark-previous-like-this)
-         ("C-c C-<" . mc/mark-all-like-this)))
+  :bind (("C-c m t" . mc/mark-all-like-this)
+         ("C-c m m" . mc/mark-all-like-this-dwim)
+         ("C-c m l" . mc/edit-lines)
+         ("C-c m e" . mc/edit-ends-of-lines)
+         ("C-c m a" . mc/edit-beginnings-of-lines)
+         ("C-c m n" . mc/mark-next-like-this)
+         ("C-c m p" . mc/mark-previous-like-this)
+         ("C-c m s" . mc/mark-sgml-tag-pair)
+         ("C-c m d" . mc/mark-all-like-this-in-defun)))
 
 (use-package eshell
   :config
@@ -586,7 +591,11 @@
   (push '("\\.md\\'" . markdown-mode) auto-mode-alist))
 
 (use-package mc-extras
-  :ensure t)
+  :ensure t
+  :demand
+  :bind
+  (:map mc/keymap
+   ("C-c m =" . mc/compare-chars)))
 
 (use-package ng2-mode
   :ensure t)
