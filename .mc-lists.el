@@ -24,6 +24,7 @@
         sp-backward-kill-word
         sp-delete-char
         sp-kill-word
+        sp-remove-active-pair-overlay
         sp-unwrap-sexp
         toggle-char-case
         ))
