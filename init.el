@@ -1123,6 +1123,7 @@
  ("M-k" . gpolonkai/undo-buffer-kill)
  :map isearch-mode-map
  ("<C-return>" . isearch-exit-other-end)
+ ("<S-return>" . isearch-exit-mark-match)
  :map gpolonkai/pers-map
  ("m" . hidden-mode-line-mode)
  ("C-i e" . "gergely@polonkai.eu")
@@ -1139,6 +1140,14 @@
 
   (isearch-exit)
   (goto-char isearch-other-end))
+
+;; Kudos goes to http://emacs.stackexchange.com/a/31321/507
+(defun isearch-exit-mark-match ()
+  "Exit isearch and mark the current match."
+  (interactive)
+  (isearch-exit)
+  (push-mark isearch-other-end)
+  (activate-mark))
 
 ;; Set up some global minor modes
 (global-prettify-symbols-mode t)
