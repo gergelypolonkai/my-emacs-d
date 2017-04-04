@@ -301,9 +301,9 @@
   helm
   :bind
   (:map company-mode-map
-   ("C-S-j" . helm-company)
+   ("C-c j" . helm-company)
    :map company-active-map
-   ("C-S-j" . helm-company)))
+   ("C-c j" . helm-company)))
 
 (use-package projectile
   :ensure t
