@@ -77,7 +77,9 @@
   (("M-x" . helm-M-x)
    :map ctl-x-map
    ("C-f" . helm-find-files)
-   ("b" . helm-mini)))
+   ("b" . helm-mini)
+   :map helm-map
+   ("/" . gpolonkai/helm-ff-slash-dir-complete)))
 
 (use-package helm-swoop
   :ensure t
@@ -1195,3 +1197,11 @@
                                               (abbreviate-file-name
                                                (buffer-file-name))
                                             "%b")))))
+
+(defun gpolonkai/helm-ff-slash-dir-complete ()
+  (interactive)
+  (if (and (equal "Find Files" (assoc-default 'name (helm-get-current-source)))
+           (stringp (helm-get-selection))
+           (file-directory-p (helm-get-selection)))
+      (helm-execute-persistent-action)
+    (insert "/")))
