@@ -15,5 +15,3 @@
                  mult
                  (get-number-at-point)))
                 mult)))))
-
-(global-set-key (kbd "C-c r") 'round-number-at-point-to-decimals)
