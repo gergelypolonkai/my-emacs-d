@@ -5,6 +5,7 @@
       '(
         avy-goto-char
         c-electric-brace
+        c-electric-paren
         c-electric-semi&comma
         c-indent-line-or-region
         electric-newline-and-maybe-indent
