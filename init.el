@@ -22,6 +22,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package use-package
+  :pin melpa-stable)
+
 ;; Set up my personal keymap early so I can use it in use-package
 ;; calls
 (defvar gpolonkai/pers-map (make-sparse-keymap)
