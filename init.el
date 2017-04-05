@@ -16,6 +16,8 @@
              '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
+(setq use-package-always-ensure t)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
