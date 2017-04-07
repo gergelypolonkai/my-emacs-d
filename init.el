@@ -750,7 +750,11 @@
             #'rainbow-delimiters-mode))
 
 (use-package rainbow-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'css-mode-hook 'rainbow-mode)
+  (add-hook 'scss-mode-hook 'rainbow-mode)
+  (add-hook 'sass-mode 'rainbow-mode))
 
 (use-package hungry-delete
   :ensure t
