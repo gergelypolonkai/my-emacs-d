@@ -815,6 +815,7 @@
   :ensure t)
 
 (use-package nxml-mode
+  :ensure nil
   :config
   (setq nxml-attribute-indent 4
         nxml-child-indent 2
@@ -939,6 +940,7 @@
   :ensure t)
 
 (use-package files
+  :ensure nil
   :config
   (setq backup-directory-alist
         `((".*" . ,temporary-file-directory)))
