@@ -1060,6 +1060,14 @@
   :config
   (phi-search-mc/setup-keys))
 
+(use-package secretaria
+  :ensure t
+  :config
+  ;; use this for getting a reminder every 30 minutes of those tasks
+  ;; scheduled for today and which have no time of day defined.
+  (add-hook 'after-init-hook
+            #'secretaria-today-unknown-time-appt-always-remind-me))
+
 (add-hook 'python-mode-hook
           (lambda ()
             (add-to-list 'prettify-symbols-alist
