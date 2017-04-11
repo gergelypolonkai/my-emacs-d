@@ -1100,6 +1100,8 @@ INFO plist."
 
 (use-package secretaria
   :ensure t
+  :after
+  alert
   :config
   ;; use this for getting a reminder every 30 minutes of those tasks
   ;; scheduled for today and which have no time of day defined.
