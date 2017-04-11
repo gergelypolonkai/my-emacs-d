@@ -297,7 +297,23 @@
   (add-to-list 'sml/replacer-regexp-list
                (list "^:Proj:python/" ":Proj:Py:")
                t)
-  (sml/setup))
+  (sml/setup)
+  (setq-default header-line-format
+                '(""
+                  mode-line-front-space
+                  mode-line-client
+                  mode-line-modified
+                  mode-line-remote
+                  mode-line-frame-identification
+                  mode-line-buffer-identification
+                  (vc-mode vc-mode)
+                  mode-line-position))
+  (delete '(vc-mode vc-mode) mode-line-format)
+  (delete 'mode-line-front-space mode-line-format)
+  (delete 'mode-line-frame-identification mode-line-format)
+  (delete 'mode-line-buffer-identification mode-line-format)
+  (delete 'mode-line-position mode-line-format)
+)
 
 (use-package company
   :ensure t
