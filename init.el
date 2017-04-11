@@ -1108,6 +1108,18 @@ INFO plist."
   (add-hook 'after-init-hook
             #'secretaria-today-unknown-time-appt-always-remind-me))
 
+(when (termux-p)
+  (use-package browse-url
+    :ensure nil
+    :config
+    (advice-add 'browse-url-default-browser :override
+                (lambda (url &rest args)
+                  (start-process-shell-command
+                   "open-url"
+                   nil
+                   (concat "am start -a android.intent.action.VIEW --user 0 -d "
+                           url))))))
+
 (add-hook 'python-mode-hook
           (lambda ()
             (add-to-list 'prettify-symbols-alist
