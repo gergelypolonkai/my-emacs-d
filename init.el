@@ -449,7 +449,7 @@
 (use-package wakatime-mode
   :ensure t
   :init
-  (setq-default wakatime-cli-path "/usr/bin/wakatime")
+  (setq-default wakatime-cli-path (executable-find "wakatime"))
   :config
   (global-wakatime-mode t))
 
