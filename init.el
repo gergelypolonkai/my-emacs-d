@@ -432,6 +432,7 @@
                                       "DOING(w@/!)"
                                       "BLOCKED(b@/!)"
                                       "|"
+                                      "CANCELED(c@/!)"
                                       "REVIEW(r@/!)"
                                       "DONE(d@/!)"))
         org-goto-interface 'outline-path-completion
