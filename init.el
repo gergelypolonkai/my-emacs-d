@@ -792,7 +792,37 @@
 (use-package alert
   :ensure t
   :config
-  (setq alert-default-style 'notifications))
+  (setq alert-default-style
+        (if (termux-p)
+            (progn
+              ;; TODO Remove this as soon as my PR gets merged
+              ;; https://github.com/jwiegley/alert/pull/41
+              (unless (fboundp 'alert-termux-notify)
+                (defcustom alert-termux-command (executable-find "termux-notification")
+                  "Path to the termux-notification command.
+This is found in the termux-api package, and it requires the Termux
+API addon app to be installed."
+                  :type 'file
+                  :group 'alert)
+
+                (defun alert-termux-notify (info)
+                  "Send INFO using termux-notification.
+Handles :TITLE and :MESSAGE keywords from the
+INFO plist."
+                  (if alert-termux-command
+                      (let ((args (nconc
+                                   (when (plist-get info :title)
+                                     (list "-t" (alert-encode-string (plist-get info :title))))
+                                   (list "-c" (alert-encode-string (plist-get info :message))))))
+                        (apply #'call-process alert-termux-command nil
+                               (list (get-buffer-create " *termux-notification output*") t)
+                               nil args))
+                    (alert-message-notify info)))
+
+                (alert-define-style 'termux :title "Notify using termux"
+                                    :notifier #'alert-termux-notify))
+              'termux)
+          'notifications)))
 
 (use-package newsticker
   :demand
