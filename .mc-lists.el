@@ -24,6 +24,7 @@
         sp-backward-delete-char
         sp-backward-kill-word
         sp-delete-char
+        sp-kill-hybrid-sexp
         sp-kill-word
         sp-remove-active-pair-overlay
         sp-unwrap-sexp
