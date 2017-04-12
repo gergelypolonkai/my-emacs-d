@@ -66,6 +66,12 @@
 ;; Some personal stuff
 (setq user-mail-address "gergely@polonkai.eu")
 
+(defun termux-p ()
+  "Check if Emacs is running under Termux."
+  (string-match-p
+   (regexp-quote "/com.termux/")
+   (expand-file-name "~")))
+
 ;; Load some custom libraries
 (require 'thingatpt)
 
