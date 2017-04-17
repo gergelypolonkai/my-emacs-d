@@ -449,6 +449,7 @@
   (:map gpolonkai/pers-map
    ("a" . org-agenda-list)
    ("c" . org-capture)
+   ("l" . org-store-link)
    :map org-mode-map
    ("SPC" . org-space-key)
    ("C-c l" . org-toggle-link-display)
@@ -1200,6 +1201,10 @@ INFO plist."
  ("C-e" . gpolonkai/move-to-end-of-line)
  ("M-q" . sachachua/fill-or-unfill-paragraph)
  ("C-c r" . round-number-at-point-to-decimals)
+ ("C-s" . isearch-forward-regexp)
+ ("C-r" . isearch-backward-regexp)
+ ("C-M-s" . isearch-forward)
+ ("C-M-r" . isearch-backward)
  :map ctl-x-map
  ("C-y" . duplicate-line)
  ("_" . maximize-window)
