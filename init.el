@@ -76,7 +76,6 @@
 (require 'thingatpt)
 
 (use-package helm
-  :ensure t
   :init
   (require 'helm-config)
   (setq helm-M-x-fuzzy-match t
@@ -93,12 +92,10 @@
    ("/" . gpolonkai/helm-ff-slash-dir-complete)))
 
 (use-package helm-swoop
-  :ensure t
   :bind
   (("M-i" . helm-swoop)))
 
 (use-package ggtags
-  :ensure t
   :config
   (add-hook 'c-mode-hook
             (lambda ()
@@ -109,7 +106,6 @@
                 (ggtags-mode t)))))
 
 (use-package helm-gtags
-  :ensure t
   :init
   (setq-default helm-gtags-auto-update t
                 helm-gtags-ignore-case t
@@ -141,7 +137,6 @@
 
 ;; Multiple cursors
 (use-package multiple-cursors
-  :ensure t
   :config
   (add-hook 'multiple-cursors-mode-enabled-hook
             (lambda ()
@@ -175,7 +170,6 @@
 
 ;; Nyanyanyanyanya
 (use-package nyan-mode
-  :ensure t
   :init
   (setq-default nyan-animate-nyancat t
                 nyan-wavy-trail t)
@@ -184,14 +178,12 @@
 
 (when (display-graphic-p)
   (use-package nyan-prompt
-    :ensure t
     :config
     (add-hook 'eshell-load-hook 'nyan-prompt-enable)))
 
 ;; Zone!
 (when (display-graphic-p)
   (use-package zone-nyan
-    :ensure t
     :after
     zone
     :config
@@ -214,7 +206,6 @@
 
 ;; Magit and friends
 (use-package magit
-  :ensure t
   :init
   (setq magit-auto-revert-mode nil)
   (setq magit-last-seen-setup-instructions "1.4.0")
@@ -223,19 +214,16 @@
    ("g" . magit-status)))
 
 (use-package magithub
-  :ensure t
   :after
   magit)
 
 (use-package magit-gerrit
-  :ensure t
   :after
   magit
   :init
   (setq-default magit-gerrit-remote "gerrit"))
 
 (use-package origami
-  :ensure t
   :demand
   :config
   (define-prefix-command 'origami-mode-map)
@@ -257,13 +245,11 @@
    ("x" . origami-reset)))
 
 (use-package helm-ag
-  :ensure t
   :bind
   (:map gpolonkai/pers-map
    ("s" . helm-do-ag)))
 
 (use-package smartparens
-  :ensure t
   :demand
   :config
   (show-smartparens-global-mode t)
@@ -277,7 +263,6 @@
    ("C-c s k" . sp-kill-sexp)))
 
 (use-package smart-mode-line
-  :ensure t
   :after
   org
   :config
@@ -316,13 +301,11 @@
 )
 
 (use-package company
-  :ensure t
   :config
   (setq company-idle-delay nil)
   (global-company-mode))
 
 (use-package helm-company
-  :ensure t
   :after
   company
   helm
@@ -333,19 +316,16 @@
    ("C-c j" . helm-company)))
 
 (use-package projectile
-  :ensure t
   :config
   (projectile-global-mode t))
 
 (use-package helm-projectile
-  :ensure t
   :init
   (setq projectile-completion-system 'helm)
   :config
   (helm-projectile-on))
 
 (use-package drag-stuff
-  :ensure t
   :config
   (drag-stuff-global-mode t)
   (drag-stuff-define-keys))
@@ -357,7 +337,6 @@
            "git-gutter-fringe"
          "git-gutter")))
   (eval `(use-package ,gitgutter-package
-    :ensure t
     :demand
     :config
     (global-git-gutter-mode t)
@@ -391,7 +370,6 @@
 
 ;; Org mode
 (use-package org
-  :ensure t
   :demand
   :init
   (require 'xdg-paths)
@@ -457,7 +435,6 @@
    ("C-e" . gpolonkai/move-to-end-of-line)))
 
 (use-package org-bullets
-  :ensure t
   :init
   (add-hook 'org-mode-hook
             (lambda ()
@@ -465,14 +442,12 @@
 
 ;; Waka-waka
 (use-package wakatime-mode
-  :ensure t
   :init
   (setq-default wakatime-cli-path (executable-find "wakatime"))
   :config
   (global-wakatime-mode t))
 
 (use-package ace-window
-  :ensure t
   :config
   (setq aw-background nil
         aw-dispatch-always t)
@@ -490,7 +465,6 @@
    ("o" . ace-window)))
 
 (use-package avy
-  :ensure t
   :demand
   :config
   (avy-setup-default)
@@ -502,100 +476,75 @@
    ("M-g e" . avy-goto-word-0)))
 
 (use-package diminish
-  :ensure t
   :defer t)
 
 (use-package focus
-  :ensure t
   :bind
   (([f8] . focus-mode)))
 
-(use-package coffee-mode
-  :ensure t)
+(use-package coffee-mode)
 
-(use-package command-log-mode
-  :ensure t)
+(use-package command-log-mode)
 
-(use-package company-c-headers
-  :ensure t)
+(use-package company-c-headers)
 
-(use-package company-shell
-  :ensure t)
+(use-package company-shell)
 
 (use-package electric-case
-  :ensure t
   :config
   (add-hook 'c-mode-hook 'electric-case-c-init))
 
 (use-package electric-spacing
-  :ensure t
   :pin gnu
   :config
   (add-hook 'c-mode-common-hook 'electric-spacing-mode))
 
-(use-package emamux
-  :ensure t)
+(use-package emamux)
 
-(use-package flycheck
-  :ensure t)
+(use-package flycheck)
 
-(use-package flycheck-pkg-config
-  :ensure t)
+(use-package flycheck-pkg-config)
 
 (use-package git-messenger
-  :ensure t
   :bind
   (:map gpolonkai/pers-map
    ("gm" . git-messenger:popup-message)))
 
 (use-package git-timemachine
-  :ensure t
   :bind
   (([f6] . git-timemachine-toggle)))
 
-(use-package gitconfig-mode
-  :ensure t)
+(use-package gitconfig-mode)
 
-(use-package gitignore-mode
-  :ensure t)
+(use-package gitignore-mode)
 
-(use-package gnugo
-  :ensure t)
+(use-package gnugo)
 
-(use-package gobgen
-  :ensure t)
+(use-package gobgen)
 
 (use-package goto-last-change
-  :ensure t
   :bind
   (("M-g /" . goto-last-change)))
 
-(use-package helm-chrome
-  :ensure t)
+(use-package helm-chrome)
 
-(use-package helm-flycheck
-  :ensure t)
+(use-package helm-flycheck)
 
 (use-package helm-flyspell
-  :ensure t
   :demand
   :bind
   (:map flyspell-mode-map
    ("C-M-i" . helm-flyspell-correct)))
 
 (use-package helm-github-stars
-  :ensure t
   :init
   (setq-default helm-github-stars-username "gergelypolonkai"))
 
-(use-package helm-google
-  :ensure t)
+(use-package helm-google)
 
-(use-package hyde
-  :ensure t)
+(use-package hyde)
 
 (use-package id-manager
-  :ensure t
   :config
   (load "idm")
   (setq idm-database-file (expand-file-name "idm-db.gpg" user-emacs-directory))
@@ -603,87 +552,68 @@
   (:map gpolonkai/pers-map
    ("i" . idm-open-list-command)))
 
-(use-package identica-mode
-  :ensure t)
+(use-package identica-mode)
 
-(use-package jinja2-mode
-  :ensure t)
+(use-package jinja2-mode)
 
 (use-package js2-mode
-  :ensure t
   :pin melpa-stable)
 
-(use-package json-mode
-  :ensure t)
+(use-package json-mode)
 
 (use-package markdown-mode
-  :ensure t
   :config
   (push '("\\.markdown\\'" . markdown-mode) auto-mode-alist)
   (push '("\\.md\\'" . markdown-mode) auto-mode-alist))
 
 (use-package mc-extras
-  :ensure t
   :demand
   :bind
   (:map mc/keymap
    ("C-c m =" . mc/compare-chars)))
 
-(use-package ng2-mode
-  :ensure t)
+(use-package ng2-mode)
 
-(use-package org-projectile
-  :ensure t)
+(use-package org-projectile)
 
-(use-package sass-mode
-  :ensure t)
+(use-package sass-mode)
 
 (use-package smart-mode-line-powerline-theme
-  :ensure t
   :init
   (setq-default sml/theme 'powerline))
 
-(use-package spinner
-  :ensure t)
+(use-package spinner)
 
 (use-package sx
-  :ensure t
   :demand
   :bind
   (:map gpolonkai/pers-map
    ("qi" . sx-inbox)
    ("qs" . sx-search)))
 
-(use-package typescript-mode
-  :ensure t)
+(use-package typescript-mode)
 
 (use-package vala-mode
-  :ensure t
   :init
   (add-to-list 'auto-mode-alist '("\\.vala\\'" . vala-mode)))
 
-(use-package xlicense
-  :ensure t)
+(use-package xlicense)
 
 (use-package yaml-mode
-  :ensure t
   :init
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
 (use-package helm-smex
-  :ensure t
   :bind
   (("M-S-x" . helm-smex)))
 
 (use-package ediff
-  :ensure t
   :init
   (setq-default ediff-merge-split-window-function 'split-window-horizontally
                 ediff-split-window-function 'split-window-vertically
                 ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package plantuml-mode
-  :ensure t
   :init
   (setq plantuml-jar-path
         (expand-file-name
@@ -701,7 +631,6 @@
    '((plantuml . t))))
 
 (use-package org-random-todo
-  :ensure t
   :demand
   :config
   ;; Don’t bug me too often…
@@ -711,6 +640,7 @@
    ("r" . org-random-todo)))
 
 (use-package calendar
+  :ensure nil
   :init
   (setq calendar-week-start-day 1
         calendar-latitude 47.4
@@ -721,7 +651,6 @@
         calendar-daylight-time-zone-name "CEST"))
 
 (use-package yasnippet
-  :ensure t
   :demand
   :config
   (yas-global-mode 1)
@@ -732,17 +661,14 @@
    ([(tab)] . nil)))
 
 (use-package vala-snippets
-  :ensure t
   :after
   yasnippet)
 
 (use-package hungarian-holidays
-  :ensure t
   :config
   (hungarian-holidays-add))
 
 (use-package beacon
-  :ensure t
   :demand
   :config
   (beacon-mode 1)
@@ -757,31 +683,26 @@
   (add-hook 'text-mode-hook
             'flyspell-mode))
 
-(use-package helm-descbinds
-  :ensure t)
+(use-package helm-descbinds)
 
-(use-package helm-describe-modes
-  :ensure t)
+(use-package helm-describe-modes)
 
 (use-package autorevert
   :config
   (global-auto-revert-mode 1))
 
 (use-package rainbow-delimiters
-  :ensure t
   :config
   (add-hook 'prog-mode-hook
             #'rainbow-delimiters-mode))
 
 (use-package rainbow-mode
-  :ensure t
   :config
   (add-hook 'css-mode-hook 'rainbow-mode)
   (add-hook 'scss-mode-hook 'rainbow-mode)
   (add-hook 'sass-mode 'rainbow-mode))
 
 (use-package hungry-delete
-  :ensure t
   :config
   (global-hungry-delete-mode))
 
@@ -798,17 +719,13 @@
   ;; This seems to be the default, but let’s make sure…
   (electric-indent-mode 1))
 
-(use-package restclient
-  :ensure t)
+(use-package restclient)
 
-(use-package company-restclient
-  :ensure t)
+(use-package company-restclient)
 
-(use-package restclient-helm
-  :ensure t)
+(use-package restclient-helm)
 
 (use-package alert
-  :ensure t
   :config
   (setq alert-default-style
         (if (termux-p)
@@ -865,8 +782,7 @@ INFO plist."
   (:map gpolonkai/pers-map
    ("n" . newsticker-show-news)))
 
-(use-package cheatsheet
-  :ensure t)
+(use-package cheatsheet)
 
 (use-package nxml-mode
   :ensure nil
@@ -895,7 +811,6 @@ INFO plist."
                        frame 'prepend))))
 
 (use-package company-emoji
-  :ensure t
   :after
   company
   :init
@@ -906,7 +821,6 @@ INFO plist."
             '--set-emoji-font))
 
 (use-package zygospore
-  :ensure t
   :bind
   (:map ctl-x-map
    ("1" . zygospore-toggle-delete-other-windows)))
@@ -924,28 +838,22 @@ INFO plist."
   (setq which-func-unknown "∅"))
 
 (use-package ace-popup-menu
-  :ensure t
   :config
   (ace-popup-menu-mode 1))
 
-(use-package bind-key
-  :ensure t)
+(use-package bind-key)
 
-(use-package kanban
-  :ensure t)
+(use-package kanban)
 
 (use-package achievements
-  :ensure t
   :config
   (achievements-mode 1))
 
 (use-package auto-highlight-symbol
-  :ensure t
   :config
   (global-auto-highlight-symbol-mode t))
 
 (use-package auto-package-update
-  :ensure t
   :config
   (setq auto-package-update-interval 7
         auto-package-update-delete-old-versions t)
@@ -961,37 +869,30 @@ INFO plist."
   (:map gpolonkai/pers-map
    ("k" . cookie)))
 
-(use-package ace-mc
-  :ensure t)
+(use-package ace-mc)
 
 (use-package dired-k
-  :ensure t
   :bind
   (:map dired-mode-map
    ("K" . dired-k)))
 
 (use-package form-feed
-  :ensure t
   :config
   (add-hook 'emacs-lisp-mode-hook 'form-feed-mode))
 
 (use-package anzu
-  :ensure t
   :config
   (global-anzu-mode 1))
 
 (use-package auto-virtualenv
-  :ensure t
   :config
   (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
   (add-hook 'projectile-after-switch-project-hook
             'auto-virtualenv-set-virtualenv))
 
-(use-package flymake-python-pyflakes
-  :ensure t)
+(use-package flymake-python-pyflakes)
 
-(use-package gitlab
-  :ensure t)
+(use-package gitlab)
 
 (use-package files
   :ensure nil
@@ -1002,35 +903,28 @@ INFO plist."
         `((".*" ,temporary-file-directory t))))
 
 (use-package helm-c-yasnippet
-  :ensure t
   :demand t
   :config
   (setq helm-yas-space-match-any-greedy t)
   :bind
   (("C-c y" . helm-yas-complete)))
 
-(use-package helm-hunks
-  :ensure t)
+(use-package helm-hunks)
 
-(use-package helm-pydoc
-  :ensure t)
+(use-package helm-pydoc)
 
-(use-package hl-todo
-  :ensure t)
+(use-package hl-todo)
 
 (use-package glasses
-  :ensure t
   :config
   (add-hook 'prog-mode-hook 'glasses-mode))
 
 (when (display-graphic-p)
   (use-package eshell-fringe-status
-    :ensure t
     :config
     (add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)))
 
 (use-package eshell-prompt-extras
-  :ensure t
   :config
   (with-eval-after-load "esh-opt"
     (autoload 'epe-theme-lambda "eshell-prompt-extras")
@@ -1038,26 +932,22 @@ INFO plist."
         eshell-prompt-function 'epe-theme-lambda)))
 
 (use-package expand-region
-  :ensure t
   :bind
   (:map ctl-x-map
    ("*" . er/expand-region)))
 
 (use-package anaconda-mode
-  :ensure t
   :config
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
 
 (use-package company-anaconda
-  :ensure t
   :after
   company
   :config
   (add-to-list 'company-backends 'company-anaconda))
 
 (use-package mediawiki
-  :ensure t
   :after
   id-manager
   :config
@@ -1068,56 +958,44 @@ INFO plist."
                  (gpolonkai/idm-get-password-for-account "WikEmacs"))))
 
 (use-package github-notifier
-  :ensure t
   :after
   id-manager
   :config
   (setq github-notifier-token (gpolonkai/idm-get-password-for-account "GitHub"))
   (github-notifier-mode))
 
-(use-package gist
-  :ensure t)
+(use-package gist)
 
 (use-package company-web
-  :ensure t
   :config
   (require 'company-web-html))
 
-(use-package enlive
-  :ensure t)
+(use-package enlive)
 
-(use-package po-mode
-  :ensure t)
+(use-package po-mode)
 
 (use-package dashboard
-  :ensure t
   :after
   projectile
   :config
   (add-to-list 'dashboard-items '(projects . 5) t)
   (dashboard-setup-startup-hook))
 
-(use-package csharp-mode
-  :ensure t)
+(use-package csharp-mode)
 
 (use-package web-mode
-  :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
 
-(use-package dockerfile-mode
-  :ensure t)
+(use-package dockerfile-mode)
 
-(use-package phi-search
-  :ensure t)
+(use-package phi-search)
 
 (use-package phi-search-mc
-  :ensure t
   :config
   (phi-search-mc/setup-keys))
 
 (use-package secretaria
-  :ensure t
   :after
   alert
   :config
