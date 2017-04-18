@@ -135,6 +135,11 @@
 
 ;; Multiple cursors
 (use-package multiple-cursors
+  :init
+  (defvar gpolonkai/mc-prefix-map (make-sparse-keymap)
+    "Prefix keymap for multiple-cursors")
+  (define-prefix-command 'gpolonkai/mc-prefix-map)
+  (define-key global-map (kbd "C-c m") 'gpolonkai/mc-prefix-map)
   :config
   (add-hook 'multiple-cursors-mode-enabled-hook
             (lambda ()
@@ -142,15 +147,16 @@
   (add-hook 'multiple-cursors-mode-disabled-hook
             (lambda ()
               (setq blink-matching-paren t)))
-  :bind (("C-c m t" . mc/mark-all-like-this)
-         ("C-c m m" . mc/mark-all-like-this-dwim)
-         ("C-c m l" . mc/edit-lines)
-         ("C-c m e" . mc/edit-ends-of-lines)
-         ("C-c m a" . mc/edit-beginnings-of-lines)
-         ("C-c m n" . mc/mark-next-like-this)
-         ("C-c m p" . mc/mark-previous-like-this)
-         ("C-c m s" . mc/mark-sgml-tag-pair)
-         ("C-c m d" . mc/mark-all-like-this-in-defun)))
+  :bind (:map gpolonkai/mc-prefix-map
+         ("t" . mc/mark-all-like-this)
+         ("m" . mc/mark-all-like-this-dwim)
+         ("l" . mc/edit-lines)
+         ("e" . mc/edit-ends-of-lines)
+         ("a" . mc/edit-beginnings-of-lines)
+         ("n" . mc/mark-next-like-this)
+         ("p" . mc/mark-previous-like-this)
+         ("s" . mc/mark-sgml-tag-pair)
+         ("d" . mc/mark-all-like-this-in-defun)))
 
 (use-package eshell
   :config
