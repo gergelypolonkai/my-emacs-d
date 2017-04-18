@@ -151,7 +151,8 @@
      zygospore)))
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
- '(tab-width 4))
+ '(tab-width 4)
+ '(user-mail-address "gergely@polonkai.eu"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

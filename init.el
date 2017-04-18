@@ -63,9 +63,6 @@
 ;; Maximize the frame
 (set-frame-parameter nil 'fullscreen 'maximized)
 
-;; Some personal stuff
-(setq user-mail-address "gergely@polonkai.eu")
-
 (defun termux-p ()
   "Check if Emacs is running under Termux."
   (string-match-p
