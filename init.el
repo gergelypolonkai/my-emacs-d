@@ -1098,6 +1098,13 @@ INFO plist."
  ("o i" . gpolonkai/visit-init-file)
  ("o o" . gpolonkai/visit-org-index))
 
+;; TODO: This doesn’t work with use-package and bind-key for some reason.
+;; But why?
+(define-key 'help-command (kbd "C-l") 'find-library)
+(define-key 'help-command (kbd "C-f") 'find-function)
+(define-key 'help-command (kbd "C-k") 'find-function-on-key)
+(define-key 'help-command (kbd "C-v") 'find-variable)
+
 ;; Kudos goes to
 ;; http://endlessparentheses.com/leave-the-cursor-at-start-of-match-after-isearch.html
 (defun isearch-exit-other-end ()
