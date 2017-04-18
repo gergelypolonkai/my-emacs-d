@@ -215,12 +215,6 @@
   :after
   magit)
 
-(use-package magit-gerrit
-  :after
-  magit
-  :init
-  (setq-default magit-gerrit-remote "gerrit"))
-
 (use-package origami
   :demand
   :config
