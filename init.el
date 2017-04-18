@@ -70,7 +70,8 @@
    (expand-file-name "~")))
 
 ;; Load some custom libraries
-(require 'thingatpt)
+(use-package thingatpt
+  :ensure nil)
 
 (use-package helm
   :init
