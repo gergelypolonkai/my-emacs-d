@@ -1016,6 +1016,8 @@ INFO plist."
                    (concat "am start -a android.intent.action.VIEW --user 0 -d "
                            url))))))
 
+(use-package less-css-mode)
+
 (add-hook 'python-mode-hook
           (lambda ()
             (add-to-list 'prettify-symbols-alist
