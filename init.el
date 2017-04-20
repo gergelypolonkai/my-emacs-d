@@ -283,19 +283,30 @@
   (sml/setup)
   (setq-default header-line-format
                 '(""
-                  mode-line-front-space
+                  mode-line-mule-info
                   mode-line-client
                   mode-line-modified
                   mode-line-remote
                   mode-line-frame-identification
                   mode-line-buffer-identification
+                  sml/pos-id-separator
                   (vc-mode vc-mode)
                   mode-line-position))
   (delete '(vc-mode vc-mode) mode-line-format)
-  (delete 'mode-line-front-space mode-line-format)
   (delete 'mode-line-frame-identification mode-line-format)
   (delete 'mode-line-buffer-identification mode-line-format)
   (delete 'mode-line-position mode-line-format)
+  (delete 'mode-line-mule-info mode-line-format)
+  (delete 'mode-line-modified mode-line-format)
+  (delete 'mode-line-client mode-line-format)
+  (delete 'mode-line-remote mode-line-format)
+  ;; Add sml/pre-id-separator after mode-line-front-space
+  (let* ((front-space-position (1+ (cl-position 'mode-line-front-space mode-line-format)))
+         (mode-line-rest (nthcdr front-space-position mode-line-format))
+         (mode-line-beg (subseq mode-line-format 0 front-space-position)))
+    (setq-default mode-line-format (nconc mode-line-beg
+                                          (list sml/pre-id-separator)
+                                          mode-line-rest)))
 )
 
 (use-package company
