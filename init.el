@@ -503,10 +503,12 @@
   :config
   (add-hook 'c-mode-hook 'electric-case-c-init))
 
-(use-package electric-spacing
-  :pin gnu
+(use-package electric-operator
   :config
-  (add-hook 'c-mode-common-hook 'electric-spacing-mode))
+  (add-hook 'c-mode-common-hook 'electric-operator-mode)
+  ;; Apply electric-operator-mode to vala-mode, too
+  (apply #'electric-operator-add-rules-for-mode 'vala-mode
+         electric-operator-prog-mode-rules))
 
 (use-package emamux)
 
