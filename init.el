@@ -217,10 +217,6 @@
   (:map ctl-x-map
    ("g" . magit-status)))
 
-(use-package magithub
-  :after
-  magit)
-
 (use-package origami
   :demand
   :config
