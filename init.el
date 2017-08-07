@@ -1226,3 +1226,6 @@ INFO plist."
   (or (abbrev--before-point) (yasnippet-can-fire-p)))
 
 (add-hook 'post-command-hook 'sachachua/change-cursor-color-when-can-expand)
+
+;; SysAdmin Day to the calendar
+(add-to-list 'holiday-other-holidays '(holiday-float 7 5 -1 "SysAdmin Day") t)
