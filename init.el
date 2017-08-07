@@ -1034,7 +1034,9 @@ INFO plist."
             (add-to-list 'prettify-symbols-alist
                          '("not" . 172))
             (add-to-list 'prettify-symbols-alist
-                         '("in" . 8712))))
+                         '("in" . 8712))
+            (add-to-list 'prettify-symbols-alist
+                         '("def" . 402))))
 
 ;; `c-mode' settings
 (add-hook 'c-mode-common-hook
@@ -1155,11 +1157,12 @@ INFO plist."
 
 ;; Add some symbols to be prettified
 (setq prettify-symbols-alist
-      '(("lambda" . 955)  ; λ
-        ("->" . 8594)     ; →
-        ("=>" . 8658)     ; ⇒
-        ("map" . 8614)    ; ↦
-        ("not" . 172))    ; ¬
+      '(("lambda" . 955)    ; λ
+        ("function" . 402)  ; ƒ
+        ("->" . 8594)       ; →
+        ("=>" . 8658)       ; ⇒
+        ("map" . 8614)      ; ↦
+        ("not" . 172))      ; ¬
 
       ;; …and some pairs to complete
       ;; TODO: maybe add-to-list is a better way to do it
