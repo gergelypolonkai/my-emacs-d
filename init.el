@@ -1104,6 +1104,7 @@ INFO plist."
  ("k" . gpolonkai/kill-this-buffer)
  ("M-c" . gpolonkai/kill-this-buffer-delete-this-window)
  ("M-k" . gpolonkai/undo-buffer-kill)
+ ("C-b" . bury-buffer)
  :map isearch-mode-map
  ("<C-return>" . isearch-exit-other-end)
  ("<S-return>" . isearch-exit-mark-match)
