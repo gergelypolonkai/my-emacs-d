@@ -55,6 +55,7 @@
      dockerfile-mode
      drag-stuff
      electric-case
+     electric-operator
      electric-spacing
      emamux
      enlive
