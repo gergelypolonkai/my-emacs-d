@@ -8,6 +8,7 @@
         c-electric-paren
         c-electric-semi&comma
         c-indent-line-or-region
+        delete-indentation
         electric-newline-and-maybe-indent
         gpolonkai/move-to-beginning-of-line
         gpolonkai/move-to-end-of-line
@@ -25,10 +26,12 @@
         sp-backward-kill-word
         sp-delete-char
         sp-kill-hybrid-sexp
+        sp-kill-region
         sp-kill-word
         sp-remove-active-pair-overlay
         sp-unwrap-sexp
         toggle-char-case
+        yaml-electric-dash-and-dot
         ))
 
 (setq mc/cmds-to-run-once
