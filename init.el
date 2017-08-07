@@ -1028,6 +1028,43 @@ INFO plist."
 
 (use-package feature-mode)
 
+(use-package helm-bibtex
+  :after
+  org
+  :config
+  (setq bibtex-completion-bibliography (concat user-documents-directory
+                                               (convert-standard-filename
+                                                "/orgmode/references.bib"))
+        bibtex-completion-library-path (concat user-documents-directory
+                                               (convert-standard-filename
+                                                "/orgmode/bibtex-pdfs"))
+        bibtex-completion-notes-path (concat user-documents-directory
+                                             (convert-standard-filename
+                                              "/orgmode/bibliography/helm-bibtex-notes"))
+        bibtex-completion-pdf-open-function 'org-open-file))
+
+(use-package org-ref
+  :after
+  org
+  :config
+  (setq org-ref-bibliography-notes (concat user-documents-directory
+                                           (convert-standard-filename
+                                            "/orgmode/bibliography-notes"))
+        org-ref-default-bibliography '((concat user-documents-directory
+                                               (convert-standard-filename
+                                                "/orgmode/references.bib")))
+        org-ref-pdf-directory (concat user-documents-directory
+                                      (convert-standard-filename
+                                       "/orgmode/bibtex-pdfs"))))
+
+;; open pdf with system pdf viewer (works on mac)
+(setq bibtex-completion-pdf-open-function
+  (lambda (fpath)
+    (start-process "open" "*open*" "open" fpath)))
+
+;; alternative
+;; (setq bibtex-completion-pdf-open-function 'org-open-file))
+
 (add-hook 'python-mode-hook
           (lambda ()
             (add-to-list 'prettify-symbols-alist
