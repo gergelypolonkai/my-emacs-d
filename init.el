@@ -396,7 +396,8 @@
                                            user-documents-directory
                                            (convert-standard-filename
                                             "/orgmode/from-mobile.org"))
-                org-log-done 'time)
+                org-log-done 'time
+                org-src-preserve-indentation t)
   :config
   (require 'ox-md)
   (unless (boundp 'org-capture-templates)
