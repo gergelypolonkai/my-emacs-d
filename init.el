@@ -1026,6 +1026,8 @@ INFO plist."
 
 (use-package less-css-mode)
 
+(use-package feature-mode)
+
 (add-hook 'python-mode-hook
           (lambda ()
             (add-to-list 'prettify-symbols-alist
