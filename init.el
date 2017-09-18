@@ -129,6 +129,7 @@
   :demand
   :config
   (global-whitespace-mode 1)
+  (setq whitespace-line-column 100)
   :bind
   (([f10] . whitespace-mode)
    ([(shift f10)] . global-whitespace-mode)))
