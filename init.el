@@ -1195,6 +1195,7 @@ INFO plist."
 (put 'upcase-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
 
 ;; text-mode settings
 (add-hook 'text-mode-hook (lambda () (visual-line-mode t)))
