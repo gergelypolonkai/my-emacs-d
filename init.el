@@ -862,6 +862,12 @@ INFO plist."
   :config
   (global-auto-highlight-symbol-mode t))
 
+(use-package recentf
+  :ensure nil
+  :config
+  (run-at-time nil (* 5 60) 'recentf-save-list)
+  (add-to-list 'recentf-exclude (concat user-emacs-directory "elpa")))
+
 (use-package auto-package-update
   :config
   (setq auto-package-update-interval 7
