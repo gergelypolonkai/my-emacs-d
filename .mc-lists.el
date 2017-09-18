@@ -16,12 +16,14 @@
         hungry-delete-forward
         indent-for-tab-command
         kill-region
+        kill-sexp
         org-cycle
         org-end-of-line
         org-kill-line
         org-return
         org-self-insert-command
         org-space-key
+        org-yank
         sp-backward-delete-char
         sp-backward-kill-word
         sp-delete-char
@@ -46,4 +48,5 @@
         helm-M-x
         helm-find-files
         smartparens-strict-mode
+        suspend-frame
         ))
