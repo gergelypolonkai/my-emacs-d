@@ -182,6 +182,7 @@
 
 (when (display-graphic-p)
   (use-package nyan-prompt
+    :disabled t
     :config
     (add-hook 'eshell-load-hook 'nyan-prompt-enable)))
 
