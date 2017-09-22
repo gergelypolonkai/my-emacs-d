@@ -1065,6 +1065,12 @@ INFO plist."
                                       (convert-standard-filename
                                        "/orgmode/bibtex-pdfs"))))
 
+(use-package ag
+  :after projectile
+  :bind
+  (:map projectile-mode-map
+   ("C-c p C-a" . ag-project)))
+
 ;; open pdf with system pdf viewer (works on mac)
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
