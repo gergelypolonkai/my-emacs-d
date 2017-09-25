@@ -406,7 +406,7 @@
     (setq org-capture-templates nil))
   (add-to-list 'org-capture-templates
                '("p" "Blog post"
-                 entry (file+datetree (concat org-directory "blog.org"))
+                 entry (file+olp+datetree (concat org-directory "blog.org"))
                  "* %^{Title}  :blog:\n   :PROPERTIES:\n   :on: %T\n   :END:\n   %i%?"))
   (add-to-list 'org-capture-templates
                '("g" "GT2 note"
