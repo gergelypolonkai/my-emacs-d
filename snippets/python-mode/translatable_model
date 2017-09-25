@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Translatable Flask-SQLAlchemy model
+# key: tmodel
+# --
+class ${1:name}(Translatable, db.Model):
+    __tablename__ = '${2:tablename}s'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+
+class $1Translation(translation_base($1)):
+    __tablename__ = '$2_translations'
+
+    $0

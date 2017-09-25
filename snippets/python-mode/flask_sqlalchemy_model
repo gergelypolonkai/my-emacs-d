@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: flask_sqlalchemy_model
+# key: model
+# --
+class ${1:name}(db.Model):
+    __tablename__ = '${2:tablename}'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    $0
