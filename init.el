@@ -1250,7 +1250,8 @@ INFO plist."
       (helm-execute-persistent-action)
     (insert "/")))
 
-(setq default-cursor-color (frame-parameter nil 'cursor-colbxuor))
+;; TODO: 'cursor-color is sometimes nil, but why?
+(setq default-cursor-color (or (frame-parameter nil 'cursor-color) "#ffd85c"))
 (setq yasnippet-can-fire-cursor-color "purple")
 
 ;; It will test whether it can expand, if yes, cursor color -> purple.

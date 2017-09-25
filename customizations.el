@@ -7,7 +7,7 @@
  '(background-mode dark)
  '(blink-cursor-mode t)
  '(column-number-mode t)
- '(cursor-color "#5c5cff")
+ '(cursor-color "#ffd85c")
  '(cursor-type (quote bar))
  '(custom-enabled-themes (quote (tango)))
  '(custom-file (concat user-emacs-directory "customizations.el"))
