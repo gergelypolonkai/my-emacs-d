@@ -399,7 +399,8 @@
                                            (convert-standard-filename
                                             "/orgmode/from-mobile.org"))
                 org-log-done 'time
-                org-src-preserve-indentation t)
+                org-src-preserve-indentation t
+                org-log-into-drawer t)
   :config
   (require 'ox-md)
   (unless (boundp 'org-capture-templates)
