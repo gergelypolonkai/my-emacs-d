@@ -9,13 +9,14 @@
  '(column-number-mode t)
  '(cursor-color "#ffd85c")
  '(cursor-type (quote bar))
- '(custom-enabled-themes (quote (tango)))
+ '(custom-enabled-themes (quote (tango-dark)))
  '(custom-file (concat user-emacs-directory "customizations.el"))
  '(custom-safe-themes
    (quote
     ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(echo-keystrokes 0.1)
  '(fill-column 98)
+ '(foreground-color "#5c5cff")
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-echo-area-message (user-login-name))
@@ -160,6 +161,6 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "simp" :slant normal :weight normal :height 98 :width normal))))
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 2.0))))
- '(hl-line ((t (:inherit nil :background "light gray"))))
+ '(hl-line ((t (:inherit nil :background "gray25"))))
  '(trailing-whitespace ((t (:inherit nil :background "red1"))))
- '(whitespace-line ((t (:inherit nil "light goldenrod")))))
+ '(whitespace-line ((t (:inherit nil :background "orange4")))))
