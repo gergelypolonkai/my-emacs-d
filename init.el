@@ -1066,6 +1066,10 @@ INFO plist."
   (:map projectile-mode-map
    ("C-c p C-a" . ag-project)))
 
+(use-package fancy-narrow
+  :config
+  (fancy-narrow-mode))
+
 ;; open pdf with system pdf viewer (works on mac)
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
