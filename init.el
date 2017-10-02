@@ -945,8 +945,7 @@ INFO plist."
 
 (use-package expand-region
   :bind
-  (:map ctl-x-map
-   ("*" . er/expand-region)))
+  (("C-@" . er/expand-region)))
 
 (use-package anaconda-mode
   :config
