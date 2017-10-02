@@ -996,6 +996,7 @@ INFO plist."
 
 (use-package web-mode
   :config
+  (setq web-mode-enable-auto-indentation nil)
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
 
 (use-package dockerfile-mode)
