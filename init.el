@@ -1070,6 +1070,10 @@ INFO plist."
   :config
   (fancy-narrow-mode))
 
+(use-package fillcode
+  :config
+  (add-hook 'python-mode-hook 'fillcode-mode))
+
 ;; open pdf with system pdf viewer (works on mac)
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
