@@ -516,7 +516,9 @@
 
 (use-package emamux)
 
-(use-package flycheck)
+(use-package flycheck
+  :config
+  (global-flycheck-mode))
 
 (use-package flycheck-pkg-config)
 
