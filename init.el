@@ -403,7 +403,8 @@
                                             "/orgmode/from-mobile.org"))
                 org-log-done 'time
                 org-src-preserve-indentation t
-                org-log-into-drawer t)
+                org-log-into-drawer t
+                org-tags-column 0)
   :config
   (require 'ox-md)
   (unless (boundp 'org-capture-templates)
