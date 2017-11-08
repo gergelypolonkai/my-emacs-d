@@ -309,7 +309,9 @@
 
 (use-package company
   :config
-  (setq company-idle-delay nil)
+  (setq company-idle-delay nil
+        company-frontends '(company-pseudo-tooltip-frontend
+                            company-echo-metadata-frontend))
   (global-company-mode))
 
 (use-package helm-company
