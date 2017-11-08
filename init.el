@@ -1078,6 +1078,8 @@ INFO plist."
   :config
   (add-hook 'python-mode-hook 'fillcode-mode))
 
+(use-package undo-tree)
+
 ;; open pdf with system pdf viewer (works on mac)
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
