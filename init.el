@@ -323,6 +323,7 @@
    ("C-c j" . helm-company)))
 
 (use-package projectile
+  :pin melpa-stable
   :config
   (projectile-global-mode t))
 
