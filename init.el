@@ -1180,7 +1180,9 @@ INFO plist."
  ("C-i w" . "http://gergely.polonkai.eu/")
  ("C-p" . package-list-packages)
  ("o i" . gpolonkai/visit-init-file)
- ("o o" . gpolonkai/visit-org-index))
+ ("o o" . gpolonkai/visit-org-index)
+ ("u" . browse-url-at-point)
+ ("C" . clean-buffer-list))
 
 ;; TODO: This doesn’t work with use-package and bind-key for some reason.
 ;; But why?
