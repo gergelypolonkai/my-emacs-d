@@ -53,6 +53,7 @@
 (load "frame-manip")
 (load "file-manip")
 (load "window-manip")
+(load "xdg-paths")
 
 ;; Define aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
