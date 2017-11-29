@@ -411,7 +411,8 @@
                 org-log-done 'time
                 org-src-preserve-indentation t
                 org-log-into-drawer t
-                org-tags-column 0)
+                org-tags-column 0
+                org-startup-indented t)
   :config
   (require 'ox-md)
   (unless (boundp 'org-capture-templates)
