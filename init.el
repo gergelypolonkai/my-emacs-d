@@ -1314,3 +1314,6 @@ TODO: What is FIELD for?"
 
 ;; SysAdmin Day to the calendar
 (add-to-list 'holiday-other-holidays '(holiday-float 7 5 -1 "SysAdmin Day") t)
+(add-to-list 'holiday-other-holidays '(holiday-fixed 10 21 "Reptile Awareness Day") t)
+
+;;; init.el ends here
