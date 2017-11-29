@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Protect with ifdef
+# key: defprot
+# --
+#ifndef ${1:name}
+# define $1
+
+$0
+
+#endif  /* $1 */
