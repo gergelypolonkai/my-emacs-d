@@ -1,3 +1,9 @@
+;;; init --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 (setq custom-file (concat user-emacs-directory "customizations.el"))
 (load custom-file)
 
@@ -16,7 +22,7 @@
              '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
-(setq use-package-always-ensure t)
+(setq-default use-package-always-ensure t)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -197,6 +203,7 @@
     (setq zone-programs (vconcat zone-programs [zone-nyan]))))
 
 (defun gpolonkai/zone-enable ()
+  "Enable zoning out."
   (interactive)
   (zone-when-idle 60)
   (message "I will zone out after idling for 60 seconds."))
@@ -359,7 +366,7 @@
 ;; From gmane.emacs.orgmode
 ;; (http://article.gmane.org/gmane.emacs.orgmode/75222)
 (defun f-ediff-org-showhide (buf command &rest cmdargs)
-  "If buffer BUF exists and in org-mode, execute COMMAND with CMDARGS."
+  "If buffer BUF exists and in `org-mode', execute COMMAND with CMDARGS."
   (when buf
     (when (eq (buffer-local-value 'major-mode (get-buffer buf)) 'org-mode)
       (save-excursion
@@ -1134,7 +1141,7 @@ INFO plist."
                                     (knr-argdecl-intro . -)
                                     (comment-intro . 0)))
     (c-echo-syntactic-information-p . t))
-  "My C Programming Style")
+  "My C Programming Style.")
 (c-add-style "PERSONAL" my-c-style)
 (setq c-offset-alist '((member-init-intro . ++)))
 
@@ -1194,7 +1201,7 @@ INFO plist."
 ;; Kudos goes to
 ;; http://endlessparentheses.com/leave-the-cursor-at-start-of-match-after-isearch.html
 (defun isearch-exit-other-end ()
-  "Exit isearch, at the opposite end of the string"
+  "Exit isearch, at the opposite end of the string."
   (interactive)
 
   (isearch-exit)
@@ -1257,6 +1264,7 @@ INFO plist."
                                             "%b")))))
 
 (defun gpolonkai/helm-ff-slash-dir-complete ()
+  "Make forward slash (/) do completion in helm."
   (interactive)
   (if (and (equal "Find Files" (assoc-default 'name (helm-get-current-source)))
            (stringp (helm-get-selection))
@@ -1270,6 +1278,9 @@ INFO plist."
 
 ;; It will test whether it can expand, if yes, cursor color -> purple.
 (defun yasnippet-can-fire-p (&optional field)
+  "Check if the word before point can be expanded with yasnippet.
+
+TODO: What is FIELD for?"
   (interactive)
   (setq yas--condition-cache-timestamp (current-time))
   (let (templates-and-pos)
@@ -1285,6 +1296,9 @@ INFO plist."
 
 ;; Taken from http://pages.sachachua.com/.emacs.d/Sacha.html
 (defun sachachua/change-cursor-color-when-can-expand (&optional field)
+  "Change cursor color if the text before point can be expanded with yasnippet.
+
+TODO: What is FIELD for?"
   (interactive)
   (when (eq last-command 'self-insert-command)
     (set-cursor-color (if (sachachua/can-expand)
