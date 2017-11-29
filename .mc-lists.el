@@ -7,6 +7,7 @@
         c-electric-brace
         c-electric-paren
         c-electric-semi&comma
+        c-electric-star
         c-indent-line-or-region
         delete-indentation
         electric-newline-and-maybe-indent
@@ -17,6 +18,7 @@
         indent-for-tab-command
         kill-region
         kill-sexp
+        magit-status
         org-cycle
         org-end-of-line
         org-kill-line
