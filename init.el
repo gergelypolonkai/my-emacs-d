@@ -135,6 +135,9 @@
 (use-package whitespace
   :demand
   :config
+  (defun prevent-whitespace-mode-for-magit ()
+    (not (derived-mode-p 'magit-mode)))
+  (add-function :before-while whitespace-enable-predicate 'prevent-whitespace-mode-for-magit)
   (global-whitespace-mode 1)
   (setq whitespace-line-column 100)
   :bind
