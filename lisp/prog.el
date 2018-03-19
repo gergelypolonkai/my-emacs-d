@@ -42,6 +42,27 @@ to the beginning of the file."
     (insert "\"\"\"")
     (open-line-above)))
 
+(defun camel-to-snake-case (arg)
+  "Convert a camel case (camelCase or CamelCase) word to snake case (snake_case).
+
+If the prefix argument ARG is non-nil, convert the text to uppercase."
+  (interactive "p")
+  (progn
+    (let ((start (region-beginning))
+          (end (region-end))
+          (case-fold-search nil)
+          (had-initial-underscore nil))
+      (goto-char start)
+      (when (looking-at "_") (setq had-initial-underscore t))
+      (while (re-search-forward "\\([A-Z]\\)" end t)
+        (replace-match "_\\1")
+        (setq end (1+ end)))
+      (if arg
+          (upcase-region start end)
+        (downcase-region start end))
+      (goto-char start)
+      (unless had-initial-underscore (delete-char 1)))))
+
 (provide 'gp-prog)
 
 ;;; gp-prog.el ends here
