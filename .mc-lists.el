@@ -51,4 +51,5 @@
         helm-find-files
         smartparens-strict-mode
         suspend-frame
+        yaml-electric-backspace
         ))
