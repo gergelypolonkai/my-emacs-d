@@ -1,16 +1,22 @@
+;;; gp-prog --- Summary
+
+;;; Commentary:
+
+;;; Code:
 (defun gpolonkai/prog-in-string-p ()
-  "Return `t' if point is inside a string."
+  "Return t if point is inside a string."
   (nth 3 (syntax-ppss)))
 
 (defun gpolonkai/prog-in-comment-p ()
-  "Return `t' if point is inside a comment."
+  "Return t if point is inside a comment."
   (nth 4 (syntax-ppss)))
 
 (defun gpolonkai/python-add-docstring ()
-  "Add a Python docstring to the current thing.  If point is
-  inside a function, add docstring to that.  If point is in a
-  class, add docstring to that.  If neither, add docstring to the
-  beginning of the file."
+  "Add a Python docstring to the current thing.
+
+If point is inside a function, add docstring to that.  If point
+is in a class, add docstring to that.  If neither, add docstring
+to the beginning of the file."
   (interactive)
   (save-restriction
     (widen)
@@ -35,3 +41,7 @@
     (open-line-below)
     (insert "\"\"\"")
     (open-line-above)))
+
+(provide 'gp-prog)
+
+;;; gp-prog.el ends here

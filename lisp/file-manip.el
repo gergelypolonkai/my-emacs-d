@@ -1,6 +1,13 @@
+;;; file-manip --- Summary
+
+;;; Commentary:
+
+;;; Code:
 (defun open-this-file-as-other-user (user)
-  "Edit current file as USER, using `tramp' and `sudo'.  If the current
-buffer is not visiting a file, prompt for a file name."
+  "Edit current file as USER, using `tramp' and `sudo'.
+
+If the current buffer is not visiting a file, prompt for a file
+name."
   (interactive "sEdit as user (default: root): ")
   (when (string= "" user)
     (setq user "root"))
@@ -22,3 +29,7 @@ buffer is not visiting a file, prompt for a file name."
   (interactive)
   (find-file-other-window (concat (file-name-as-directory org-directory)
                                   "index.org")))
+
+(provide 'file-manip)
+
+;;; file-manip.el ends here
