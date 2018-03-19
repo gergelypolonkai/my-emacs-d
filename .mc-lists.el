@@ -5,6 +5,7 @@
       '(
         avy-goto-char
         c-electric-brace
+        c-electric-colon
         c-electric-paren
         c-electric-semi&comma
         c-electric-star
