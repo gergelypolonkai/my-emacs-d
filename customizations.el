@@ -32,6 +32,7 @@
      alert
      anaconda-mode
      anzu
+     ascii-art-to-unicode
      auto-highlight-symbol
      auto-package-update
      auto-virtualenv
@@ -49,6 +50,7 @@
      company-shell
      company-web
      csharp-mode
+     dash
      dashboard
      diminish
      dired-k
@@ -69,6 +71,7 @@
      focus
      form-feed
      ggtags
+     gh
      gist
      git-gutter-fringe
      git-messenger
@@ -83,6 +86,7 @@
      goto-last-change
      helm
      helm-ag
+     helm-bibtex
      helm-c-yasnippet
      helm-chrome
      helm-company
@@ -109,10 +113,12 @@
      js2-mode
      json-mode
      kanban
+     lorem-ipsum
      magit
      magit-gerrit
      magithub
      markdown-mode
+     marshal
      mc-extras
      mediawiki
      multiple-cursors
@@ -124,27 +130,37 @@
      org-jekyll
      org-projectile
      org-random-todo
+     org-ref
      org-rtm
      origami
+     package-build
+     page-break-lines
      plantuml-mode
      po-mode
      projectile
+     pycoverage
+     python-x
+     pyvenv
      rainbow-delimiters
      rainbow-mode
      restclient
      restclient-helm
+     s
      sass-mode
      smart-mode-line
      smart-mode-line-powerline-theme
      smartparens
+     sphinx-doc
      spinner
      sx
      typescript-mode
+     undo-tree
      use-package
      vala-mode
      vala-snippets
      wakatime-mode
      web-mode
+     with-editor
      xlicense
      yaml-mode
      yasnippet
