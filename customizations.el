@@ -150,6 +150,9 @@
      yasnippet
      zone-nyan
      zygospore)))
+ '(safe-local-variable-values
+   (quote
+    ((bug-reference-bug-regexp . "#\\(?2:[0-9]+\\)"))))
  '(sgml-basic-offset 4)
  '(show-trailing-whitespace t)
  '(tab-width 4)
