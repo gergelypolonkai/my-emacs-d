@@ -920,8 +920,6 @@ INFO plist."
   (add-hook 'projectile-after-switch-project-hook
             'auto-virtualenv-set-virtualenv))
 
-(use-package flymake-python-pyflakes)
-
 (use-package gitlab)
 
 (use-package files
